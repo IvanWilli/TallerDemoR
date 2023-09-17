@@ -1,0 +1,37 @@
+# TP
+
+## Hemos llegado:
+  
+![](figs/aplausos.gif)
+
+
+## Consigna
+
+Realizar un reporte sobre las caracteristicas de una provincia argentina seleccionada por el autor. Los datos los podés encontrar en "Data/PoblCensal01y10". El objetivo es caracterizar el proceso de envejecimiento en el período, el cual, siguiendo a [CELADE](https://www.cepal.org/es/temas/envejecimiento) lo podemos definir como el aumento progresivo de la proporción de las personas de 60 años y más con respecto a la población total. Si bien en el ejercicio solo contaremos con dos observaciones de cada población (censos 2001 y 2010), permite ver la dirección y magnitud del cambio entre esos años. Específicamente, se solicita:
+
+* Crear un reporte RMarkdwon que produzca el informe en *html*.
+
+* Asignar un título al reporte que incluya la provincia seleccionada, tu nombre como autor/a, y el mes y año del reporte.
+
+* Contenidos **mínimos** del cuerpo del informe:
+    - Un párrafo inicial donde se explicite el objetivo del reporte y se mencione la cantidad de población total observada en cada punto del tiempo, mediante *chunks inline*.
+    - Mostrar las pirámides de población de ambos períodos en un mismo gráfico, mediante el paquete *ggplot2*, y su función *facet*. Acordate que si en el chunk guardas el gráfico como objeto, debes "llamarlo" para que lo imprima.
+    - Calcular el índice de masculinidad por edad de la población de 60 a 100 años y realizar un gráfico de línea diferenciando cada censo con un color distinto.
+    - En un párrafo final describir brevemente qué te llama la atención de lo observado.
+    
+**¡IMPORTANTE!** Solo es relevante a efectos del taller:  
+
+  * Crear el reporte y enviar el html resultante  
+
+  * Incluir dos tipos de gráfico creados dentro de un *chunk*, con sus respectivos títulos, fuentes y nombres de los ejes.
+
+  * Incluir código R en un párrafo
+  
+No serán evaluadas conceptualmente las conclusiones. El resultado de la evaluación será tarde o temprano "Aprobado", excepto que no haya entrega.
+
+**Fecha de entrega final: 31/12/2021**
+
+Manos a la obra...
+
+![¡Hasta pRonto!](figs/r_rollercoaster.png)
+

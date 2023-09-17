@@ -1,0 +1,444 @@
+# R Base. Un censista que sabe R {#intro}
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
+options(htmltools.dir.version = FALSE)
+library(knitr)
+library(fontawesome)
+```
+
+## El proyecto Taller
+
+Un **proyecto** es el marco en el cual realizás tu investigación o trabajo. Contiene los insumos, procesos y resultados. Empecemos por crear uno desde el menú. Encontrarás un archivo con extensión **R.proj**. Creemos la carpeta de esta unidad, coloquemos los archivos de esta clase y creemos un script (de extensión *".R"*) en el que seguiremos los contenidos y resolveremos los ejercicios.
+
+Para conocer "donde estamos parados", nuestro directorio de trabajo (por default en la carpeta del proyecto):
+
+```{r, eval=F}
+getwd()
+```
+
+## Objetos principales
+
+Para adentrarnos en las características de **R**, censaremos un **hogar**. Pero... ¿qué es un hogar? Es una unidad de análisis demográfica, definida en un marco censal: *"se entiende por hogar una persona que vive sola o un grupo de personas que pueden o no estar emparentadas pero que comparten el presupuesto para los gastos de alimentación" (ONU, 2011)* (ojo, no confundir con _vivienda_ y *familia*).
+
+Resulta que nos fue asignada determinada vivienda, con un único hogar. 
+
+```{r, echo=F, fig.cap="Fuente: https://www.economist.com/books-and-arts/2020/04/16/a-lively-and-enlightening-history-of-the-census"}
+include_graphics("figs/censista.jpg")
+```
+
+Por suerte este no fue el que nos tocó, sino el hogar de la siguiente vivienda. Son 6 miembros. ¿Cómo se listan los miembros de un hogar en un formulario censal?
+
+```{r, echo=F, fig.cap="fuente: en base a https://www.indec.gob.ar/indec/web/Nivel3-Tema-2-41"}
+include_graphics("figs/censoListaMiembros.png")
+```
+
+Una vez completado el formulario *persona* para cada miembro, nos retiramos `r fa("running")` dando las gracias y nos sentamos a inspeccionar las características del hogar en *R*. Para esto empezaremos con los atributos del jefe o persona de referencia: Horacio.
+
+### Variables
+
+La asignación de variables (y de todo tipo de objeto) se realiza mediante el operador `r fa("arrow-left")` (veáse la direccionalidad **objeto** `r fa("arrow-left")` **valor**).
+
+```{r}
+edad <- 61
+```
+
+Es recomendable no nombrar objetos con números al inicio, y sin incluir coma u otros caracteres especiales. También pueden encontrar el uso de __=__ para asignar. ¿Qué usar? 
+
+Para ver el contenido del objeto creado, podemos escribirlo en la consola dando enter luego, o desde el script pintando el objeto y presionando el botón *Run* (o *ctrl+enter*):
+```{r}
+edad 
+```
+
+Las operaciones lógicas estan por detrás de la mayoría de los procesos que realizaremos en el taller. ¿Es de equivalencia la siguiente relación?  
+```{r}
+edad == 50 
+```
+
+¿Es menor que...?  
+```{r}
+edad < 40 
+```
+
+Otras operaciones lógicas son: **>**, **<=**, **>=**, **!=** (distinto), etc. (luego veremos algunas más).  
+Las operaciones sin asignación no cambian el valor de la variable creada:
+```{r}
+edad + 10
+```
+
+¡Atención! lenguaje sensible a mayúsculas:
+```{r}
+Edad <- 45
+Edad != edad
+```
+
+Los tipo de variable más relevantes son:  
+
+* *numeric* (decimales con ".")
+```{r}
+edad_exacta <- 61.72
+edad == trunc(edad_exacta)
+```
+* *character* (string)  
+```{r}
+nombre <- "Horacio"
+
+# Qué clase de objeto es?
+class(nombre)
+```
+
+* *lógicas* (verdadero/falso)  
+```{r}
+autoRespondente <- TRUE
+autoRespondente == FALSE
+```
+* *date* (fecha)
+
+```{r}
+f_nacim <- "1960/01/01"
+# ¿Qué tipo de dato es?
+```
+
+La función base para cambio de *tipos* comienza con *as*. Utilicemos el predictor de comando, a ver qué nos sugiere... (presiona *"as."* para ver la lista desplegable de sugerencias). En este caso hagamos la variable de tipo fecha:
+
+```{r}
+f_nacim <- as.Date(f_nacim)
+```
+
+<!-- box-->
+<p class="comment">
+<strong>Fechas:</strong> Si quisiéramos interpretar una fecha con el formato que utilizamos acá, en R base tendríamos que especificarlo:<br>
+`f_nacim <- as.Date("01/01/1960", format = "%d/%m/%Y")`.<br>Por suerte hay paquetes que nos harán las cosas más fáciles. Lo veremos en unidades siguientes.
+</p>
+<!-- box-->
+
+La ausencia de valor se representa con **NA** (missing/vacío):
+```{r}
+sexo <- NA 
+#un operador lógico  importante es preguntar si un objeto es vacío:
+is.na(sexo)
+```
+
+¿Cómo comento?
+```{r}
+# Como venimos haciendo ;)
+# ¿Algunas buenas prácticas?
+```
+
+#### Actividad individual
+
+Tu hogar tambien tiene un jefe/a o persona de referencia.
+
+a1. Crear los atributos `nombre`, `sexo`, `edad`, `f_nacim`.
+
+a2. El censo lo respondió otra persona. Asigna un valor a `autoRespondente`.
+
+```{r, include=F, eval=F}
+autoRespondente <- FALSE
+```
+
+a3. Crear la variable `edad_en_10_años` que tenga la edad cumplida en 10 años. Corroborar que no son equivalentes.
+
+```{r, include=F}
+edad_en_10_años <- edad + 10
+edad_en_10_años == edad
+```
+a4. Obtener la diferencia entre ambas edades: `edad_en_10_años - edad_hoy`.
+
+```{r, include=F}
+edad_en_10_años - edad
+```
+
+***
+
+### Vectores
+
+Es la estructura de datos más simple en R (cada uno de los objetos previos son vectores de 1 elemento). Un vector es un arreglo de elementos del mismo tipo (*podes comprobarlo*). Inicializamos un vector **c**ombinando elementos mediante **c(...)**. Por ejemplo `c(1,2,3)`.  
+
+Creemos los vectores de atributos de los miembros del hogar censado, cuyo **orden** refiere a cada unidad de análisis **persona**:
+
+```{r}
+nombre_jefe     <- "Horacio"
+nombre_conyuge  <- "José"
+nombre_hijos    <- c("Iván", "Facundo", "Cristian", "Florencia")
+nombre          <- c(nombre_jefe, nombre_conyuge, nombre_hijos) # unión de vectores mediante c(), los "apilo"
+edad            <- c(61, 60, 35, 32, 27, 27)
+f_nacim         <- as.Date(c("1960/01/01", "1961/11/05", "1985/11/08", "1987/01/21", "1993/10/23", "1993/10/24"))
+sexo            <- c("v", "m", "v", NA, "v", "m")
+autoRespondente <- c(T, rep(F, 5)) # repetí un valor 5 veces
+
+# ¿Acabo de "pisar" objetos? ¿Qué significa? 
+```
+
+
+¿Qué tipo de objetos son? ¿Qué información contienen? Algunas funciones útiles de exploración...
+```{r}
+class(f_nacim)          # tipo de objeto
+length(autoRespondente) # cantidad de elementos de un vector
+str(nombre)               # estructura
+summary(edad)           # resumen de elementos
+unique(sexo)            # valores únicos
+```
+
+¿Cómo extraer información de un vector? con **[...]**. Por ejemplo, el nombre de la cuarta persona listada en mi hogar.
+
+```{r}
+nombre[4]
+```
+
+¿Y de los tres últimos? Incluyo como referencia el vector de posiciones `c(4,5,6)`.
+
+```{r}
+nombre[c(4,5,6)] 
+nombre[4:6] # equivalente
+```
+
+Un aspecto muuuy útil de R: vectorizar operaciones. Por default aplica la operación a cada uno de los elementos de un vector, sin necesidad de *loopear* a lo largo del mismo. Veamos qué pasa con los operadores lógicos que vimos en las variables:
+
+```{r}
+nombre == "Facundo"
+```
+¿Qué personas tienen una edad menor a 33?
+
+```{r}
+edad < 33
+```
+
+¡Pero decime los nombres che!
+
+```{r}
+nombre[edad < 33]
+```
+
+Podemos comparar internamente elementos de un vector. ¿Qué estamos preguntando aquí?
+
+```{r}
+f_nacim[1] < f_nacim 
+```
+
+<!-- box-->
+<p class="comment">
+<strong>Otras funciones de selección:</strong><br>
+¿En qué orden fui listado yo?<br>
+`which(nombre=="Iván")`<br>
+¿Quiénes me caen bien? Puedo usar un operador lógico para excluir una posición (y dejar el resto).
+Todos menos Cristian:<br>
+`nombre[nombre!="Cristian"]`<br>
+Otra forma de verlo, en dos pasos:<br>
+`posicion_de_Cristian <-  which(nombre=="Cristian")`<br> `nombre[-posicion_de_Cristian]`
+</p>
+<!-- box-->
+
+Medidas resúmen útiles sobre vectores numéricos:
+```{r}
+mean(edad)
+min(f_nacim)
+range(edad)
+```
+
+Antes de continuar: si queremos reemplazar por ejemplo `f_nacim` por `fecha_nacim`, podemos utilizar lo que nos ofrece *RStudio* para buscar y reemplazar (con *CRTL+f* ) recreando el objeto desde el inicio, o crear un vector idéntico (y eliminar el anterior).
+
+```{r}
+fecha_nacim <- f_nacim
+# remover (bienvenido si no quieres ir dejando basura pesada por allí)
+rm(f_nacim) 
+```
+
+<!-- box-->
+<p class="comment">
+<strong>Ayuda!!!</strong><br>
+Se puede pedir ayuda consultando la documentación de las funciones. Por ejemplo:<br>
+`?range`<br>
+`help(range)`<br>
+Y muy probablmente alguien ya se topó con tu problema:<br>
+![Caption for the picture.](figs/matrix.jfif)
+</p>
+<!-- box-->
+
+#### Actividad
+
+Para mi hogar:
+
+v1. ¿Qué valores únicos tiene la variable `autoRespondente`?
+```{r, include=F}
+unique(autoRespondente)
+```
+v2. ¿Cuales son los nombres de las personas que censé con una edad mayor a 50? 
+
+```{r, include=F}
+nombre[edad>50]
+```
+v3. ¿En qué fecha nació Florencia?
+
+```{r, include=F}
+fecha_nacim[nombre=="Florencia"]
+```
+
+**Grupal** 
+
+v4. Crear los vectores de atributos `nombre`, `sexo` , `edad` y `fecha de nacimiento` de los miembros del hogar del grupo. Tener en cuenta el **orden** `r fa("exclamation")`.
+
+v5. ¿Cómo se llama la segunda persona listada? Obtener el nombre utilizando **"[]"**.
+```{r, include=F}
+nombre[2]
+```
+
+v6. Obtener el rango de la edad de los miembros del hogar y su promedio. Para lo primero se puede usar `min` y `max` o directamente la función `range`.
+```{r, include=F}
+range(edad)
+```
+
+v7. Mediante `Sys.Date()` se puede ontener la fecha de hoy (guardarla en una variable si es preferible). Calcular la edad exacta de los miembros de la siguiente manera: `(fecha_hoy - fecha_nacim)/365` (restamos fechas y las convertimos en años de manera aproximada). 
+```{r, include=F}
+fecha_hoy <- Sys.Date()
+edad_exacta <- (fecha_hoy - fecha_nacim)/365
+
+```
+
+v8. ¿Y la edad cumplida de los miembros cual es? ¿El respondente informó correctamente la edad de los miembros?
+```{r, include=F}
+edad_cumplida <- trunc(edad_exacta)
+edad_cumplida == edad
+```
+
+v9. Con la función `nchar()` podes obtener el largo de un texto. ¿Cual es el nombre más largo?
+```{r, include=F}
+nombre[nchar(nombre)==max(nchar(nombre))]
+```
+***
+
+### Data.frames
+
+El objeto más flexible en R es el **data.frame**: permite combinar múltiples variables de distintas clases, símil a las tablas que tratamos en otros softwares estadísticos o excel. Organicemos los atributos de los miembros de mi hogar en un **data.frame**:
+
+```{r}
+hogar <- data.frame(nombre, sexo, edad, fecha_nacim, autoRespondente, stringsAsFactors = F) 
+hogar
+```
+
+¿Características?
+
+```{r}
+class(hogar)
+str(hogar)
+summary(hogar)
+colnames(hogar)
+ncol(hogar)
+nrow(hogar)
+```
+
+La selección de variables en un *data.frame* puede realizarse de distintas maneras. Por ejemplo para la variable *sexo*:
+
+```{r}
+# con "$": al tipear el signo te sugiere las variables que contiene
+hogar$sexo 
+
+# Una vez dentro del vector, vale lo que vimos en la sección previa de vectores. Obtén aquel miembro con sexo sin valor.
+hogar$nombre[is.na(hogar$sexo)]
+```
+
+También podemos seleccionar datos mediante coordendas del tipo **[fila, columna]**, o condicionado a la variable elegida.
+
+```{r}
+hogar[2,3]    # fila 2, columna 3
+hogar$edad[2] # en la variable edad, seleccionar el segundo elemento
+hogar[2,]     # ¿Y esto?
+hogar[,2]     # ¿Y esto cuando lo vimos?
+```
+
+Anteriormente, al crear el data.frame, forcé la no existencia de variables de tipo **factor** (` stringsAsFactors = F`). Los tipos de variable *factor* son variables categóricas (nominales u ordinales), con niveles (o códigos) y etiquetas (al estilo SPSS). Son muy relevantes para algunos paquetes que veremos más adelante, como *ggplot2*, para dar jerarquía al orden de visualización de las series. Por ejemplo, podemos **crear** la variable relación de parentezco *rp* respecto al jefe del hogar o persona de referencia.
+
+```{r}
+hogar$rp = factor(c("jefe", "cónyuge", "hije", "hije", "hije", "hije"))
+class(hogar$rp)
+str(hogar$rp) # para R siempre la variable será esencialmente un entero
+levels(hogar$rp)
+nlevels(hogar$rp)
+```
+
+Al parecer el respondente fue el cónyuge. Hagamos el cambio seleccionando de la variable `autoRespondete` aquellla observación (persona) que sea:
+
+```{r}
+hogar$autoRespondente[hogar$rp == "jefe"]    <- FALSE  # ¿Cómo se lee esto?
+hogar$autoRespondente[hogar$rp == "cónyuge"] <- TRUE
+```
+
+#### Actividad grupal
+
+df1. Crear un *data.frame* con los miembros del hogar del grupo, a partir de los vectores creados en la actividad previa. 
+
+df2. Inspeccionar sus características.
+
+df3. Obtener todos los datos del segundo miembro listado con el uso de **[]**.  
+```{r, include=F, eval=F}
+hogar[2,]
+```
+
+df4. Luego de una revisita al hogar encontramos que el tercer miembro listado prefiere que no conste su sexo, y que el cuarto miembro pefiere ser listado con su apodo "Pepe". Hacer los cambios correspondientes.
+```{r, include=F, eval=F}
+hogar$sexo[3] <- NA
+hogar$nombre[hogar$nombre=="Florencia"] <- "Flor"
+```
+
+df5. Agregar una variable con el número de caracteres de cada nombre. Obtener el promedio.
+
+***
+
+### Listas (*contenido adicional*)
+
+¿Te preguntarás si hay vida más allá del **data.frame**? Por supuesto, las **listas**. Una lista es una colección de objetos de cualquier tipo (incluidos los data.frame). Por ejemplo si el tercer miembro soy yo, Iván, y formo mi propio hogar, el **listado de hogares** censado tendría dos data.frame:
+
+```{r}
+mi_hogar <- hogar[3,]
+hogar_sin_mi <- hogar[-3,] 
+lista_de_hogares <- list(mi_hogar     = mi_hogar, 
+                         hogar_sin_mi = hogar_sin_mi)
+
+# inspecciono
+str(lista_de_hogares)
+```
+
+Para acceder a un elemento de la lista utilizamos doble corchete:
+
+```{r}
+# el primer hogar del listado es:
+lista_de_hogares[[1]]
+
+# el nombre del miembro 3 del segundo hogar, mi antigua casa, ahora es:
+lista_de_hogares[[2]]$nombre[3]
+# que es equivalente a...
+lista_de_hogares[["hogar_sin_mi"]]$nombre[3]
+
+```
+
+Una buena explicación sobre la estructura de selección la dió el mismísimo Hadley Wickham [acá](https://twitter.com/hadleywickham/status/979388069362130944).
+
+Considerando que no llego a fin de mes, decido incorporarme de nuevo a mi hogar natal. ¿Cómo incorporo una nueva fila a un *data.frame*? Se puede utilizar `rbind` (`r` de rows, que tiene su primo `cbind` para unir columnas).
+
+```{r}
+# junto los hogares
+hogar_reunificado <- rbind(hogar_sin_mi, mi_hogar)
+# lo asigno de vuelta al hogar_natal original
+lista_de_hogares[["mi_hogar"]] <- hogar_reunificado
+# borro del lista el hogar independiente
+lista_de_hogares$hogar_sin_mi <- NULL
+```
+
+Y debo tener el mismo hogar que antes, pero ahora como elemento de un listado:
+
+```{r}
+str(lista_de_hogares)
+```
+
+#### Actividad (opcional)
+
+L1. En otro de los hogares que censaste, listaste a Luis, varón, nacido el 3 de junio del 2000, en su hogar unipersonal. Incorporalo a la lista de hogares.
+
+L2. Luis quiere mudarse al primer hogar creado. Mudalo con R (recordar eliminar el hogar unipersonal de Luis asignando *NULL* a ese elemento de la lista).
+
+***
+
+## Recursos Adicionales  
+*[Hoja de ayuda](https://rstudio.com/wp-content/uploads/2016/05/base-r.pdf)  
+*[Libros en español](https://statsanddatasci.netlify.com/post/libros-en-espa%C3%B1ol/)  

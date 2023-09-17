@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Taller de R aplicado a la demografía</title>
+  <meta name="description" content="Este espacio contiene…" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Taller de R aplicado a la demografía" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este espacio contiene…" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Taller de R aplicado a la demografía" />
+  
+  <meta name="twitter:description" content="Este espacio contiene…" />
+  
+
+<meta name="author" content="Ayelén Martinez, Florencia Bathory e Iván Williams" />
+
+
+<meta name="date" content="2023-09-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="intro.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Taller de R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#información-general"><i class="fa fa-check"></i><b>1.1</b> Información general</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#preparándonos"><i class="fa fa-check"></i><b>1.2</b> PrepaRándonos</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#instalación-de-y-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Instalación de y RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#instalación-de-paquetes"><i class="fa fa-check"></i><b>1.2.2</b> Instalación de paquetes</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#foro"><i class="fa fa-check"></i><b>1.2.3</b> Foro</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#por-último"><i class="fa fa-check"></i><b>1.2.4</b> Por último</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Base. Un censista que sabe R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#el-proyecto-taller"><i class="fa fa-check"></i><b>2.1</b> El proyecto Taller</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#objetos-principales"><i class="fa fa-check"></i><b>2.2</b> Objetos principales</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#variables"><i class="fa fa-check"></i><b>2.2.1</b> Variables</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#vectores"><i class="fa fa-check"></i><b>2.2.2</b> Vectores</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#data.frames"><i class="fa fa-check"></i><b>2.2.3</b> Data.frames</a></li>
+<li class="chapter" data-level="2.2.4" data-path="intro.html"><a href="intro.html#listas-contenido-adicional"><i class="fa fa-check"></i><b>2.2.4</b> Listas (<em>contenido adicional</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#recursos-adicionales"><i class="fa fa-check"></i><b>2.3</b> Recursos Adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dplyr.html"><a href="dplyr.html#seleccionar-select-renombrar-rename"><i class="fa fa-check"></i><b>3.1</b> seleccionar (<strong>select</strong>), renombrar (<strong>rename</strong>)</a></li>
+<li class="chapter" data-level="3.2" data-path="dplyr.html"><a href="dplyr.html#resumir-summarise-por-grupos-group_by"><i class="fa fa-check"></i><b>3.2</b> resumir (<strong>summarise</strong>) por grupos (<strong>group_by</strong>)</a></li>
+<li class="chapter" data-level="3.3" data-path="dplyr.html"><a href="dplyr.html#transformar-mutate-filtrar-filter-ordenar-arrange"><i class="fa fa-check"></i><b>3.3</b> transformar (<strong>mutate</strong>), filtrar (<strong>filter</strong>), ordenar (<strong>arrange</strong>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dplyr.html"><a href="dplyr.html#recursos-adicionales-1"><i class="fa fa-check"></i><b>3.3.1</b> Recursos adicionales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lectura.html"><a href="lectura.html"><i class="fa fa-check"></i><b>4</b> Lectura</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="lectura.html"><a href="lectura.html#actividad-3"><i class="fa fa-check"></i><b>4.0.1</b> Actividad</a></li>
+<li class="chapter" data-level="4.0.2" data-path="lectura.html"><a href="lectura.html#recursos-adicionales-2"><i class="fa fa-check"></i><b>4.0.2</b> Recursos adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html"><i class="fa fa-check"></i><b>5</b> ggplot. Hacia la pirámide de población</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#introducción-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#ggplot"><i class="fa fa-check"></i><b>5.2</b> ggplot</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#actividad-4"><i class="fa fa-check"></i><b>5.2.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#reproduciendo"><i class="fa fa-check"></i><b>5.3</b> Reproduciendo</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#lexisplotr"><i class="fa fa-check"></i><b>5.4</b> LexisPLotR</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#estudio-de-cohorte-un-ejemplo"><i class="fa fa-check"></i><b>5.5</b> Estudio de cohorte: un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#actividad-5"><i class="fa fa-check"></i><b>5.5.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#recursos-adicionales-3"><i class="fa fa-check"></i><b>5.6</b> Recursos Adicionales</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#otras-visualizaciones"><i class="fa fa-check"></i><b>5.7</b> Otras visualizaciones</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#material-adicional-y-no-tanto"><i class="fa fa-check"></i><b>5.8</b> Material adicional (y no tanto)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>6</b> Funciones</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="funciones.html"><a href="funciones.html#demografía"><i class="fa fa-check"></i><b>6.1</b> DemogRafía</a></li>
+<li class="chapter" data-level="6.2" data-path="funciones.html"><a href="funciones.html#funciones-1"><i class="fa fa-check"></i><b>6.2</b> Funciones</a></li>
+<li class="chapter" data-level="6.3" data-path="funciones.html"><a href="funciones.html#crecimiento"><i class="fa fa-check"></i><b>6.3</b> Crecimiento</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="funciones.html"><a href="funciones.html#actividad-6"><i class="fa fa-check"></i><b>6.3.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="funciones.html"><a href="funciones.html#estandarizando"><i class="fa fa-check"></i><b>6.4</b> Estandarizando</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="funciones.html"><a href="funciones.html#actividades"><i class="fa fa-check"></i><b>6.4.1</b> Actividades</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="funciones.html"><a href="funciones.html#funciones-demográficas-en-paquetes-demográficos"><i class="fa fa-check"></i><b>6.5</b> Funciones demográficas en paquetes demográficos</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="funciones.html"><a href="funciones.html#tablas-de-mortalidad"><i class="fa fa-check"></i><b>6.5.1</b> Tablas de mortalidad</a></li>
+<li class="chapter" data-level="6.5.2" data-path="funciones.html"><a href="funciones.html#evaluación-de-declaración-de-edad"><i class="fa fa-check"></i><b>6.5.2</b> Evaluación de declaración de edad</a></li>
+<li class="chapter" data-level="6.5.3" data-path="funciones.html"><a href="funciones.html#graduación-de-población-por-edad-simple"><i class="fa fa-check"></i><b>6.5.3</b> Graduación de población por edad simple</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="reportes.html"><a href="reportes.html"><i class="fa fa-check"></i><b>7</b> Reportes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="reportes.html"><a href="reportes.html#comunicación-y-reproducibilidad"><i class="fa fa-check"></i><b>7.1</b> Comunicación y Reproducibilidad</a></li>
+<li class="chapter" data-level="7.2" data-path="reportes.html"><a href="reportes.html#actividad-guiada"><i class="fa fa-check"></i><b>7.2</b> Actividad guiada</a></li>
+<li class="chapter" data-level="7.3" data-path="reportes.html"><a href="reportes.html#referencias"><i class="fa fa-check"></i><b>7.3</b> Referencias</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tp.html"><a href="tp.html"><i class="fa fa-check"></i><b>8</b> TP</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tp.html"><a href="tp.html#hemos-llegado"><i class="fa fa-check"></i><b>8.1</b> Hemos llegado:</a></li>
+<li class="chapter" data-level="8.2" data-path="tp.html"><a href="tp.html#consigna"><i class="fa fa-check"></i><b>8.2</b> Consigna</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Taller de R aplicado a la demografía</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Taller de R aplicado a la demografía</h1>
+<p class="author"><em>Ayelén Martinez, Florencia Bathory e Iván Williams</em></p>
+<p class="date"><em>2023-09-17</em></p>
+</div>
+<div id="introducción" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Unidad 1</span> Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="información-general" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Información general<a href="index.html#información-general" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Este sitio web contiene todos los materiales para el taller ofrecido en la Universidad Nacional de Luján, bajo el programa de maestría y especialización en Dmeografía Social, durante noviembre y diciembre de 2023.</p>
+<p>Algunas cosas útiles:</p>
+<ul>
+<li>El programa actualizado se puede encontrar aquí: <a href="https://github.com/IvanWilli/TallerDemoR/blob/master/programa/Programa.pdf" class="uri">https://github.com/IvanWilli/TallerDemoR/blob/master/programa/Programa.pdf</a>.</li>
+<li>Encuentra el código fuente de este sitio web en GitHub: <a href="https://github.com/IvanWilli/TallerDemoR/blob/master/docs/index.Rmd" class="uri">https://github.com/IvanWilli/TallerDemoR/blob/master/docs/index.Rmd</a>.</li>
+<li>Los datos para los ejercicios se pueden encontrar en: <a href="https://github.com/IvanWilli/TallerDemoR/tree/master/docs/data" class="uri">https://github.com/IvanWilli/TallerDemoR/tree/master/docs/data</a>.</li>
+<li>Los encuentros virtuales los haremos vía zoom en este <a href="https://us02web.zoom.us/j/87912678557">link</a>.</li>
+</ul>
+<p>Ten en cuenta que esta página puede <em>cambiar</em> durante el curso, así que no te preocupes si notas algunos cambios. Podemos adaptar el contenido en función de la interacción que vayamos teniendo o corregir/agregare código a lo largo del camino.</p>
+<p>Esperamos que disfrutes el taller y te sea útil.</p>
+<p>Ayelén, Florencia e Iván</p>
+<!-- --------------------------------------------------------------------- -->
+</div>
+<div id="preparándonos" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> PrepaRándonos<a href="index.html#preparándonos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Estimad@,</p>
+<p>Pronto comenzaremos el <strong>Taller de R aplicado a la Demografía</strong>. El objetivo es que puedas dar tus primeros pasos en la herramienta y puedas aplicar allí las principales técnicas de la demografía.</p>
+<p>Esta edición del taller (tercera en su historia) la realizaremos un poco presencial (primer y último encuentro al menos) y un poco virtual. Para nuestro primer día sería bueno llevar lista tu compu en lo que atañe a la instalación del programa, de los paquetes y otras cuestiones mínimas, que si bien vamos a poder ayudarte in situ, nos ahorraría tiempo para comenzar con los materiales.</p>
+<p>Te proponemos tomarte unos minutos para que podamos arrancar sin problemas la primera clase. No te frustres si algo no funciona, podés contactárnos para ir solucionándolo.</p>
+<div id="instalación-de-y-rstudio" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Instalación de y RStudio<a href="index.html#instalación-de-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si estuviéramos en un auto, <em>R</em> es el motor, el sistema de dirección y frenos, y <strong>RStudio</strong> es nuestra interfaz: volante, pedales y los botoncitos que tocamos en los paneles (por ejemplo para poner ASPEN en la radio y disfrutar del viaje). Necesitamos instalar ambos y en su última versión disponible.</p>
+<p>Para esto debés ingresar a la página de descarga de <a href="http://mirror.fcaglp.unlp.edu.ar/CRAN/">R</a>, e ir al instalador según el sistema operativo que utilices, la versión escritorio (<em>desktop</em>). Ejecuta el <em>.exe</em> y sigue los pasos. Como chequeo, la última versión es la <strong>4.3.1</strong>. Luego debes ir a la web de <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a> y repetir el proceso previo. Un video muy ilustrativo del proceso de instalación es <a href="https://www.youtube.com/watch?v=Nmu4WPdJBRo">este</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>Para aquellos que ya tienen <em>R</em> instalado pero de una versión previa, pueden volver a instalarlo siguiendo los pasos previos, que RStudio tomará de inmediato la más reciente cuando inicie una nueva sesión. O también pueden utilizar el paquete <code>installr</code> para los que ya vienen más habitué (sí, <a href="https://www.asale.org/damer/habitu%C3%A9">existe</a>).</p>
+</div>
+<div id="instalación-de-paquetes" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Instalación de paquetes<a href="index.html#instalación-de-paquetes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los paquetes (<strong>packages</strong> en inglés) son repositorios de código que contienen funciones relacionadas. Cada paquete tiene un tema al que se dedica, y dentro de éste, un objetivo o múltiples, siempre interrelacionados. A lo largo del taller utilizaremos muchos, por eso sería deseable que tengas instalados previamente algunos, ya que el éxitoen parte depende de que la conexión a internet funcione bien. Abrí <strong>RStudio</strong> y en la consola pega el siguiente código, luego ejecutalo. Te arrojará un montón de mensajes sobre el proceso de instalación pero con suerte el último deberá darte un ok.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;foreign&quot;</span>, <span class="st">&quot;eph&quot;</span>, <span class="st">&quot;plotly&quot;</span>, <span class="st">&quot;gapminder&quot;</span>, <span class="st">&quot;gridExtra&quot;</span>, <span class="st">&quot;wpp2019&quot;</span>, <span class="st">&quot;HMDHFDplus&quot;</span>,<span class="st">&quot;rgdal&quot;</span>,<span class="st">&quot;spdplyr&quot;</span>,<span class="st">&quot;leaflet&quot;</span>))</span></code></pre></div>
+</div>
+<div id="foro" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Foro<a href="index.html#foro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para comunicarnos durante la semana y que haya un intercambio fluido utilizaremos <a href="https://slack.com/intl/es-ar/">Slack</a>, que permite compartir pedazos de código. Para esto te pido ingresar al siguiente <a href="https://join.slack.com/t/tallerderapli-h6t4691/shared_invite/zt-v3q1pc5z-pbzWUejMYXqqYd_0D86k~Q">link</a> de invitación. Podés descargar la aplicación de escritorio o simplemente utilizarlo desde la web. El uso de este espacio es <strong>opcional</strong>: si bien será útil para discutir contenido en la semana, si hay comunicaciones importantes de tipo administrativo se harán por mail.</p>
+</div>
+<div id="por-último" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Por último<a href="index.html#por-último" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si estás sin tiempo, lo <strong>prioritario</strong> es la instalación previa de <em>R</em> y <em>RStudio</em>. Cualquier cosa nos podés contactar por mail:</p>
+<ul>
+<li><p>Iván Williams: <a href="mailto:act.ivanwilliams@gmail.com" class="email">act.ivanwilliams@gmail.com</a></p></li>
+<li><p>Ayelén Martinez: <a href="mailto:ayemartinezn@gmail.com" class="email">ayemartinezn@gmail.com</a></p></li>
+<li><p>Florencia Bathory: <a href="mailto:florencia.bathory@gmail.com" class="email">florencia.bathory@gmail.com</a></p></li>
+</ul>
+<p>Recordá que en los encuentros virtuales lo haremos vía Zoom en en este <a href="https://us02web.zoom.us/j/87912678557">link</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>A lo largo de este taller nos valdremos de contenido realizado por muuuchas personas. Una práctica que nos gustaría contagiarte: si nos aporta, démosle <em>like</em> y/o compartamos y/o dejémos algún feedback si es posible<a href="index.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["talleR.pdf", "talleR.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
