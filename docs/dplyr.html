@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Unidad 3 dplyr | Taller de R aplicado a la demografía</title>
+  <meta name="description" content="Este espacio contiene…" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Unidad 3 dplyr | Taller de R aplicado a la demografía" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este espacio contiene…" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unidad 3 dplyr | Taller de R aplicado a la demografía" />
+  
+  <meta name="twitter:description" content="Este espacio contiene…" />
+  
+
+<meta name="author" content="Ayelén Martinez, Florencia Bathory e Iván Williams" />
+
+
+<meta name="date" content="2023-09-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="lectura.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Taller de R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#información-general"><i class="fa fa-check"></i><b>1.1</b> Información general</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#preparándonos"><i class="fa fa-check"></i><b>1.2</b> PrepaRándonos</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#instalación-de-y-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Instalación de y RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#instalación-de-paquetes"><i class="fa fa-check"></i><b>1.2.2</b> Instalación de paquetes</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#foro"><i class="fa fa-check"></i><b>1.2.3</b> Foro</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#por-último"><i class="fa fa-check"></i><b>1.2.4</b> Por último</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Base. Un censista que sabe R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#el-proyecto-taller"><i class="fa fa-check"></i><b>2.1</b> El proyecto Taller</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#objetos-principales"><i class="fa fa-check"></i><b>2.2</b> Objetos principales</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#variables"><i class="fa fa-check"></i><b>2.2.1</b> Variables</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#vectores"><i class="fa fa-check"></i><b>2.2.2</b> Vectores</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#data.frames"><i class="fa fa-check"></i><b>2.2.3</b> Data.frames</a></li>
+<li class="chapter" data-level="2.2.4" data-path="intro.html"><a href="intro.html#listas-contenido-adicional"><i class="fa fa-check"></i><b>2.2.4</b> Listas (<em>contenido adicional</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#recursos-adicionales"><i class="fa fa-check"></i><b>2.3</b> Recursos Adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dplyr.html"><a href="dplyr.html#seleccionar-select-renombrar-rename"><i class="fa fa-check"></i><b>3.1</b> seleccionar (<strong>select</strong>), renombrar (<strong>rename</strong>)</a></li>
+<li class="chapter" data-level="3.2" data-path="dplyr.html"><a href="dplyr.html#resumir-summarise-por-grupos-group_by"><i class="fa fa-check"></i><b>3.2</b> resumir (<strong>summarise</strong>) por grupos (<strong>group_by</strong>)</a></li>
+<li class="chapter" data-level="3.3" data-path="dplyr.html"><a href="dplyr.html#transformar-mutate-filtrar-filter-ordenar-arrange"><i class="fa fa-check"></i><b>3.3</b> transformar (<strong>mutate</strong>), filtrar (<strong>filter</strong>), ordenar (<strong>arrange</strong>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dplyr.html"><a href="dplyr.html#recursos-adicionales-1"><i class="fa fa-check"></i><b>3.3.1</b> Recursos adicionales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lectura.html"><a href="lectura.html"><i class="fa fa-check"></i><b>4</b> Lectura</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="lectura.html"><a href="lectura.html#actividad-3"><i class="fa fa-check"></i><b>4.0.1</b> Actividad</a></li>
+<li class="chapter" data-level="4.0.2" data-path="lectura.html"><a href="lectura.html#recursos-adicionales-2"><i class="fa fa-check"></i><b>4.0.2</b> Recursos adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html"><i class="fa fa-check"></i><b>5</b> ggplot. Hacia la pirámide de población</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#introducción-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#ggplot"><i class="fa fa-check"></i><b>5.2</b> ggplot</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#actividad-4"><i class="fa fa-check"></i><b>5.2.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#reproduciendo"><i class="fa fa-check"></i><b>5.3</b> Reproduciendo</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#lexisplotr"><i class="fa fa-check"></i><b>5.4</b> LexisPLotR</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#estudio-de-cohorte-un-ejemplo"><i class="fa fa-check"></i><b>5.5</b> Estudio de cohorte: un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#actividad-5"><i class="fa fa-check"></i><b>5.5.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#recursos-adicionales-3"><i class="fa fa-check"></i><b>5.6</b> Recursos Adicionales</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#otras-visualizaciones"><i class="fa fa-check"></i><b>5.7</b> Otras visualizaciones</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#material-adicional-y-no-tanto"><i class="fa fa-check"></i><b>5.8</b> Material adicional (y no tanto)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>6</b> Funciones</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="funciones.html"><a href="funciones.html#demografía"><i class="fa fa-check"></i><b>6.1</b> DemogRafía</a></li>
+<li class="chapter" data-level="6.2" data-path="funciones.html"><a href="funciones.html#funciones-1"><i class="fa fa-check"></i><b>6.2</b> Funciones</a></li>
+<li class="chapter" data-level="6.3" data-path="funciones.html"><a href="funciones.html#crecimiento"><i class="fa fa-check"></i><b>6.3</b> Crecimiento</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="funciones.html"><a href="funciones.html#actividad-6"><i class="fa fa-check"></i><b>6.3.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="funciones.html"><a href="funciones.html#estandarizando"><i class="fa fa-check"></i><b>6.4</b> Estandarizando</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="funciones.html"><a href="funciones.html#actividades"><i class="fa fa-check"></i><b>6.4.1</b> Actividades</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="funciones.html"><a href="funciones.html#funciones-demográficas-en-paquetes-demográficos"><i class="fa fa-check"></i><b>6.5</b> Funciones demográficas en paquetes demográficos</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="funciones.html"><a href="funciones.html#tablas-de-mortalidad"><i class="fa fa-check"></i><b>6.5.1</b> Tablas de mortalidad</a></li>
+<li class="chapter" data-level="6.5.2" data-path="funciones.html"><a href="funciones.html#evaluación-de-declaración-de-edad"><i class="fa fa-check"></i><b>6.5.2</b> Evaluación de declaración de edad</a></li>
+<li class="chapter" data-level="6.5.3" data-path="funciones.html"><a href="funciones.html#graduación-de-población-por-edad-simple"><i class="fa fa-check"></i><b>6.5.3</b> Graduación de población por edad simple</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="reportes.html"><a href="reportes.html"><i class="fa fa-check"></i><b>7</b> Reportes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="reportes.html"><a href="reportes.html#comunicación-y-reproducibilidad"><i class="fa fa-check"></i><b>7.1</b> Comunicación y Reproducibilidad</a></li>
+<li class="chapter" data-level="7.2" data-path="reportes.html"><a href="reportes.html#actividad-guiada"><i class="fa fa-check"></i><b>7.2</b> Actividad guiada</a></li>
+<li class="chapter" data-level="7.3" data-path="reportes.html"><a href="reportes.html#referencias"><i class="fa fa-check"></i><b>7.3</b> Referencias</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tp.html"><a href="tp.html"><i class="fa fa-check"></i><b>8</b> TP</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tp.html"><a href="tp.html#hemos-llegado"><i class="fa fa-check"></i><b>8.1</b> Hemos llegado:</a></li>
+<li class="chapter" data-level="8.2" data-path="tp.html"><a href="tp.html#consigna"><i class="fa fa-check"></i><b>8.2</b> Consigna</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Taller de R aplicado a la demografía</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dplyr" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Unidad 3</span> dplyr<a href="dplyr.html#dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En la unidad previa caracterizamos un hogar censal. En esta unidad trabajaremos la base de datos censal, con todas sus viviendas, hogares y personas. Para esto recorreremos algunos paquetes de <a href="https://www.tidyverse.org/">tidyverse</a>, cuyo fin es generar un entorno integrado de herramientas de análisis de datos.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="dplyr.html#cb1-1" tabindex="-1"></a><span class="co"># install.packages(&quot;tidyverse&quot;)</span></span>
+<span id="cb1-2"><a href="dplyr.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>El paquete <a href="https://dplyr.tidyverse.org/"><em>dplyr</em></a> contiene las operaciones más comunes sobre una tabla de datos.</p>
+<div class="float">
+<img src="figs/remera.jpg" width="250" alt="https://www.amazon.com/Dplyr-Hex-T-shirt-Rstudio-Tidyverse/dp/B07HKV9W7M" />
+<div class="figcaption"><a href="https://www.amazon.com/Dplyr-Hex-T-shirt-Rstudio-Tidyverse/dp/B07HKV9W7M" class="uri">https://www.amazon.com/Dplyr-Hex-T-shirt-Rstudio-Tidyverse/dp/B07HKV9W7M</a></div>
+</div>
+<p>Una de sus ventajas es el uso del pipe <strong>%&gt;%</strong>, que concatena operaciones sobre el mismo objeto, <em>verbalizando</em> el proceso, generando fluidez en nuestro razonamiento y mejor entendimiento para un tercero. En vez de <code>f(x)</code> se tiene <code>x %&gt;% f()</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="dplyr.html#cb2-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div>
+<p>Previo a comenzar debes haber leído <em>“C2010_CABA.csv”</em> (con separador “,”), haberla inspeccionado brevemente y haberla guardado en un objeto llamado <em>caba2010_br</em> (ver documento “Unidad_2_lectura.html”).</p>
+<div id="seleccionar-select-renombrar-rename" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> seleccionar (<strong>select</strong>), renombrar (<strong>rename</strong>)<a href="dplyr.html#seleccionar-select-renombrar-rename" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Empecemos a trabajar la base de datos censal. Para este ejercicio nos interesa contar con la variable geográfica sobre el departamento de CABA al que pertence la vivienda, las variables de identificación de las unidades de análisis, y algunos atributos en función del <a href="https://www.indec.gob.ar/ftp/cuadros/poblacion/cuestionario_ampliado_2010.pdf">cuestionario</a>. Quedémonos con estas variables mediante la función <strong>select</strong>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="dplyr.html#cb3-1" tabindex="-1"></a>caba2010 <span class="ot">&lt;-</span> <span class="fu">select</span>(caba2010_br, </span>
+<span id="cb3-2"><a href="dplyr.html#cb3-2" tabindex="-1"></a>                   IDDPTO, VIVIENDA_ID, HOGAR_ID, PERSONA_ID,</span>
+<span id="cb3-3"><a href="dplyr.html#cb3-3" tabindex="-1"></a>                   V01, P01, P02, P03, P05)</span></code></pre></div>
+<p>Podemos realizar la misma operación de la mano de <strong>%&gt;%</strong>, no necesitando especificar el objeto como argumento:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="dplyr.html#cb4-1" tabindex="-1"></a>caba2010 <span class="ot">&lt;-</span> caba2010_br <span class="sc">%&gt;%</span> <span class="fu">select</span>(IDDPTO, VIVIENDA_ID, V01, HOGAR_ID, </span>
+<span id="cb4-2"><a href="dplyr.html#cb4-2" tabindex="-1"></a>                                   PERSONA_ID, P01, P02, P03, P05)</span>
+<span id="cb4-3"><a href="dplyr.html#cb4-3" tabindex="-1"></a><span class="co"># léase: toma el objeto *** y selecciona las columnas ***</span></span></code></pre></div>
+<p>Si quisiéramos quedarnos solo con las variables de persona podríamos usar <code>starts_with("P")</code> dentro de <code>select</code> (o también <code>P01:P05</code>, ¡probalo!), y muchas más <a href="https://dplyr.tidyverse.org/reference/select.html">funcionalidades útiles</a> para tablas con muchas columnas.
+Nótese que estamos <em>pisando</em> el mismo objeto. Luego podemos renombrar algunas variables para hacer su uso más fluido, mediante <strong>rename</strong>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dplyr.html#cb5-1" tabindex="-1"></a><span class="co"># NuevoNombre = ViejoNombre</span></span>
+<span id="cb5-2"><a href="dplyr.html#cb5-2" tabindex="-1"></a>caba2010 <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Tipo_Viv =</span> V01, <span class="at">Rel_Par =</span> P01, <span class="at">Sexo =</span> P02, <span class="at">Edad =</span> P03, <span class="at">nativo =</span> P05)</span>
+<span id="cb5-3"><a href="dplyr.html#cb5-3" tabindex="-1"></a><span class="co"># Tambien por posición</span></span></code></pre></div>
+<p>Habrás notado una de sus ventajas: la referencia al nombre de las variables no requiere <em>$</em> ni <em>“[,]”</em> como en R Base. Podemos condensar lo anterior y hacerlo todo en un paso utilizando <strong>%&gt;%</strong>. Implica algo super útil: <strong>un nuevo %&gt;% supone el objeto ya modificado</strong>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="dplyr.html#cb6-1" tabindex="-1"></a>caba2010 <span class="ot">&lt;-</span> caba2010_br <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="dplyr.html#cb6-2" tabindex="-1"></a>                <span class="fu">rename</span>(<span class="at">Tipo_Viv =</span> V01, <span class="at">Rel_Par =</span> P01, <span class="at">Sexo =</span> P02, <span class="at">Edad =</span> P03, <span class="at">nativo =</span> P05) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="dplyr.html#cb6-3" tabindex="-1"></a>                <span class="fu">select</span>(IDDPTO, VIVIENDA_ID, HOGAR_ID, PERSONA_ID, </span>
+<span id="cb6-4"><a href="dplyr.html#cb6-4" tabindex="-1"></a>                       Tipo_Viv, Rel_Par, Sexo, Edad, nativo)</span></code></pre></div>
+<p>¿Lo que estamos generando es un <em>data.frame</em>? ¿Qué es un <em>tibble</em>?</p>
+<div id="actividad-1" class="section level4 hasAnchor" number="3.1.0.1">
+<h4><span class="header-section-number">3.1.0.1</span> Actividad<a href="dplyr.html#actividad-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>a1. Crear un data.frame llamado “caba2010_a1” que contenga solo las variables identificatorias de “caba2010_br” (que tienen un “ID”).</p>
+<p>a2. Renombrar las variables de manera que siempre comiencen con “ID_”.</p>
+<p>a3. Contar la cantidad de columnas mediante <code>ncol()</code> y corrobar que la cantidad de variables sea menor a las de “caba2010_br”.</p>
+<hr />
+</div>
+</div>
+<div id="resumir-summarise-por-grupos-group_by" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> resumir (<strong>summarise</strong>) por grupos (<strong>group_by</strong>)<a href="dplyr.html#resumir-summarise-por-grupos-group_by" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como analistas nos interesa calcular medidas resumen para poder obtener conclusiones, plantear hipótesis o simplemente conocer más el fenómeno relevado/registrado en los datos. Si quisiéramos saber cuántas personas existen en nuestra base de CABA podemos realizar un <strong>summarise</strong> (resumen) de los datos mediante la función <code>n()</code> (contar filas):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="dplyr.html#cb7-1" tabindex="-1"></a>n_personas <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">casos =</span> <span class="fu">n</span>()) </span></code></pre></div>
+<p>Para contar cuántas viviendas fueron relevadas en la base debemos considerar casos con valor <em>distinto</em> en la variable de código de vivienda <code>VIVIENDA_ID</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="dplyr.html#cb8-1" tabindex="-1"></a>n_viviendas <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">casos =</span> <span class="fu">n_distinct</span>(VIVIENDA_ID))</span></code></pre></div>
+<p>¿Cuál es el promedio de personas por vivienda?</p>
+<!-- box-->
+<p class="comment">
+<strong>Cóctel propio</strong><br>
+¿De qué forma podríamos hacer lo anterior en R <em>base</em> (<code>nrow</code>, <code>ncol</code>, <code>unique</code>)? La experiencia de usuario de cada uno define el mix de herramientas que le es más cómodo/útil según la complejidad de cada tarea.
+</p>
+<!-- box-->
+<p>Con <strong>summarise</strong> podemos aplicar cualquier función resumen sobre los datos. Por ejemplo: ¿Cual es la edad promedio de las personas? ¿Cual es la edad máxima reportada?</p>
+<p>¿Podemos incluir todo lo anterior en una sola sentencia? ¡Esa es la magia de <strong>%&gt;%</strong>!</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="dplyr.html#cb9-1" tabindex="-1"></a>caba2010 <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="dplyr.html#cb9-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_personas =</span> <span class="fu">n</span>(), </span>
+<span id="cb9-3"><a href="dplyr.html#cb9-3" tabindex="-1"></a>            <span class="at">n_viviendas =</span> <span class="fu">n_distinct</span>(VIVIENDA_ID), </span>
+<span id="cb9-4"><a href="dplyr.html#cb9-4" tabindex="-1"></a>            <span class="at">n_hogares =</span> <span class="fu">n_distinct</span>(HOGAR_ID), </span>
+<span id="cb9-5"><a href="dplyr.html#cb9-5" tabindex="-1"></a>            <span class="at">pers_x_viv =</span> n_personas<span class="sc">/</span>n_viviendas, </span>
+<span id="cb9-6"><a href="dplyr.html#cb9-6" tabindex="-1"></a>            <span class="at">pers_x_hog =</span> n_personas<span class="sc">/</span>n_hogares, </span>
+<span id="cb9-7"><a href="dplyr.html#cb9-7" tabindex="-1"></a>            <span class="at">hog_x_viv =</span> n_hogares<span class="sc">/</span>n_viviendas,</span>
+<span id="cb9-8"><a href="dplyr.html#cb9-8" tabindex="-1"></a>            <span class="at">edad_media =</span> <span class="fu">mean</span>(Edad),</span>
+<span id="cb9-9"><a href="dplyr.html#cb9-9" tabindex="-1"></a>            <span class="at">edad_max =</span> <span class="fu">max</span>(Edad)</span>
+<span id="cb9-10"><a href="dplyr.html#cb9-10" tabindex="-1"></a>            )</span></code></pre></div>
+<p>Las operaciones principales que podemos realizar mediante <strong>summarise</strong> las podés ver <a href="https://dplyr.tidyverse.org/reference/summarise.html">acá</a>.Pero su utilidad se potencia cuando queremos resumir una variable <em>segmentando por grupos</em>. Esta agrupación antecede a <strong>summarise</strong>, y requiere ser indicada con <strong>group_by</strong>, incluyendo como argumento las variables de agrupación. Por ejemplo, para conocer la cantidad de personas y viviendas relevadas por Departamento (Comuna):</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="dplyr.html#cb10-1" tabindex="-1"></a>pers_viv_dpto <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="dplyr.html#cb10-2" tabindex="-1"></a>                    <span class="fu">group_by</span>(IDDPTO) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="dplyr.html#cb10-3" tabindex="-1"></a>                    <span class="fu">summarise</span>(<span class="at">n_personas =</span> <span class="fu">n</span>(), </span>
+<span id="cb10-4"><a href="dplyr.html#cb10-4" tabindex="-1"></a>                              <span class="at">n_viviendas =</span> <span class="fu">n_distinct</span>(VIVIENDA_ID))</span></code></pre></div>
+<p>Seguro estas cantidades difieren según código de <em>tipo de vivienda</em>. Pero primero podemos agregar la variable que describe los códigos. Carguemos como objeto el diccionario e incorporémoslo:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="dplyr.html#cb11-1" tabindex="-1"></a>cod_tipo_viv <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Tipo_Viv =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
+<span id="cb11-2"><a href="dplyr.html#cb11-2" tabindex="-1"></a>                           <span class="at">Tipo_Viv_descripc =</span> <span class="fu">c</span>(<span class="st">&quot;Casa&quot;</span>,</span>
+<span id="cb11-3"><a href="dplyr.html#cb11-3" tabindex="-1"></a>                                        <span class="st">&quot;Rancho&quot;</span>,</span>
+<span id="cb11-4"><a href="dplyr.html#cb11-4" tabindex="-1"></a>                                        <span class="st">&quot;Casilla&quot;</span>,</span>
+<span id="cb11-5"><a href="dplyr.html#cb11-5" tabindex="-1"></a>                                        <span class="st">&quot;Departamento&quot;</span>,</span>
+<span id="cb11-6"><a href="dplyr.html#cb11-6" tabindex="-1"></a>                                        <span class="st">&quot;Pieza en inquilinato&quot;</span>,</span>
+<span id="cb11-7"><a href="dplyr.html#cb11-7" tabindex="-1"></a>                                        <span class="st">&quot;Pieza en hotel familiar o pensión&quot;</span>,</span>
+<span id="cb11-8"><a href="dplyr.html#cb11-8" tabindex="-1"></a>                                        <span class="st">&quot;Local no construido para habitación&quot;</span>,</span>
+<span id="cb11-9"><a href="dplyr.html#cb11-9" tabindex="-1"></a>                                        <span class="st">&quot;Vivienda móvil&quot;</span>,</span>
+<span id="cb11-10"><a href="dplyr.html#cb11-10" tabindex="-1"></a>                                        <span class="st">&quot;Persona/s viviendo en la calle&quot;</span>,</span>
+<span id="cb11-11"><a href="dplyr.html#cb11-11" tabindex="-1"></a>                                        <span class="st">&quot;Sin Dato&quot;</span>))</span>
+<span id="cb11-12"><a href="dplyr.html#cb11-12" tabindex="-1"></a>caba2010 <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(cod_tipo_viv, <span class="at">by =</span> <span class="st">&quot;Tipo_Viv&quot;</span>)</span></code></pre></div>
+<!-- box-->
+<p class="comment">
+<strong>Joins!!!</strong><br>
+<strong>dplyr</strong> tiene las funciones típicas de <em>join</em> para el pareo de data.frames dependiendo la relación que desiemos. Ver más <a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">aquí</a>.<br>
+<img src="figs/dplyr_joins.png" width="250" alt="Tipos de join" />
+</p>
+<!-- box-->
+<p>Ahora sí, obtegamos el promedio de personas por vivienda según tipo:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="dplyr.html#cb12-1" tabindex="-1"></a>pers_tipoviv_dpto <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="dplyr.html#cb12-2" tabindex="-1"></a>                    <span class="fu">group_by</span>(IDDPTO, Tipo_Viv_descripc) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="dplyr.html#cb12-3" tabindex="-1"></a>                    <span class="fu">summarise</span>(<span class="at">n_personas =</span> <span class="fu">n</span>(), </span>
+<span id="cb12-4"><a href="dplyr.html#cb12-4" tabindex="-1"></a>                              <span class="at">n_viviendas =</span> <span class="fu">n_distinct</span>(VIVIENDA_ID),</span>
+<span id="cb12-5"><a href="dplyr.html#cb12-5" tabindex="-1"></a>                              <span class="at">pers_viv =</span> n_personas<span class="sc">/</span>n_viviendas)</span></code></pre></div>
+<p>Es un data.frame grande. A veces queremos <em>mirar</em> la tabla: <code>View(tabla)</code></p>
+</div>
+<div id="transformar-mutate-filtrar-filter-ordenar-arrange" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> transformar (<strong>mutate</strong>), filtrar (<strong>filter</strong>), ordenar (<strong>arrange</strong>)<a href="dplyr.html#transformar-mutate-filtrar-filter-ordenar-arrange" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mediante <strong>mutate</strong> podemos crear variables nuevas que pueden o no relacionarse a las existentes. Tomando la tabla <em>pers_viv_dpto</em> (sin distinguir tipo de vivienda), podemos calcular el ratio de personas por vivienda segun departamento <code>ratioPV</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="dplyr.html#cb13-1" tabindex="-1"></a><span class="co"># a que base nos referimos</span></span>
+<span id="cb13-2"><a href="dplyr.html#cb13-2" tabindex="-1"></a><span class="fu">head</span>(pers_viv_dpto)</span>
+<span id="cb13-3"><a href="dplyr.html#cb13-3" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="dplyr.html#cb13-4" tabindex="-1"></a><span class="co"># creo una variable (sin resumir como en summarise)</span></span>
+<span id="cb13-5"><a href="dplyr.html#cb13-5" tabindex="-1"></a>pers_viv_dpto <span class="ot">&lt;-</span> pers_viv_dpto <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ratioPV =</span> n_personas <span class="sc">/</span> n_viviendas)</span>
+<span id="cb13-6"><a href="dplyr.html#cb13-6" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="dplyr.html#cb13-7" tabindex="-1"></a><span class="co"># Nos avisan desde INDEC que hay una hipótesis a corroborar de subenumeración de personas del 2% y de viviendas del 1%. Calculemos un indicador alternativo bajo esa hipótesis:</span></span>
+<span id="cb13-8"><a href="dplyr.html#cb13-8" tabindex="-1"></a>pers_viv_dpto <span class="ot">&lt;-</span> pers_viv_dpto <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ratioPV_altern =</span> n_personas <span class="sc">*</span> <span class="fl">1.02</span> <span class="sc">/</span> n_viviendas <span class="sc">*</span> <span class="fl">1.01</span>) </span></code></pre></div>
+<p>Para conocer qué departamentos poseen mayor promedio, podemos ordernar la tabla mediante <strong>arrange</strong>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="dplyr.html#cb14-1" tabindex="-1"></a>pers_viv_dpto <span class="ot">&lt;-</span> pers_viv_dpto <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(ratioPV)</span>
+<span id="cb14-2"><a href="dplyr.html#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="dplyr.html#cb14-3" tabindex="-1"></a><span class="co"># mejor al revés: descendente</span></span>
+<span id="cb14-4"><a href="dplyr.html#cb14-4" tabindex="-1"></a>pers_viv_dpto <span class="ot">&lt;-</span> pers_viv_dpto <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(ratioPV))</span></code></pre></div>
+<p>Si solo querés mostrar los tres departamentos con mayor valor, podés utilizar <strong>slice</strong> para seleccionar filas (una vez ordenado):</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="dplyr.html#cb15-1" tabindex="-1"></a>pers_viv_dpto <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<p>También puedes filtrar la base a un subconjunto del universo que cumpla determinadas condiciones utilizando <strong>filter</strong>. Por ejemplo, si quisiéramos conocer el indicador solo para las comunas al sur:</p>
+<div class="float">
+<img src="figs/ComunasCABA.png" width="250" alt="Comunas de CABA" />
+<div class="figcaption">Comunas de CABA</div>
+</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="dplyr.html#cb16-1" tabindex="-1"></a>comunas_al_sur <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)</span>
+<span id="cb16-2"><a href="dplyr.html#cb16-2" tabindex="-1"></a>pers_viv_dpto <span class="sc">%&gt;%</span> <span class="fu">filter</span>(IDDPTO <span class="sc">%in%</span> comunas_al_sur) <span class="co"># Operador lógico! (¿te acordás?)</span></span></code></pre></div>
+<p>Vayamos hacia algo un poquito más complejo. Si quiero obtener la misma tabla anterior pero solo para viviendas que sean <em>casas, casillas, ranchos o departamentos</em> (códigos 1 a 4, viviendas individuales más frecuentes), y que no sean hogares <em>no unipersonales</em>.</p>
+<p>Comencemos por crear el data.frame con ese listado:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="dplyr.html#cb17-1" tabindex="-1"></a><span class="co"># busco un listado de hogares que cumplan ambas condiciones:</span></span>
+<span id="cb17-2"><a href="dplyr.html#cb17-2" tabindex="-1"></a>hogares_NoUnipersonales <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="dplyr.html#cb17-3" tabindex="-1"></a>                          <span class="fu">filter</span>(Tipo_Viv<span class="sc">&lt;</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="dplyr.html#cb17-4" tabindex="-1"></a>                          <span class="fu">group_by</span>(HOGAR_ID) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-5"><a href="dplyr.html#cb17-5" tabindex="-1"></a>                          <span class="fu">summarise</span>(<span class="at">n_personas =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-6"><a href="dplyr.html#cb17-6" tabindex="-1"></a>                          <span class="fu">filter</span>(n_personas<span class="sc">&gt;</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-7"><a href="dplyr.html#cb17-7" tabindex="-1"></a>                          <span class="fu">select</span>(HOGAR_ID)</span>
+<span id="cb17-8"><a href="dplyr.html#cb17-8" tabindex="-1"></a><span class="co"># incluimos las tres unidades de análisis en una sentencia</span></span></code></pre></div>
+<p>Ahora calculemos el indicador <em>filtrando</em> aquellos hogares obtenidos anteriormente. ¿Los resultados son razonables?</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="dplyr.html#cb18-1" tabindex="-1"></a>PersVivNoUnip_Dpto <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="dplyr.html#cb18-2" tabindex="-1"></a>                      <span class="fu">filter</span>(HOGAR_ID <span class="sc">%in%</span> hogares_NoUnipersonales<span class="sc">$</span>HOGAR_ID) <span class="sc">%&gt;%</span>  </span>
+<span id="cb18-3"><a href="dplyr.html#cb18-3" tabindex="-1"></a>                      <span class="fu">group_by</span>(IDDPTO) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="dplyr.html#cb18-4" tabindex="-1"></a>                      <span class="fu">summarise</span>(<span class="at">ratioPV =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="fu">n_distinct</span>(VIVIENDA_ID)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-5"><a href="dplyr.html#cb18-5" tabindex="-1"></a>                      <span class="fu">arrange</span>(<span class="fu">desc</span>(ratioPV)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-6"><a href="dplyr.html#cb18-6" tabindex="-1"></a>                      <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<blockquote>
+<p>Si tuviéramos que relatar lo que estamos haciendo, sería algo del tipo: “toma CABA2010, filtralo, agrupalo y calcula por cada grupo el indicador (creando la variable); finalmente selecciona qué quieres mostrar”. Es una <em>¡composición de funciones!</em>.</p>
+</blockquote>
+<p>Otra operación común es la de calcular distribuciones en una variable, segmentando con determinada agrupación. Podemos ver el porcentaje de mujeres dentro de cada departamento. Considerar que cualquier operación resumen (media, suma, contar) en un data.frame agrupado resumirá por grupos. Aprovechemos eso:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="dplyr.html#cb19-1" tabindex="-1"></a>Porc_mujeres <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="dplyr.html#cb19-2" tabindex="-1"></a>                  <span class="fu">group_by</span>(IDDPTO, Sexo) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="dplyr.html#cb19-3" tabindex="-1"></a>                  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a href="dplyr.html#cb19-4" tabindex="-1"></a>                  <span class="fu">mutate</span>(<span class="at">porcM =</span> N<span class="sc">/</span><span class="fu">sum</span>(N) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span>  <span class="co"># sum() es por grupos tambien!</span></span>
+<span id="cb19-5"><a href="dplyr.html#cb19-5" tabindex="-1"></a>                  <span class="fu">filter</span>(Sexo <span class="sc">==</span> <span class="st">&quot;MUJER&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="dplyr.html#cb19-6" tabindex="-1"></a>                  <span class="fu">select</span>(IDDPTO, porcM)</span></code></pre></div>
+<p>En el caso de que querramos la distribución por grandes grupos de edad, podemos <em>recodificar</em> la edad con la función <code>case_when</code> en una nueva variable.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="dplyr.html#cb20-1" tabindex="-1"></a>distr_edadGG <span class="ot">&lt;-</span> caba2010 <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="dplyr.html#cb20-2" tabindex="-1"></a>                  <span class="fu">mutate</span>(<span class="at">Edad_GG =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-3"><a href="dplyr.html#cb20-3" tabindex="-1"></a>                                      Edad <span class="sc">&lt;</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">&quot;0-14&quot;</span>, </span>
+<span id="cb20-4"><a href="dplyr.html#cb20-4" tabindex="-1"></a>                                      Edad <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> Edad <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">&quot;15-64&quot;</span>, </span>
+<span id="cb20-5"><a href="dplyr.html#cb20-5" tabindex="-1"></a>                                      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;65+&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-6"><a href="dplyr.html#cb20-6" tabindex="-1"></a>                  <span class="fu">group_by</span>(IDDPTO, Edad_GG) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-7"><a href="dplyr.html#cb20-7" tabindex="-1"></a>                  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-8"><a href="dplyr.html#cb20-8" tabindex="-1"></a>                  <span class="fu">mutate</span>(<span class="at">GG =</span> N<span class="sc">/</span><span class="fu">sum</span>(N)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-9"><a href="dplyr.html#cb20-9" tabindex="-1"></a>                  <span class="fu">select</span>(IDDPTO, Edad_GG, GG)</span></code></pre></div>
+<p>Otras opciones de recodificación son <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/ifelse">ifelse</a> la opción base de R y <a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a>.</p>
+<div id="actividad-2" class="section level4 hasAnchor" number="3.3.0.1">
+<h4><span class="header-section-number">3.3.0.1</span> Actividad<a href="dplyr.html#actividad-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>b1. Crea un nuevo objeto con el nombre que desees a partir de <em>CABA2010_br</em> seleccionando y renombrando solo variables relacionadas a atributos de personas (a tu gusto el nuevo nombre).</p>
+<p>b2. Ordénala de la siguiente manera: ascendente ID de departamento y decreciente en la edad.</p>
+<p>b3. El hogar identificado como 705 no debería ser incluido en la base. Removerlo utilizando <em>filter</em>.</p>
+<p>b4. La variable nativo debería ser 0 (nativo) y 1 (no nativo). Sabiendo que en CABA había mas nativos que no nativos en 2010, inferir a que corresponde cada código y recodificar la variable manteniendo el tipo numerico/entero.</p>
+<p>b5. Filtra por aquellas Comunas costeras.</p>
+<p>b6. Mediante la función <em>mean</em> obtén el promedio de edad de estas comunas, mostrando el resultado según las más envejecidas primero.</p>
+<p>b7. Realiza todo lo anterior en una sola sentencia.</p>
+<p>b7. En una sola sentencia obtén la edad mediana por tipo de vivienda. ¿qué ves de interesante?</p>
+<p>b8. Obten el promedio de edad de las personas mayores a 64 años cumplidos, según departamento y sexo. Puedes utilizar algo muuuy útil: filtros dentro del argumento de summarise –&gt; <em>summarise(edad_media_65mas = mean(Edad[Edad&gt;64]))</em>.</p>
+<p>b10. Identifica (toma el ID de) un hogar cualquiera con 5 miembros. Puedes usar <em>slice</em> para tomar una observación por el número de la fila.</p>
+</div>
+<div id="recursos-adicionales-1" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Recursos adicionales<a href="dplyr.html#recursos-adicionales-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><a href="https://es.r4ds.hadley.nz/">r4ds</a>. Una biblia que debés llevar bajo el brazo.</p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf">dplyr</a>: web del paquete.</p></li>
+<li><p><a href="https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Hoja de ayuda</a> (o “cheat sheet”).</p></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lectura.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-dplyr.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["talleR.pdf", "talleR.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

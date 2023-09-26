@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Unidad 8 TP | Taller de R aplicado a la demografía</title>
+  <meta name="description" content="Este espacio contiene…" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Unidad 8 TP | Taller de R aplicado a la demografía" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este espacio contiene…" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unidad 8 TP | Taller de R aplicado a la demografía" />
+  
+  <meta name="twitter:description" content="Este espacio contiene…" />
+  
+
+<meta name="author" content="Ayelén Martinez, Florencia Bathory e Iván Williams" />
+
+
+<meta name="date" content="2023-09-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="reportes.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Taller de R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#información-general"><i class="fa fa-check"></i><b>1.1</b> Información general</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#preparándonos"><i class="fa fa-check"></i><b>1.2</b> PrepaRándonos</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#instalación-de-y-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Instalación de y RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#instalación-de-paquetes"><i class="fa fa-check"></i><b>1.2.2</b> Instalación de paquetes</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#foro"><i class="fa fa-check"></i><b>1.2.3</b> Foro</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#por-último"><i class="fa fa-check"></i><b>1.2.4</b> Por último</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Base. Un censista que sabe R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#el-proyecto-taller"><i class="fa fa-check"></i><b>2.1</b> El proyecto Taller</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#objetos-principales"><i class="fa fa-check"></i><b>2.2</b> Objetos principales</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#variables"><i class="fa fa-check"></i><b>2.2.1</b> Variables</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#vectores"><i class="fa fa-check"></i><b>2.2.2</b> Vectores</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#data.frames"><i class="fa fa-check"></i><b>2.2.3</b> Data.frames</a></li>
+<li class="chapter" data-level="2.2.4" data-path="intro.html"><a href="intro.html#listas-contenido-adicional"><i class="fa fa-check"></i><b>2.2.4</b> Listas (<em>contenido adicional</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#recursos-adicionales"><i class="fa fa-check"></i><b>2.3</b> Recursos Adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dplyr.html"><a href="dplyr.html#seleccionar-select-renombrar-rename"><i class="fa fa-check"></i><b>3.1</b> seleccionar (<strong>select</strong>), renombrar (<strong>rename</strong>)</a></li>
+<li class="chapter" data-level="3.2" data-path="dplyr.html"><a href="dplyr.html#resumir-summarise-por-grupos-group_by"><i class="fa fa-check"></i><b>3.2</b> resumir (<strong>summarise</strong>) por grupos (<strong>group_by</strong>)</a></li>
+<li class="chapter" data-level="3.3" data-path="dplyr.html"><a href="dplyr.html#transformar-mutate-filtrar-filter-ordenar-arrange"><i class="fa fa-check"></i><b>3.3</b> transformar (<strong>mutate</strong>), filtrar (<strong>filter</strong>), ordenar (<strong>arrange</strong>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dplyr.html"><a href="dplyr.html#recursos-adicionales-1"><i class="fa fa-check"></i><b>3.3.1</b> Recursos adicionales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lectura.html"><a href="lectura.html"><i class="fa fa-check"></i><b>4</b> Lectura</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="lectura.html"><a href="lectura.html#actividad-3"><i class="fa fa-check"></i><b>4.0.1</b> Actividad</a></li>
+<li class="chapter" data-level="4.0.2" data-path="lectura.html"><a href="lectura.html#recursos-adicionales-2"><i class="fa fa-check"></i><b>4.0.2</b> Recursos adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html"><i class="fa fa-check"></i><b>5</b> ggplot. Hacia la pirámide de población</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#introducción-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#ggplot"><i class="fa fa-check"></i><b>5.2</b> ggplot</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#actividad-4"><i class="fa fa-check"></i><b>5.2.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#reproduciendo"><i class="fa fa-check"></i><b>5.3</b> Reproduciendo</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#lexisplotr"><i class="fa fa-check"></i><b>5.4</b> LexisPLotR</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#estudio-de-cohorte-un-ejemplo"><i class="fa fa-check"></i><b>5.5</b> Estudio de cohorte: un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#actividad-5"><i class="fa fa-check"></i><b>5.5.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#recursos-adicionales-3"><i class="fa fa-check"></i><b>5.6</b> Recursos Adicionales</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#otras-visualizaciones"><i class="fa fa-check"></i><b>5.7</b> Otras visualizaciones</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot.-hacia-la-pirámide-de-población.html"><a href="ggplot.-hacia-la-pirámide-de-población.html#material-adicional-y-no-tanto"><i class="fa fa-check"></i><b>5.8</b> Material adicional (y no tanto)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>6</b> Funciones</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="funciones.html"><a href="funciones.html#demografía"><i class="fa fa-check"></i><b>6.1</b> DemogRafía</a></li>
+<li class="chapter" data-level="6.2" data-path="funciones.html"><a href="funciones.html#funciones-1"><i class="fa fa-check"></i><b>6.2</b> Funciones</a></li>
+<li class="chapter" data-level="6.3" data-path="funciones.html"><a href="funciones.html#crecimiento"><i class="fa fa-check"></i><b>6.3</b> Crecimiento</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="funciones.html"><a href="funciones.html#actividad-6"><i class="fa fa-check"></i><b>6.3.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="funciones.html"><a href="funciones.html#estandarizando"><i class="fa fa-check"></i><b>6.4</b> Estandarizando</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="funciones.html"><a href="funciones.html#actividades"><i class="fa fa-check"></i><b>6.4.1</b> Actividades</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="funciones.html"><a href="funciones.html#funciones-demográficas-en-paquetes-demográficos"><i class="fa fa-check"></i><b>6.5</b> Funciones demográficas en paquetes demográficos</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="funciones.html"><a href="funciones.html#tablas-de-mortalidad"><i class="fa fa-check"></i><b>6.5.1</b> Tablas de mortalidad</a></li>
+<li class="chapter" data-level="6.5.2" data-path="funciones.html"><a href="funciones.html#evaluación-de-declaración-de-edad"><i class="fa fa-check"></i><b>6.5.2</b> Evaluación de declaración de edad</a></li>
+<li class="chapter" data-level="6.5.3" data-path="funciones.html"><a href="funciones.html#graduación-de-población-por-edad-simple"><i class="fa fa-check"></i><b>6.5.3</b> Graduación de población por edad simple</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="reportes.html"><a href="reportes.html"><i class="fa fa-check"></i><b>7</b> Reportes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="reportes.html"><a href="reportes.html#comunicación-y-reproducibilidad"><i class="fa fa-check"></i><b>7.1</b> Comunicación y Reproducibilidad</a></li>
+<li class="chapter" data-level="7.2" data-path="reportes.html"><a href="reportes.html#actividad-guiada"><i class="fa fa-check"></i><b>7.2</b> Actividad guiada</a></li>
+<li class="chapter" data-level="7.3" data-path="reportes.html"><a href="reportes.html#referencias"><i class="fa fa-check"></i><b>7.3</b> Referencias</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tp.html"><a href="tp.html"><i class="fa fa-check"></i><b>8</b> TP</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tp.html"><a href="tp.html#hemos-llegado"><i class="fa fa-check"></i><b>8.1</b> Hemos llegado:</a></li>
+<li class="chapter" data-level="8.2" data-path="tp.html"><a href="tp.html#consigna"><i class="fa fa-check"></i><b>8.2</b> Consigna</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Taller de R aplicado a la demografía</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tp" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Unidad 8</span> TP<a href="tp.html#tp" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="hemos-llegado" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Hemos llegado:<a href="tp.html#hemos-llegado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="figs/aplausos.gif" /></p>
+</div>
+<div id="consigna" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Consigna<a href="tp.html#consigna" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Realizar un reporte sobre las caracteristicas de una provincia argentina seleccionada por el autor. Los datos los podés encontrar en “Data/PoblCensal01y10”. El objetivo es caracterizar el proceso de envejecimiento en el período, el cual, siguiendo a <a href="https://www.cepal.org/es/temas/envejecimiento">CELADE</a> lo podemos definir como el aumento progresivo de la proporción de las personas de 60 años y más con respecto a la población total. Si bien en el ejercicio solo contaremos con dos observaciones de cada población (censos 2001 y 2010), permite ver la dirección y magnitud del cambio entre esos años. Específicamente, se solicita:</p>
+<ul>
+<li><p>Crear un reporte RMarkdwon que produzca el informe en <em>html</em>.</p></li>
+<li><p>Asignar un título al reporte que incluya la provincia seleccionada, tu nombre como autor/a, y el mes y año del reporte.</p></li>
+<li><p>Contenidos <strong>mínimos</strong> del cuerpo del informe:</p>
+<ul>
+<li>Un párrafo inicial donde se explicite el objetivo del reporte y se mencione la cantidad de población total observada en cada punto del tiempo, mediante <em>chunks inline</em>.</li>
+<li>Mostrar las pirámides de población de ambos períodos en un mismo gráfico, mediante el paquete <em>ggplot2</em>, y su función <em>facet</em>. Acordate que si en el chunk guardas el gráfico como objeto, debes “llamarlo” para que lo imprima.</li>
+<li>Calcular el índice de masculinidad por edad de la población de 60 a 100 años y realizar un gráfico de línea diferenciando cada censo con un color distinto.</li>
+<li>En un párrafo final describir brevemente qué te llama la atención de lo observado.</li>
+</ul></li>
+</ul>
+<p><strong>¡IMPORTANTE!</strong> Solo es relevante a efectos del taller:</p>
+<ul>
+<li><p>Crear el reporte y enviar el html resultante</p></li>
+<li><p>Incluir dos tipos de gráfico creados dentro de un <em>chunk</em>, con sus respectivos títulos, fuentes y nombres de los ejes.</p></li>
+<li><p>Incluir código R en un párrafo</p></li>
+</ul>
+<p>No serán evaluadas conceptualmente las conclusiones. El resultado de la evaluación será tarde o temprano “Aprobado”, excepto que no haya entrega.</p>
+<p><strong>Fecha de entrega final: 31/12/2021</strong></p>
+<p>Manos a la obra…</p>
+<div class="float">
+<img src="figs/r_rollercoaster.png" alt="¡Hasta pRonto!" />
+<div class="figcaption">¡Hasta pRonto!</div>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="reportes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-tp.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["talleR.pdf", "talleR.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
