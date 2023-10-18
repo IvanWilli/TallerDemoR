@@ -6,6 +6,7 @@ institute: "Universidad Nacional de Luján<br/>Maestría y Especialización en D
 date: "Noviembre 2023"
 output:
   xaringan::moon_reader:
+    self_contained: true
     lib_dir: libs
     css: [default, metropolis, metropolis-fonts]
     nature:
