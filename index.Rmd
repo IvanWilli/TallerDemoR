@@ -61,7 +61,7 @@ install.packages(c("tidyverse", "devtools", "foreign", "eph", "plotly", "gapmind
 
 ### Foro 
 
-Para comunicarnos durante la semana y que haya un intercambio fluido utilizaremos [Slack](https://slack.com/intl/es-ar/), que permite compartir pedazos de código. Para esto te pido ingresar al siguiente [link](https://join.slack.com/t/tallerderapli-h6t4691/shared_invite/zt-v3q1pc5z-pbzWUejMYXqqYd_0D86k~Q) de invitación. Podés descargar la aplicación de escritorio o simplemente utilizarlo desde la web. El uso de este espacio es **opcional**: si bien será útil para discutir contenido en la semana, si hay comunicaciones importantes de tipo administrativo se harán por mail.
+Para comunicarnos durante la semana y que haya un intercambio fluido utilizaremos el apartado de [issues](https://github.com/IvanWilli/TallerDemoR/issues) del repositorio en githug, que permite escribir incluyendo pedazos de código (el lenguaje es markdown, que veremos en la última unidad). Para esto te debes crearte un usuario. El uso de este espacio es **opcional**: si bien será útil para discutir contenido en la semana, si hay comunicaciones importantes de tipo administrativo se harán por mail.
 
 ### Por último 
 
@@ -74,3 +74,9 @@ Si estás sin tiempo, lo **prioritario** es la instalación previa de *R* y *RSt
 - Florencia Bathory: florencia.bathory@gmail.com
 
 Recordá que en los encuentros virtuales lo haremos vía Zoom en en este [link](https://us02web.zoom.us/j/87912678557).
+
+<!-- --------------------------------------------------------------------- -->
+
+## Introducción
+
+Como introducción, charlaremos en base a los slides de [aquí](https://github.com/IvanWilli/TallerDemoR/blob/master/ppt/Introduccion.html).
