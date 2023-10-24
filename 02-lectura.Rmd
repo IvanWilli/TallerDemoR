@@ -1,6 +1,6 @@
 # Lectura
 
-En la unidad previa caracterizamos **un** hogar censal. En esta unidad trabajaremos la base de datos censal, con todas sus viviendas, hogares y personas. Para esto recorreremos distintos paquetes del entorno [tidyverse](https://www.tidyverse.org/), cuyo fin es generar un entorno de herramientas especializada en el análisis de datos.
+En la unidad previa caracterizamos **un** hogar censal. En esta unidad trabajaremos la **base** de datos censal, con todas sus viviendas, hogares y personas. Para esto recorreremos distintos paquetes del entorno [tidyverse](https://www.tidyverse.org/), cuyo fin es generar un entorno de herramientas especializada en el análisis de datos.
 
 ```{r, message=F, warning=F}
 # install.packages("tidyverse")
@@ -9,7 +9,7 @@ library(fontawesome)
 library(knitr)
 ```
 
-Pero primero haremos un repaso por las distintas opciones de lectura de datos que nos ofrece R. Creemos una carpeta que se llame "unidad2" y una subcarpeta que se llame "Data", donde dejemos las bases de datos disponibles como materiales de la unidad. Verifiquemos que tengamos todas las bases de datos correspondientes en la carpeta "Data" mediante `list.files()`.
+Pero primero haremos un repaso por las distintas opciones de *lectura* de datos que nos ofrece R. Creemos una carpeta que se llame "unidad2" y una subcarpeta que se llame "Data", donde dejemos las bases de datos disponibles como materiales de la unidad. Verifiquemos que tengamos todas las bases de datos correspondientes en la carpeta "Data" mediante `list.files()`.
 
 ```{r, eval=F}
 list.files("unidad2/Data")
@@ -59,16 +59,15 @@ También:
 
 - Planillas de [google](https://googlesheets4.tidyverse.org/).
 
-<!-- box-->
-<p class="comment">
-<strong>COVID19 data:</strong> Si querés estudiar la evolución de los casos nuevos y las defunciones registradas por covid19 podés descargar online la base, que esta disponible de manera libre por MSAL (aplausos). Está contenida en un archivo "zip". La descargamos y la descomprimimos con la ayuda del paquete *zip*,luego la leemos como cualquier csv (en este caso las primeras 1000 filas):<br>
+::: {.take_note_box  .take_note data-latex="{take_note}"}
+COVID19 data: <br>
+Si querés estudiar la evolución de los casos nuevos y las defunciones registradas por covid19 podés descargar online la base, que esta disponible de manera libre por MSAL (aplausos). Está contenida en un archivo "zip". La descargamos y la descomprimimos con la ayuda del paquete *zip*,luego la leemos como cualquier csv (en este caso las primeras 1000 filas):<br>
 `library(zip)`<br>
 `url <- 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.zip'`<br>
 `download.file(url, "Covid19Casos.zip")`<br>
 `unzip("Covid19Casos.zip")`<br>
 `covid_data <- read.csv("Covid19Casos.csv", fileEncoding = "UTF-8", nrows = 1000)`
-</p>
-<!-- box-->
+:::
 
 Pero seguro ya estas cansado de levantar datos: "Dame el censo" `r fa("meh")` se escucha murmurar en el aula-zoom.
 
@@ -78,14 +77,20 @@ Trabajaremos con una muestra aleatoria de datos que provienen de un proyecto de 
 
 ### Actividad
 
-l1. Chequear que todas las versiones de la base de datos de la eph que leímos tengan la misma cantidad de observaciones (filas).
+a) Chequear que todas las versiones de la base de datos de la eph que leímos tengan la misma cantidad de observaciones (filas).
 
-l2. Leer *"C2010_CABA.csv"* (con separador ",") y guardarlo en un objeto llamado _caba2010_br_ (*br* por bruta, aún sin cambios).  
-
-l3. Explora su estructura y sus variables con lo visto en la unidad previa.  
+a) Leer *"C2010_CABA_muestra.csv"* (por deafult con separador ",") y guardarlo en un objeto llamado _caba2010_br_ (*br* por bruta, aún sin cambios).  
 
 ```{r, include=F, hide=TRUE}
-caba2010_br = read.csv("Data/C2010_CABA.csv", header = T, sep=",")
+caba2010_br = read.csv("Data/C2010_CABA_muestra.csv", header = T)
+```
+
+a) Explora su estructura y sus variables con lo visto en la unidad previa.  
+
+```{r, include=F, hide=TRUE}
+str(caba2010_br)
+head(caba2010_br)
+summary(caba2010_br)
 ```
 
 ### Recursos adicionales  

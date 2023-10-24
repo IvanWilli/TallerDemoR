@@ -15,11 +15,11 @@ En la unidad previa caracterizamos un hogar censal. En esta unidad trabajaremos 
 library("tidyverse")
 ```
 
-El paquete [*dplyr*](https://dplyr.tidyverse.org/) contiene las operaciones más comunes sobre una tabla de datos. 
+El paquete [*dplyr*](https://dplyr.tidyverse.org/) contiene las operaciones más comunes sobre una tabla de datos, y se volvió en los útlimos años el paquete más utilizado para este fin. 
 
 ![https://www.amazon.com/Dplyr-Hex-T-shirt-Rstudio-Tidyverse/dp/B07HKV9W7M](figs/remera.jpg){width=250px}
 
-Una de sus ventajas es el uso del pipe **%>%**,  que concatena operaciones sobre el mismo objeto, *verbalizando* el proceso, generando fluidez en nuestro razonamiento y mejor entendimiento para un tercero. En vez de `f(x)` se tiene `x %>% f()`:
+Una de sus ventajas es el uso del pipe `%>%`,  que concatena operaciones sobre el mismo objeto, *verbalizando* el proceso, generando fluidez en nuestro razonamiento y mejor entendimiento para un tercero. En vez de `f(x)` (aplicar una función `f()` a un objeto `x`) se tiene `x %>% f()` (tengo un objeto `x` y le aplico la función `f()`):
 
 ```{r}
 1:10 %>% mean()

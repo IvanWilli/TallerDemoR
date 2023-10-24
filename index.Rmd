@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook
+css: style.css
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -61,7 +62,7 @@ install.packages(c("tidyverse", "devtools", "foreign", "eph", "plotly", "gapmind
 
 ### Foro 
 
-Para comunicarnos durante la semana y que haya un intercambio fluido utilizaremos el apartado de [issues](https://github.com/IvanWilli/TallerDemoR/issues) del repositorio en githug, que permite escribir incluyendo pedazos de código (el lenguaje es markdown, que veremos en la última unidad). Para esto te debes crearte un usuario. El uso de este espacio es **opcional**: si bien será útil para discutir contenido en la semana, si hay comunicaciones importantes de tipo administrativo se harán por mail.
+Para comunicarnos durante la semana y que haya un intercambio fluido utilizaremos el apartado de [issues](https://github.com/IvanWilli/TallerDemoR/issues) del repositorio en githug, que permite escribir incluyendo pedazos de código (el lenguaje es [markdown](https://en.wikipedia.org/wiki/Markdown), que veremos en la última unidad). Para esto debes crearte un usuario. El uso de este espacio es **opcional**: si bien será útil para discutir contenido en la semana, si hay comunicaciones importantes de tipo administrativo se harán por mail.
 
 ### Por último 
 
@@ -73,7 +74,7 @@ Si estás sin tiempo, lo **prioritario** es la instalación previa de *R* y *RSt
 
 - Florencia Bathory: florencia.bathory@gmail.com
 
-Recordá que en los encuentros virtuales lo haremos vía Zoom en en este [link](https://us02web.zoom.us/j/87912678557).
+Recordá que en los encuentros virtuales lo haremos vía Zoom en en este [link](https://us06web.zoom.us/j/88249603426?pwd=sw7NItVGMUB6jm113eCb2Jta34rAoM.1).
 
 <!-- --------------------------------------------------------------------- -->
 
