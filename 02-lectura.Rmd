@@ -9,23 +9,24 @@ library(fontawesome)
 library(knitr)
 ```
 
-Pero primero haremos un repaso por las distintas opciones de *lectura* de datos que nos ofrece R. Creemos una carpeta que se llame "unidad2" y una subcarpeta que se llame "Data", donde dejemos las bases de datos disponibles como materiales de la unidad. Verifiquemos que tengamos todas las bases de datos correspondientes en la carpeta "Data" mediante `list.files()`.
+Pero primero haremos un repaso por las distintas opciones de *lectura* de datos que nos ofrece R. Creemos una carpeta que se llame se llame "Data", donde dejemos las bases de datos disponibles en el [drive](https://drive.google.com/drive/folders/1wRmATJa1ZcCVk5gDodjtD1SYJLabjlvD?usp=sharing). Verifiquemos que tengamos todas las bases de datos correspondientes en la carpeta "Data" mediante `list.files()`.
 
 ```{r, eval=F}
-list.files("unidad2/Data")
+list.files("Data")
 ```
 
-Para mostrar las diversas formas de lectura de datos que ofrece R nos valdremos de la Encuesta Permanente de Hogares ([EPH](https://www.indec.gob.ar/ftp/cuadros/sociedad/metodologia_eph_continua.pdf)), un operativo estadístico llevado adelante por INDEC con motivo de caracterizar la evolución de los mercados de trabajo de 31 aglomerados urbanos del país. Por ejemplo, si quisiéramos leer la base de datos del primer trimestre de 2019, ¿qué opciones tenemos? Es muy importante aquí que la *ruta* del archivo a leer sea a partir de la posición de trabajo actual (recuerda `getwd`) y hacia donde apuntar (utiliza el predictor con `tab` al tipear las comillas).
+Para mostrar las diversas formas de lectura de datos que ofrece R nos valdremos de la Encuesta Permanente de Hogares ([EPH](https://www.indec.gob.ar/ftp/cuadros/sociedad/metodologia_eph_continua.pdf)), un operativo estadístico llevado adelante por INDEC con motivo de caracterizar la evolución de los mercados de trabajo de 31 aglomerados urbanos del país. Por ejemplo, si quisiéramos leer la base de datos del primer trimestre de 2019, ¿qué opciones tenemos? Es muy importante aquí que la *ruta* del archivo a leer sea a partir de la posición de trabajo actual (recuerda `getwd()`) y hacia donde apuntar (puedes utilizar el predictor con `tab` luego de generar comillas).
 
 - Texto plano con separador `;`
 ```{r}
 # R base trae funciones para la lectura de datos, las más comunes son "read.table" y "read.csv"
 EPH_1t19_txt <- read.table(file = "Data/usu_individual_t119.txt", header = T, sep = ";")
+head(EPH_1t19_txt)
 ```
 
-- Un excel con extensión `xls` o `xlsx`, seleccionando la pestaña (y el rango de celdas si queremos). Aprovechemos a leer la documentación de esta función: `?read_xls` o desde el tab de paquetes en RStudio.
+- Una planilla excel con extensión `xls` o `xlsx`, seleccionando la pestaña (y el rango de celdas si queremos). Aprovechemos a leer la documentación de esta función: `?read_xls` o desde el tab de paquetes en RStudio.
 
-```{r, eval = FALSE}
+```{r}
 library(readxl) # pertenece a tidyverse
 EPH_1t19_xls <- read_xls(path = "Data/usu_individual_t119.xls", sheet = 1)
 
@@ -40,7 +41,7 @@ library(foreign)
 EPH_1t19_spss <- read.spss("Data/usu_individual_t119.sav", to.data.frame=TRUE) 
 ```
 
-- En la primer unidad dijimos que un paquete es compartir, y es lo que hace a una comunidad dinámica. Ya existe un paquete llamado [eph](https://cran.r-project.org/web/packages/eph/eph.pdf). Permite no solo leer las bases de datos trimestre a trimestre, sino funciones para obtener muchos resultados y *panelear* olas.
+- En la primer unidad dijimos que un paquete es *compartir* `r fa("share")`, y es lo que hace a una comunidad dinámica. Ya existe un paquete llamado [eph](https://cran.r-project.org/web/packages/eph/eph.pdf). Permite no solo leer las bases de datos trimestre a trimestre, sino funciones para obtener muchos resultados y *panelear* olas.
 
 ```{r, eval = FALSE}
 library(eph)
@@ -48,36 +49,56 @@ EPH_1t19_eph = get_microdata(year = 2019, trimester = 1, type = 'individual')
 ```
 
 - También podemos leer un archivo **online**, por ejemplo la base de microdatos de DEIS (Dirección de Estadísticas e Información en Salud). Vayamos a la [web](http://www.deis.msal.gov.ar/) primero y veamos como obtener el *link*. Tiene extensión [*csv*](https://es.wikipedia.org/wiki/Valores_separados_por_comas). Utilicemos la función `read.csv` comentada anteriormente, pero en vez de apuntar al archivo local hagámoslo al *url*:
-```{r, eval = FALSE}
-url <- "http://www.deis.msal.gov.ar/wp-content/uploads/2019/01/DefWeb17.csv"
+```{r}
+url <- "https://www.argentina.gob.ar/sites/default/files/2021/03/defweb17.csv"
 DEf17 <- read.csv(url, header = T)
+head(DEf17)
 ```
 
 También:
+
+- Paquete con datos: [wpp19](https://cran.r-project.org/web/packages/wpp2019/index.html), [refugiados](https://www.unhcr.org/refugee-statistics/insights/explainers/refugees-r-package.html), 
 
 - Con conexión a un [servidor](https://rpubs.com/FvD/acceder-bases-de-datos-en-r).
 
 - Planillas de [google](https://googlesheets4.tidyverse.org/).
 
-::: {.take_note_box  .take_note data-latex="{take_note}"}
-COVID19 data: <br>
-Si querés estudiar la evolución de los casos nuevos y las defunciones registradas por covid19 podés descargar online la base, que esta disponible de manera libre por MSAL (aplausos). Está contenida en un archivo "zip". La descargamos y la descomprimimos con la ayuda del paquete *zip*,luego la leemos como cualquier csv (en este caso las primeras 1000 filas):<br>
-`library(zip)`<br>
-`url <- 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.zip'`<br>
-`download.file(url, "Covid19Casos.zip")`<br>
-`unzip("Covid19Casos.zip")`<br>
-`covid_data <- read.csv("Covid19Casos.csv", fileEncoding = "UTF-8", nrows = 1000)`
-:::
+- API
+
+<!-- ::: {.take_note_box  .take_note data-latex="{take_note}"} -->
+<!-- COVID19 data: <br> -->
+<!-- Si querés estudiar la evolución de los casos nuevos y las defunciones registradas por covid19 podés descargar online la base, que esta disponible de manera libre por MSAL (aplausos). Está contenida en un archivo "zip". La descargamos y la descomprimimos con la ayuda del paquete *zip*,luego la leemos como cualquier csv (en este caso las primeras 1000 filas):<br> -->
+<!-- `library(zip)`<br> -->
+<!-- `url <- 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.zip'`<br> -->
+<!-- `download.file(url, "Covid19Casos.zip")`<br> -->
+<!-- `unzip("Covid19Casos.zip")`<br> -->
+<!-- `covid_data <- read.csv("Covid19Casos.csv", fileEncoding = "UTF-8", nrows = 1000)` -->
+<!-- ::: -->
 
 Pero seguro ya estas cansado de levantar datos: "Dame el censo" `r fa("meh")` se escucha murmurar en el aula-zoom.
 
-Trabajaremos con una muestra aleatoria de datos que provienen de un proyecto de investigación expuesto en la conferencia [AEPA17](http://www.redaepa.org.ar/wp-content/uploads/2017/09/PROGRAMA-JORNADAS-AEPA.pdf), y que tiene como objetivo traducir a microdato cualquier base con formato REDATAM, y cuyos resultados para el censo 2010 de Argentina pueden verse [aquí](http://datar.info/dataset/censo-2010-microdatos). La base allí disponible *NO* es oficial, por lo que sus resultados pueden no ser los [publicados](https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-135), pero con motivo del taller nos permite jugar con las herramientas de manipulación de datos a nivel de máxima desagregación.  
+Trabajaremos con una muestra aleatoria de viviendas del Censo 2010. Los datos censales provienen de un proyecto de investigación expuesto en la conferencia [AEPA17](http://www.redaepa.org.ar/wp-content/uploads/2017/09/PROGRAMA-JORNADAS-AEPA.pdf), y que tiene como objetivo traducir a microdato cualquier base con formato REDATAM, y cuyos resultados para el censo 2010 de Argentina pueden verse [aquí](http://datar.info/dataset/censo-2010-microdatos). La base allí disponible *NO* es oficial, por lo que sus resultados pueden no ser los [publicados](https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-135), pero con motivo del taller nos permite jugar con las herramientas de manipulación de datos a nivel de máxima desagregación.  
 
 ¡Ah! nuestros hogares de la unidad 1 residen en la Ciudad Autónoma de Buenos Aires. Escalemos el análisis.
 
 ### Actividad
 
 a) Chequear que todas las versiones de la base de datos de la eph que leímos tengan la misma cantidad de observaciones (filas).
+
+```{r, eval = F, include = F}
+nrow(EPH_1t19_txt)
+nrow(EPH_1t19_xlsx)
+nrow(EPH_1t19_spss)
+nrow(EPH_1t19_eph)
+```
+
+a) ¿Cuántas muertes fueron registradas en el año 2017? ¿Cuantas de mujeres? ¿Cuántas en la provincia de Santa Fe? Si, necesitas un diccionario de datos, incluido en la [web](https://www.argentina.gob.ar/salud/deis/datos/defunciones).
+
+```{r, eval = F, include = F}
+sum(DEf17$CUENTA)
+sum(DEf17$CUENTA[DEf17$SEXO == 1])
+sum(DEf17$CUENTA[DEf17$PROVRES == 82])
+```
 
 a) Leer *"C2010_CABA_muestra.csv"* (por deafult con separador ",") y guardarlo en un objeto llamado _caba2010_br_ (*br* por bruta, aún sin cambios).  
 

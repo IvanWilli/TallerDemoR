@@ -21,12 +21,12 @@ Este sitio web contiene los materiales para el taller ofrecido en la Universidad
 
 Algunas cosas útiles:
 
-- El programa actualizado se puede encontrar aquí: https://github.com/IvanWilli/TallerDemoR/blob/master/programa/Programa.pdf.
-- Encuentra el código fuente de este sitio web en GitHub: https://github.com/IvanWilli/TallerDemoR/blob/master/docs/index.Rmd.
-- Los datos para los ejercicios se pueden encontrar en: https://github.com/IvanWilli/TallerDemoR/tree/master/docs/data.
-- Los encuentros virtuales los haremos vía zoom en este [link](https://us02web.zoom.us/j/87912678557).
+- El programa actualizado se puede encontrar [aquí](https://github.com/IvanWilli/TallerDemoR/blob/master/programa/Programa.pdf).
+- Encuentra el código fuente de este sitio en [GitHub](https://github.com/IvanWilli/TallerDemoR/blob/master/docs).
+- Los datos para los ejercicios se pueden encontrar [aquí](https://drive.google.com/drive/folders/1wRmATJa1ZcCVk5gDodjtD1SYJLabjlvD?usp=sharing).
+- Los encuentros virtuales los haremos vía zoom en este [link](https://us06web.zoom.us/j/88249603426?pwd=sw7NItVGMUB6jm113eCb2Jta34rAoM.1).
 
-Ten en cuenta que esta página puede *cambiar* durante el curso, así que no te preocupes si notas algunos cambios. Podemos adaptar el contenido en función de la interacción que vayamos teniendo o corregir/agregare código a lo largo del camino.
+Ten en cuenta que esta página puede *cambiar* durante el curso, así que no te preocupes si notas algunos cambios. Podemos adaptar el contenido en función de la interacción que vayamos teniendo o corregir/agregar código a lo largo del camino.
 
 Esperamos que disfrutes el taller y te sea útil.
 

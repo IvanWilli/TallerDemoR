@@ -214,8 +214,8 @@ include_graphics("figs/Rkids.jpg")
 
 # Paquetes
 
-- Conjunto de **funciones** temáticas. 
-- *Encapsular* operaciones y relacionarlas.  
+- Conjunto de **funciones** temáticas. *Encapsular* operaciones y relacionarlas.  
+- "Packages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data" ([Wickham & Bryan](https://r-pkgs.org/)).
 - Se instala solo una vez, luego se activa con `library()` en cada sesión. Por ejemplo:
 ```{r, echo=T,eval=F}
 install.packages("tidyverse")
