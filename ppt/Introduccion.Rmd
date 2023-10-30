@@ -242,7 +242,7 @@ library(tidyverse)
 ```{r, echo=T, fig.height=2, fig.width=2}
 library(memer)
 meme_get("DistractedBf") %>% 
-  meme_text_distbf("R", "Demógrafe", "SPSS")
+  meme_text_distbf("R", "Demógrafe", "SPSS\n Stata")
 ```
 
 ---
