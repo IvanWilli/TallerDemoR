@@ -1,12 +1,4 @@
-# R Base. Un censista que sabe R {#intro}
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = F)
-options(htmltools.dir.version = FALSE)
-library(knitr)
-library(fontawesome)
-```
+# R Base{#intro}
 
 \usepackage{color}
 \usepackage{framed}

@@ -1,7 +1,7 @@
 ---
 title: "Taller de R aplicado a la Demografía"
 subtitle: "Introducción"
-author: "Ayelén Martinez, Florecnia Bathory e Iván Williams"
+author: "Ayelén Martinez, Florencia Bathory e Iván Williams"
 institute: "Universidad Nacional de Luján<br/>Maestría y Especialización en Demografía Social"
 date: "Noviembre 2023"
 output:
@@ -60,11 +60,12 @@ include_graphics("https://ivandigital.net/wp-content/uploads/2021/02/Ivan-Digita
   - Un censista que sabe R
 
 2 - **Lectura y manipulación de datos**
-  - Mundo [tidyverse](https://www.tidyverse.org/)
+  - `dplyr`. Mundo [tidyverse](https://www.tidyverse.org/)
+  - Resumen y transformación de datos
   - Un censo en R
 
 3 - **Visualización**
-  - *ggplot*
+  - `ggplot`
   - Pirámides + Lexis + Mapas
 ]
 
@@ -72,9 +73,8 @@ include_graphics("https://ivandigital.net/wp-content/uploads/2021/02/Ivan-Digita
 
 .pull-right[
 4 - **Funciones para el *análisis demográfico***
-  - Mortalidad
-  - Fecundidad
-  - Migración
+  - Específicas por componente
+  - Pauqetes demográficos
 
 5 - **Reportes dinámicos**
   - *R markdown*: reportes reproducibles en entorno R
@@ -84,7 +84,7 @@ include_graphics("https://ivandigital.net/wp-content/uploads/2021/02/Ivan-Digita
 
 # Calendario
 
-```{r, fig.height=7,fig.width=12}
+```{r, fig.height=7, fig.width=12}
 color_days = "#ed9f2b"
 weeknames <- c("L","Ma","Mi","J","V","S","D")
 nov <- calendR(year = 2023, month = 11,        # Year and month
@@ -115,8 +115,6 @@ dec <- calendR(year = 2023, month = 12,        # Year and month
 wrap_plots(nov,dec)
 ```
 
---
-
 Presencial: 7-Nov & 12-Dic
 
 ---
@@ -127,7 +125,7 @@ Presencial: 7-Nov & 12-Dic
 
 - Clases
   - ~2 horas de recorrido temático, programando a la par
-  - ~30 minutos de resolución en grupos (divido en tandas)
+  - ~30 minutos de resolución de ejercicios
 - Aprobación del taller: TP final
 
 ## Set up inicial    
@@ -135,7 +133,7 @@ Presencial: 7-Nov & 12-Dic
 - `r fa("r-project")` + `r fa("registered")`  instalados  
 - Conexión a internet (clases virtuales)  
 - Materiales: en general todo en `r fa("github")` [Github](https://github.com/IvanWilli/TallerDemoR). Eventualmente algo de datos pesados en la nube `r fa("google-drive")`.
-- `r fa("question")`: para dudas utilizaremos [issues](https://github.com/IvanWilli/TallerDemoR/issues) de github. Allí podremos plantear dudas con formato de código. Es necesario registrarse.
+- `r fa("question")`: para dudas/intercambios utilizaremos [issues](https://github.com/IvanWilli/TallerDemoR/issues) de github. Es necesario registrarse.
 
 ---
 
@@ -161,9 +159,9 @@ include_graphics("figs/papeR.png")
 - Corto *lag* desde inicio a su aplicación.
 - Muchos ya han dado el [salto](https://www.amazon.com/SAS-SPSS-Users-Statistics-Computing/dp/1461406846)
 - Comunidad:  
-    - Colaboración  y muuucha información
+    - Colaboración y muuucha información
     - [Conferencias](https://www.r-project.org/conferences/)
-    - Cercanas (algunas):   
+    - Cercanas:   
         - [Latin-R](<https://latin-r.com>), [R en Baires](https://www.meetup.com/es/renbaires/), [R-Ladies](https://rladies.org/)  
 <!-- - R desde SAS (*PROC_R*), SPSS (Plug-IN *IBM® SPSS® Statistics - Essentials for R*) --> 
 - [Visualización](https://www.r-graph-gallery.com/index.html) 
@@ -180,11 +178,14 @@ include_graphics("figs/papeR.png")
 
 .pull-left[
 - Principales tabs:
-  - *Source*: donde programo (editor de texto)
   - *Console*: donde se ejecuta el código
-  - *Environment*: radar de objetos creados  
-  - *Files*: directorio a mano
-- [Muy personalizable](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio)
+  - *Source*: donde programo (editor de texto), para luego ejecutar en consola
+  - *Environment*: ambiente, radar de objetos creados.
+  - *Files*: directorio de archivos a mano
+- [Muy personalizable](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio).
+  "Tools/Global Options":
+  - Disposición de tabs
+  - Fuente, tamaño, estética...
 ]
 
 .pull-right[
@@ -226,6 +227,7 @@ library(tidyverse)
 
 - Compartir: "alguien ya resolvió tu problema".
 - Requerimientos CRAN (Comprehensive R Archive Network): código + tests + documentación + ayuda.
+- Solo en CRAN hay más de 19 mil. [Y creciendo día a día](https://rviews.rstudio.com/)
 - La comunidad **legitima** `r fa("users")`.
 - Cualquiera puede hacer un paquete; otros usuarios te lo agradecerán (y mejorarán). 
 
@@ -267,9 +269,18 @@ ggplot(data.frame(x = 1:10, y = rnorm(10)),
        geom_smooth()
 ```
 
---
+---
 
-[Y creciendo día a día](https://rviews.rstudio.com/2021/04/22/march-2021-top-40-new-cran-packages/)
+# ¿Qué (no) puedo hacer con R?
+
+```{r, echo=T, eval = F}
+library(openai)
+create_image("Lionel Messi, the Argentinian footbal player, is learning how to use R software to obtain statistics to improve his skills")
+```
+
+```{r, echo=F, out.width = "50%", fig.align='center'}
+include_graphics("figs/messiR.png")
+```
 
 ---
 
@@ -292,12 +303,13 @@ include_graphics("figs/flow1.png")
   - [DemoTools](https://timriffe.github.io/DemoTools/)
   - [HMDHFDplus](https://cran.r-project.org/web/packages/HMDHFDplus/HMDHFDplus.pdf)
   - [MortalityLaws](https://cran.r-project.org/web/packages/MortalityLaws/MortalityLaws.pdf)
+  - [DemoKin](https://cran.r-project.org/web/packages/DemoKin/index.html)
   - Muchos más...
 
 - Difusión/comunicación de contenido:  
   - [Exceso de Mortalidad](https://mpidr.shinyapps.io/stmortality/)  
   - [Indicadores](https://www.indec.gob.ar/indec/web/Institucional-Indec-IndicadoresDemograficos)
-  - Visualización...
+  - [Talleres/Seminarios/presentaciones](https://github.com/ubasellini/IDEM117-AdvancesMortalityForecasting)
 
 ---
 

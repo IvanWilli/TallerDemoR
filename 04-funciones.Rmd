@@ -1,14 +1,5 @@
 # Funciones
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=F,warning = F)
-#install.packages("DemoTools")
-library(tidyverse)
-library(knitr)
-# https://github.com/timriffe/KOSTAT_Workshop1/blob/master/03_handout.pdf
-# https://github.com/timriffe/BSSD2021Module2/blob/master/04_thursday/04_thursday.pdf
-```
-
 ## DemogRafía
 
 ¿Qué es la demografía? Algunas definiciones (tomado de [Carmichael, 2016](https://www.springer.com/gp/book/9783319232546)):
@@ -172,11 +163,11 @@ crecim_lineal_check(50000, 60000, 10, "hola")
 
 ### Actividad
 
-- Siguiendo el ejemplo previo: ¿cuál sería la población al 2017 bajo el supuesto de crecimiento exponencial? ¿Es equivalente interpolar cada edad y luego sumar?
+a) Siguiendo el ejemplo previo: ¿cuál sería la población al 2017 bajo el supuesto de crecimiento exponencial? ¿Es equivalente interpolar cada edad y luego sumar?
 
-- Crear una función que informe la edad modal de una distribución de conteo, por ejemplo para `data.frame(Edad = c(0,4,7,10), Casos = c(2, 6, 9, 0))` debería devolver la edad 7. 
+a) Crear una función que informe la edad modal de una distribución de conteo, por ejemplo para `data.frame(Edad = c(0,4,7,10), Casos = c(2, 6, 9, 0))` debería devolver la edad 7. 
 
-- Obtener una función que permita conocer en cuantos años (h) se duplicará la población respecto al primer valor observado, bajo el supuesto de crecimiento lineal y exponencial. (Ayuda: obtén $r$ y luego despeja $h$ para que $N_h=N_0*2$).
+a) Obtener una función que permita conocer en cuantos años (h) se duplicará la población respecto al primer valor observado, bajo el supuesto de crecimiento lineal y exponencial. (Ayuda: obtén $r$ y luego despeja $h$ para que $N_h=N_0*2$).
 
 ## Estandarizando
 

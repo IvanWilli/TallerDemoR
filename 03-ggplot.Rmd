@@ -1,11 +1,4 @@
-# ggplot. Hacia la pirámide de población
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, results = "hide", message=FALSE, warning = FALSE)
-library(knitr)
-library(fontawesome)
-library(tidyverse)
-```
+# ggplot
 
 ## Introducción
 
@@ -197,6 +190,14 @@ PirsPorc <- N_Provs %>%
 PirsPorc
 ```
 
+Finalmente, cuando necesités guardar el gráfico, por ejemplo como pdf:
+
+```{r, eval = F}
+ggsave(plot = "PirsPorc.pdf", filename = PirsPorc)
+
+```
+
+
 ¡Ahora sí! Estamos en condiciones de percibir visualmente qué nos dice el stock por edad y sexo: envejecimiento, efecto migratorio, patrones de declaración censal de edad. ¿Qué más? Quizás si fuera un gráfico interactivo... Un bonus track utilzando [plotly](https://plot.ly/ggplot2/):
 
 ```{r}
@@ -209,7 +210,7 @@ PirsPorc_plotly <- ggplotly(PirsPorc + aes(text = Np), tooltip= "text")
 
 ###  Actividad
 
-* Realizar un gráfico de línea con el índice de masculinidad por edad de la provincia que prefiera, dándole a cada censo un color distinto (al pasar a ser una categoría debe ser *factor*).  
+a) Realizar un gráfico de línea con el índice de masculinidad por edad de la provincia que prefiera, dándole a cada censo un color distinto (al pasar a ser una categoría debe ser *factor*).  
 
 ```{r, include=F}
 N_Censo %>% 
@@ -230,9 +231,9 @@ N_Censo %>%
   geom_line(aes(x=EDAD,y=IM, color=PROV_NOMBRE))
 ```
 
-* El primer autor te escribe para incluir el gráfico previo en una publicación. ¿Qué modificaciones le harías para dejarlo listo? 
+a) El primer autor te escribe para incluir el gráfico previo en una publicación. ¿Qué modificaciones le harías para dejarlo listo? 
 
-* Construir la pirámide de población de CABA, colocando ambos censos uno debajo del otro.
+a) Construir la pirámide de población de CABA, colocando ambos censos uno debajo del otro.
 
 ```{r, include=F}
 N_Censo %>% filter(PROV_NOMBRE=="CIUDAD AUTONOMA DE BUENOS AIRES") %>% 
@@ -307,10 +308,6 @@ fig_1 <- df_ex_ci %>%
     axis.text.y = element_text(face = 2))+
   # etiquetas de ejes
   labs(x = "Life expectancy, years",y = NULL)
-
-# guardarlo como pdf:
-ggsave("fig_1.pdf", fig_1, width = 6, height = 4.5, device = cairo_pdf)
-
 ```
 Las etiquetas en referencia a la edad y la formas de los puntos las realizaron posteriormente con [annotate](https://ggplot2.tidyverse.org/reference/annotate.html), una función que permite incluir (encima) texto u otras figuras geométricas en el plano.
 
@@ -461,14 +458,14 @@ clase %>% filter(edad_salida >= 20 & edad_salida < 21) %>% summarise(`1p20*1q20`
 
 ### Actividad
 
-* Crear un diagráma de Lexis y señalar las líneas de vida de tus 5 parientes más cercanos. Selecciona los rangos de los ejes para que la visualización sea buena.
+a) Crear un diagráma de Lexis y señalar las líneas de vida de tus 5 parientes más cercanos. Selecciona los rangos de los ejes para que la visualización sea buena.
 
-* Crear un diagrama de Lexis señalando los fallecidos en 2015 con edad 15, diferenciando cada cohorte con dos colores distintos.
+a) Crear un diagrama de Lexis señalando los fallecidos en 2015 con edad 15, diferenciando cada cohorte con dos colores distintos.
 
-* Considerando el ejercicio de permanencia escolar:
-  - Destaca con una cruz roja aquellos dos niñas/os que abandonaron primero y último.
-  - Calcula la esperanza de vida de permanencia "inicial" (en el sentido antes aclarado), si es que no lo hicimos ya.
-  - Cambia la semilla del ejercicio previo (`set.seed()`) por cualquier entero que desees y repite el ejercicio. ¿Hay diferencias?¿Por qué?
+a) Considerando el ejercicio de permanencia escolar:
+    - Destaca con una cruz roja aquellos dos niñas/os que abandonaron primero y último.
+    - Calcula la esperanza de vida de permanencia "inicial" (en el sentido antes aclarado), si es que no lo hicimos ya.
+    - Cambia la semilla del ejercicio previo (`set.seed()`) por cualquier entero que desees y repite el ejercicio. ¿Hay diferencias?¿Por qué?
 
 ## Recursos Adicionales
 

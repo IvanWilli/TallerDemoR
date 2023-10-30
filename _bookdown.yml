@@ -1,0 +1,14 @@
+book_filename: "talleR"
+rmd_files:
+- index.Rmd
+- 01-base.Rmd
+# - 02-dplyr.Rmd
+# - 03-ggplot.Rmd
+# - 04-funciones.Rmd
+# - 05-reportes.Rmd
+# - 06-tp.Rmd
+language:
+  ui:
+    chapter_name: ""
+delete_merged_file: true
+output_dir: "docs"

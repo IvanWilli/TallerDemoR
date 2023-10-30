@@ -1,12 +1,5 @@
 # Reportes
 
-```{r setup, include=FALSE}
-library(knitr)
-library(fontawesome)
-opts_chunk$set(echo = TRUE,  message=F, warning=F)
-```
-
-
 ## Comunicación y Reproducibilidad
 
 Hasta acá fuimos realizando el siguiente flujo:

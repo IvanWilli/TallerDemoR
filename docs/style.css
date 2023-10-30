@@ -47,3 +47,12 @@ pre code {
 .exercise {
   background-image: url("images/exercise.png");
 }
+
+.toggle {
+  height: 1.55em;
+  overflow-y: hidden;
+}
+
+.toggle.open {
+  height: auto;
+}
