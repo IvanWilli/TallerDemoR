@@ -1,0 +1,132 @@
+---
+title: |
+  | \vspace{1.5cm} \LARGE\textbf{Taller de R aplicado al análisis demográfico}\vspace{0.6cm}
+  | Universidad Nacional de Luján
+date: "Noviembre 2023"
+fontsize: 13pt
+output:
+  pdf_document: default
+geometry: a4paper, twoside, left=2.5cm, right=2.5cm, top=3.2cm, bottom=2.8cm, headsep
+  = 1.35cm, footskip = 1.6cm
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center} \includegraphics[width=2in,height=2in]{logoUNLU.png}\LARGE\\}
+- \posttitle{\end{center}}
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+# library(fontawesome)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Justitificación de la actividad
+
+El análisis demográfico busca medir e interpretar los fenómenos demográficos en una población, en el tiempo y/o comparando varias de estas. Su estudio se puede centrar en dintintos tipos de unidades de observación (población, hogares y viviendas) utilizando fuentes de datos diversas, algunas más clásicas (censos y encuestas) que otras (registros administrativos y datos online en la web). A la vez que se enriquece la diversidad de información de la que se dispone también lo hacen las herramientas informáticas con las cuales poder medir y analizar las características demográficas de los sistemas sociales. En este aspecto, es donde los demógráfos y cientistas sociales pueden tomar provecho de herramientas como **R**. 
+
+**R** es un software libre muy utilizado por la comunidad académica relacionada a la demografía, característica que facilita el desarrollo colaborativo creciente.  
+
+Aunque hay cada vez más disponibilidad de cursos de capacitación general en esta herramienta, las enfocadas a la aplicación en una rama específica son escasas. Su potencialidad para alumnos e investigadores fundamenta la oferta de este curso de posgrado con la modalidad de taller, cuyos objetivos se detallan más adelante.
+
+El taller está dirigido a investigadores, docentes, técnicos de la administración pública u otras personas con interés en el estudio demográfico utilizando R. 
+
+### Objetivo  
+
+Que los alumnos inicien sus primeros pasos con la herramienta y puedan adquirir conocimientos básicos para diseñar programas con el fin de leer, explorar y manipular bases de datos demográficas, elaborando indicadores derivados, técnicas de visualización y elaboración de reportes bajo el entorno R.
+
+### Contenidos
+
+- *Introducción - Un censista que sabe **R***
+    + R y RStudio. Características. Paquetes
+    + Tipos de objetos y operaciones básicas
+    + Lectura, exploración inicial y escritura
+    + R base
+
+- *Manipulación de datos - Un censo en **R***
+    + *dplyr* y *tidyr* para el análisis de datos
+    + Caracterizando una población, sus hogares y viviendas
+    
+- *Visualizando la demografía - Pirámides y líneas de vida en **R***
+    + *ggplot*. Características básicas
+    + Aplicaciones introductorias:
+        + Pirámides de población
+        + Diagramas de Lexis: líneas de vida y superficies
+        + Mapeo temático
+
+- *Funciones I - Divide y reina**R**ás*
+    + Modelos de crecimiento poblacional
+    + Standarización
+    + Otras técnicas básicas
+    + Fuentes de datos accesibles desde R
+
+- *Funciones II - Nace**R**, Migra**R**, Mori**R** y otros eventos*
+    + Tablas de mortalidad
+    + Indicadores de fecundidad
+    + Indicadores de migración
+    + Paquetes disponibles para el análisis demográfico
+
+- *Reportes dinámicos. No saldrás más de aquí...*
+    + Documentación y contenido reproducible
+    + R Markdown/Quarto: reportes y presentaciones reproducibles
+    
+El contenido es una guía y puede variar según las particularidades de los asistentes y sus inquietudes.
+
+### Modalidad  
+
+El taller se realizará en 6 clases de 3 horas, a realizarse los días martes a partir del 7 de noviembre de 2023.
+La primera y última serán presenciales, y luego se puede agregar una más presencial según el grupo lo requiera.
+
+### Requisitos  
+
+- Ser docente, graduado o alumno de carreras de Posgrado. Podrán participar alumnos de grado Universitario, que sean estudiantes avanzados presentando síntesis de cv donde conste inserción laboral afín. En el caso de alumnos de grado, el certificado no será por curso de posgrado sino por asistencia y aprobación de curso de capacitación.
+
+- No es necesario conocimientos previos en R. Es (bastante) deseable tener conocimientos previos de análisis demográfico, ya que algunos conceptos no serán tratados en detalle y se harán estudios de caso aplicando la herramienta.  
+
+- Los alumnos deberán tener previamente instalados los softwares [R](http://mirror.fcaglp.unlp.edu.ar/CRAN/) y [RStudio](https://www.rstudio.com/products/rstudio/download/).   
+
+### Docentes a cargo
+
+- Iván Williams. Actuario (UBA) y Mag. en Demografía Social (UNLu). Mail: *act.ivanwilliams@gmail.com*
+
+- Ayelén Martinez. Socióloga (UBA) y Esp. en Demografía Social (UNLu). Mail: *ayemartinezn@gmail.com*.
+
+- Florencia Bathory. Socióloga (UBA) y Esp. en Demografía Social (UNLu). Mail: *florencia.bathory@gmail.com*. 
+
+<!-- - *¡Es la demografía, #$!@* -->
+<!--     + Conceptos básicos -->
+<!--     + Modelos de crecimiento poblacional -->
+<!--     + Interpolación de stocks y estructuras en el tiempo -->
+<!--     + Standarización de tasas -->
+<!--     + Fuentes de datos típicas: lectura y exploración inicial -->
+<!--         + Censos -->
+<!--         + Estadísticas Vitales -->
+<!--         + Otras -->
+<!--             + HMD (Human Mortality Database, MPDIR) -->
+<!--             + HFD (Human Fertility Database, MPDIR) -->
+<!--             + WPP (World Population Prospects, ONU) -->
+<!--             + EPH (Encuesta Permanente de Hogares, INDEC) -->
+
+<!-- - *¡Dame la data!* -->
+<!--     + Creación de variables -->
+<!--     + Tratamiento de datos desconocidos: opciones básicas y avanzadas -->
+<!--     + Declaración de edad: visualización, indicadores resúmen y técnicas de ajuste -->
+<!--     + Técnicas de desagregación por edad simple -->
+<!--     + Consistencia en inputs de distintas fuentes: ajuste proporcional iterativo ("Tabla Cuadrada") -->
+
+<!-- - *¡Me muero, me hace la tabla de mortalidad sola!* -->
+<!--     + Tablas de mortalidad  -->
+<!--         - Construcción: período y cohorte  -->
+<!--         - Abreviada $\leftrightarrows$ Completa -->
+<!--     + Ajustes mediantes leyes de mortalidad con énfasis en distintos grupos de edad, y otros ajustes matemáticos -->
+<!--     + Tablas Modelo. Elección a partir de datos limitados -->
+<!--     + Proyección de mortalidad. Modelos más utilizados. Una introducción -->
+
+<!-- -	*Fecundidad no es Fertilidad* -->
+<!--     + Estimación de estructura y nivel -->
+<!--     + Dispersión por edad -->
+<!--     + Proyección de la fecundidad. Modelos más utilizados. Una introducción -->
+
+<!-- - *Tu yo del futuro te lo agradecerá* -->
+<!--     + Documentación y contenido reproducible -->
+<!--     + Rmarkdown: reportes y presentaciones reproducibles en entorno R -->
+<!--     + shiny: aplicaciones web para presentación de reportes interactivos -->

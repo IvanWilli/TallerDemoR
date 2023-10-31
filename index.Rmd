@@ -27,12 +27,16 @@ library(fontawesome)
 
 ## Información general
 
+Estimad@,
+
+¡Bienvenido! `r fa("face-smile")`
+
 Este sitio web contiene los materiales para el taller ofrecido en la Universidad Nacional de Luján, bajo el programa de maestría y especialización en Demografía Social, durante noviembre y diciembre de 2023. **No** es una guía autoexplicada, sino un acompañamiento y soporte para la cursada. 
 
 Algunas cosas útiles:
 
-- El programa actualizado se puede encontrar [aquí](https://github.com/IvanWilli/TallerDemoR/blob/master/programa/Programa.pdf).
-- Encuentra el código fuente de este sitio en [GitHub](https://github.com/IvanWilli/TallerDemoR/blob/master/docs), donde en los archivos *.Rmd* correspondientes a cada unidad estarán los resultados a los ejercicios.
+- El programa actualizado se puede encontrar [aquí](https://github.com/IvanWilli/TallerDemoR/tree/master/programa).
+- Encuentra el código fuente de este sitio en [GitHub](https://github.com/IvanWilli/TallerDemoR/tree/master).
 - Los datos que utilizaremos se pueden encontrar en un [drive](https://drive.google.com/drive/folders/1wRmATJa1ZcCVk5gDodjtD1SYJLabjlvD?usp=sharing).
 - Los encuentros virtuales los haremos vía zoom en este [link](https://us06web.zoom.us/j/88249603426?pwd=sw7NItVGMUB6jm113eCb2Jta34rAoM.1).
 
@@ -45,8 +49,6 @@ Ayelén, Florencia e Iván
 <!-- --------------------------------------------------------------------- -->
 
 ## PrepaRándonos
-
-Estimad@,
 
 Pronto comenzaremos el **Taller de R aplicado a la Demografía**. El objetivo es que puedas dar tus primeros pasos en la herramienta y puedas aplicar allí las principales técnicas de la demografía.
 
@@ -72,7 +74,7 @@ install.packages(c("tidyverse", "devtools", "foreign", "eph", "plotly", "gapmind
 
 ### Foro 
 
-Para comunicarnos durante la semana y que haya un intercambio fluido utilizaremos el apartado de [issues](https://github.com/IvanWilli/TallerDemoR/issues) del repositorio en github, que permite escribir [propuestas/sugerencias](https://docs.github.com/es/issues/tracking-your-work-with-issues/creating-an-issue) incluyendo pedazos de código (el lenguaje es [markdown](https://en.wikipedia.org/wiki/Markdown), que veremos en la última unidad). Para esto debes crearte un usuario. El uso de este espacio es **opcional**: si bien será útil para discutir contenido en la semana, si hay comunicaciones importantes de tipo administrativo se harán por mail.
+Para comunicarnos durante la semana utilizaremos el apartado de [issues](https://github.com/IvanWilli/TallerDemoR/issues) del repositorio en github, que permite escribir [propuestas/sugerencias](https://docs.github.com/es/issues/tracking-your-work-with-issues/creating-an-issue) incluyendo pedazos de código (el lenguaje es [markdown](https://en.wikipedia.org/wiki/Markdown), que veremos en la última unidad). Para esto debes crearte un usuario. El uso de este espacio es **opcional**: si bien será útil para discutir contenido en la semana, si hay comunicaciones importantes de tipo administrativo se harán por mail.
 
 ### Por último 
 

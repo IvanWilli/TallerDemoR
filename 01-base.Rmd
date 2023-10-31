@@ -94,7 +94,7 @@ nombre <- "Horacio"
 # Qué clase de objeto es? (esto es un comentario en R)
 class(nombre)
 ```
-* **lógicas** (verdadero/falso)  
+* **logic** (verdadero/falso)  
 ```{r}
 autoRespondente <- TRUE
 autoRespondente == FALSE
@@ -125,7 +125,7 @@ is.na(sexo)
 
 Tu yo del futuro, otros humanos y múltiples computadoras leerán tu código: hablemos de algunas buenas practicas (aquí [algunas](HUmanos y robots)).
 
-### Actividad individual
+### Actividad
 
 El hogar que te fue asignado tambien tiene un jefe/a o persona de referencia. Proponemos lo siguiente:
 
@@ -402,7 +402,7 @@ mean(hogar$n_caracteres)
 
 ***
 
-## Listas (*)
+## Listas
 
 ¿Te preguntarás si hay vida más allá del **data.frame**? Por supuesto, las **listas**. Una lista es una colección de objetos de cualquier tipo (incluidos los data.frame). Por ejemplo si el tercer miembro soy yo, Iván, y formo mi propio hogar dentro de la vivienda, el **listado de hogares** censado tendría dos data.frame:
 
@@ -451,7 +451,7 @@ Y debo tener el mismo hogar que antes, pero ahora como elemento de un listado:
 str(lista_de_hogares)
 ```
 
-### Actividad (*)
+### Actividad
 
 L1. Antes que cierres la puerta, el respondente te avisa que se alquila una pieza al fondo del terreno, donde vive Luis: varón, nacido el 3 de junio del 2000, en su hogar unipersonal. Incorporalo a la lista de hogares de al vivienda.
 
