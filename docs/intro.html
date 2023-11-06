@@ -23,7 +23,7 @@
 <meta name="author" content="Ayelén Martinez, Florencia Bathory e Iván Williams" />
 
 
-<meta name="date" content="2023-10-29" />
+<meta name="date" content="2023-11-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,19 +157,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#el-proyecto-taller"><i class="fa fa-check"></i><b>2.1</b> El proyecto Taller</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#variables"><i class="fa fa-check"></i><b>2.1.1</b> Variables</a></li>
-<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#actividad-individual"><i class="fa fa-check"></i><b>2.1.2</b> Actividad individual</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#actividad"><i class="fa fa-check"></i><b>2.1.2</b> Actividad</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#vectores"><i class="fa fa-check"></i><b>2.2</b> Vectores</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#actividad"><i class="fa fa-check"></i><b>2.2.1</b> Actividad</a></li>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#actividad-1"><i class="fa fa-check"></i><b>2.2.1</b> Actividad</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#data.frames"><i class="fa fa-check"></i><b>2.3</b> Data.frames</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#actividad-1"><i class="fa fa-check"></i><b>2.3.1</b> Actividad</a></li>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#actividad-2"><i class="fa fa-check"></i><b>2.3.1</b> Actividad</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#listas"><i class="fa fa-check"></i><b>2.4</b> Listas (*)</a>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#listas"><i class="fa fa-check"></i><b>2.4</b> Listas</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#actividad-2"><i class="fa fa-check"></i><b>2.4.1</b> Actividad (*)</a></li>
+<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#actividad-3"><i class="fa fa-check"></i><b>2.4.1</b> Actividad</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#referencias-y-materiales-adicionales"><i class="fa fa-check"></i><b>2.5</b> Referencias y materiales adicionales</a></li>
 </ul></li>
@@ -254,7 +254,7 @@ Las operaciones sin asignación no cambian el valor de la variable creada:</p>
 <span id="cb17-4"><a href="intro.html#cb17-4" tabindex="-1"></a><span class="fu">class</span>(nombre)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <ul>
-<li><strong>lógicas</strong> (verdadero/falso)</li>
+<li><strong>logic</strong> (verdadero/falso)</li>
 </ul>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="intro.html#cb19-1" tabindex="-1"></a>autoRespondente <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
 <span id="cb19-2"><a href="intro.html#cb19-2" tabindex="-1"></a>autoRespondente <span class="sc">==</span> <span class="cn">FALSE</span></span></code></pre></div>
@@ -276,8 +276,8 @@ Las operaciones sin asignación no cambian el valor de la variable creada:</p>
 <pre><code>## [1] TRUE</code></pre>
 <p>Tu yo del futuro, otros humanos y múltiples computadoras leerán tu código: hablemos de algunas buenas practicas (aquí <a href="HUmanos%20y%20robots">algunas</a>).</p>
 </div>
-<div id="actividad-individual" class="section level3 hasAnchor" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Actividad individual<a href="intro.html#actividad-individual" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="actividad" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Actividad<a href="intro.html#actividad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El hogar que te fue asignado tambien tiene un jefe/a o persona de referencia. Proponemos lo siguiente:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Crear los atributos <code>nombre</code>, <code>sexo</code>, <code>edad</code>, <code>f_nacim</code>.</p></li>
@@ -359,8 +359,8 @@ Otra forma de verlo, en dos pasos:<br>
 Se puede pedir ayuda consultando la documentación de las funciones:<code>?range</code> o <code>help(range)</code>. Y muy probablmente alguien ya se topó con tu problema:<br>
 <img src="figs/matrix.jfif" alt="Caption for the picture." /></p>
 </div>
-<div id="actividad" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Actividad<a href="intro.html#actividad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="actividad-1" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Actividad<a href="intro.html#actividad-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Individual</strong>. considerando mi hogar:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>¿Qué valores únicos tiene la variable <code>autoRespondente</code>?</p></li>
@@ -399,26 +399,18 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 ##  $ nombre         : chr  &quot;Horacio&quot; &quot;José&quot; &quot;Iván&quot; &quot;Facundo&quot; ...
 ##  $ sexo           : chr  &quot;v&quot; &quot;m&quot; &quot;v&quot; NA ...
 ##  $ edad           : num  63 60 35 32 27 27
-##  $ fecha_nacim    : Date, format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; ...
+##  $ fecha_nacim    : Date, format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; &quot;1985-11-08&quot; ...
 ##  $ autoRespondente: logi  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="intro.html#cb63-1" tabindex="-1"></a><span class="fu">summary</span>(hogar)   <span class="co"># resumen</span></span></code></pre></div>
-<pre><code>##     nombre              sexo                edad        fecha_nacim        
-##  Length:6           Length:6           Min.   :27.00   Min.   :1960-01-01  
-##  Class :character   Class :character   1st Qu.:28.25   1st Qu.:1967-11-06  
-##  Mode  :character   Mode  :character   Median :33.50   Median :1986-06-15  
-##                                        Mean   :40.67   Mean   :1980-05-24  
-##                                        3rd Qu.:53.75   3rd Qu.:1992-02-14  
-##                                        Max.   :63.00   Max.   :1993-10-24  
-##  autoRespondente
-##  Mode :logical  
-##  FALSE:5        
-##  TRUE :1        
-##                 
-##                 
-## </code></pre>
+<pre><code>##     nombre              sexo                edad        fecha_nacim         autoRespondente
+##  Length:6           Length:6           Min.   :27.00   Min.   :1960-01-01   Mode :logical  
+##  Class :character   Class :character   1st Qu.:28.25   1st Qu.:1967-11-06   FALSE:5        
+##  Mode  :character   Mode  :character   Median :33.50   Median :1986-06-15   TRUE :1        
+##                                        Mean   :40.67   Mean   :1980-05-24                  
+##                                        3rd Qu.:53.75   3rd Qu.:1992-02-14                  
+##                                        Max.   :63.00   Max.   :1993-10-24</code></pre>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="intro.html#cb65-1" tabindex="-1"></a><span class="fu">colnames</span>(hogar)  <span class="co"># nombres de columnas</span></span></code></pre></div>
-<pre><code>## [1] &quot;nombre&quot;          &quot;sexo&quot;            &quot;edad&quot;            &quot;fecha_nacim&quot;    
-## [5] &quot;autoRespondente&quot;</code></pre>
+<pre><code>## [1] &quot;nombre&quot;          &quot;sexo&quot;            &quot;edad&quot;            &quot;fecha_nacim&quot;     &quot;autoRespondente&quot;</code></pre>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="intro.html#cb67-1" tabindex="-1"></a><span class="fu">ncol</span>(hogar)      <span class="co"># número de columnas</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="intro.html#cb69-1" tabindex="-1"></a><span class="fu">nrow</span>(hogar)      <span class="co"># número de filas</span></span></code></pre></div>
@@ -455,8 +447,8 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 <p>Al parecer el respondente fue el cónyuge. Hagamos el cambio seleccionando de la variable <code>autoRespondete</code> aquellla observación (persona) que sea:</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="intro.html#cb91-1" tabindex="-1"></a>hogar<span class="sc">$</span>autoRespondente[hogar<span class="sc">$</span>rp <span class="sc">==</span> <span class="st">&quot;jefe&quot;</span>]    <span class="ot">&lt;-</span> <span class="cn">FALSE</span>  <span class="co"># ¿Cómo se lee esto?</span></span>
 <span id="cb91-2"><a href="intro.html#cb91-2" tabindex="-1"></a>hogar<span class="sc">$</span>autoRespondente[hogar<span class="sc">$</span>rp <span class="sc">==</span> <span class="st">&quot;cónyuge&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span></code></pre></div>
-<div id="actividad-1" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Actividad<a href="intro.html#actividad-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="actividad-2" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Actividad<a href="intro.html#actividad-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Grupal</strong>:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Crear un <em>data.frame</em> con los miembros del hogar del grupo, a partir de los vectores creados en la actividad previa.</p></li>
@@ -469,7 +461,7 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 </div>
 </div>
 <div id="listas" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Listas (*)<a href="intro.html#listas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.4</span> Listas<a href="intro.html#listas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>¿Te preguntarás si hay vida más allá del <strong>data.frame</strong>? Por supuesto, las <strong>listas</strong>. Una lista es una colección de objetos de cualquier tipo (incluidos los data.frame). Por ejemplo si el tercer miembro soy yo, Iván, y formo mi propio hogar dentro de la vivienda, el <strong>listado de hogares</strong> censado tendría dos data.frame:</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="intro.html#cb92-1" tabindex="-1"></a>hogar_1 <span class="ot">&lt;-</span> hogar[<span class="sc">-</span><span class="dv">3</span>,] </span>
 <span id="cb92-2"><a href="intro.html#cb92-2" tabindex="-1"></a>hogar_2 <span class="ot">&lt;-</span> hogar[<span class="dv">3</span>,]</span>
@@ -483,7 +475,7 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 ##   ..$ nombre         : chr [1:5] &quot;Horacio&quot; &quot;José&quot; &quot;Facundo&quot; &quot;Cristian&quot; ...
 ##   ..$ sexo           : chr [1:5] &quot;v&quot; &quot;m&quot; NA &quot;v&quot; ...
 ##   ..$ edad           : num [1:5] 63 60 32 27 27
-##   ..$ fecha_nacim    : Date[1:5], format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; ...
+##   ..$ fecha_nacim    : Date[1:5], format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; &quot;1987-01-21&quot; ...
 ##   ..$ autoRespondente: logi [1:5] FALSE TRUE FALSE FALSE FALSE
 ##   ..$ rp             : Factor w/ 3 levels &quot;cónyuge&quot;,&quot;hije&quot;,..: 3 1 2 2 2
 ##  $ hogar_2:&#39;data.frame&#39;: 1 obs. of  6 variables:
@@ -525,11 +517,11 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 ##   ..$ nombre         : chr [1:6] &quot;Horacio&quot; &quot;José&quot; &quot;Facundo&quot; &quot;Cristian&quot; ...
 ##   ..$ sexo           : chr [1:6] &quot;v&quot; &quot;m&quot; NA &quot;v&quot; ...
 ##   ..$ edad           : num [1:6] 63 60 32 27 27 35
-##   ..$ fecha_nacim    : Date[1:6], format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; ...
+##   ..$ fecha_nacim    : Date[1:6], format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; &quot;1987-01-21&quot; ...
 ##   ..$ autoRespondente: logi [1:6] FALSE TRUE FALSE FALSE FALSE FALSE
 ##   ..$ rp             : Factor w/ 3 levels &quot;cónyuge&quot;,&quot;hije&quot;,..: 3 1 2 2 2 2</code></pre>
-<div id="actividad-2" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> Actividad (*)<a href="intro.html#actividad-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="actividad-3" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Actividad<a href="intro.html#actividad-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>L1. Antes que cierres la puerta, el respondente te avisa que se alquila una pieza al fondo del terreno, donde vive Luis: varón, nacido el 3 de junio del 2000, en su hogar unipersonal. Incorporalo a la lista de hogares de al vivienda.</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="intro.html#cb103-1" tabindex="-1"></a>hogar_luis <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nombre =</span> <span class="st">&quot;Luis&quot;</span>, <span class="at">sexo =</span> <span class="st">&quot;v&quot;</span>, <span class="at">edad =</span> <span class="dv">23</span>, <span class="at">fecha_nacim =</span> <span class="st">&quot;2000-06-03&quot;</span>, <span class="at">autoRespondente =</span> <span class="cn">TRUE</span>, <span class="at">rp =</span> <span class="st">&quot;jefe&quot;</span>)</span></code></pre></div>
 <p>L2. Al querer irte Luis te avisa que en verdad el colabora monetariamente con la comida diaria, y hasta cenan juntos por las noches. Probablemente sea mejor unificar todo en un solo hogar. Hazlo recordando eliminar el hogar unipersonal de Luis asignando <em>NULL</em> a ese elemento de la lista, o en todo caso creando un nuevo objeto <code>lista_de_hogares</code> sin un segundo elemento (<em>pisarlo</em>).</p>

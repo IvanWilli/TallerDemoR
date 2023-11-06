@@ -27,9 +27,7 @@ library(fontawesome)
 
 ## Información general
 
-Estimad@,
-
-¡Bienvenido! `r fa("face-smile")`
+¡Bienvenid\@s! `r fa("face-smile")`
 
 Este sitio web contiene los materiales para el taller ofrecido en la Universidad Nacional de Luján, bajo el programa de maestría y especialización en Demografía Social, durante noviembre y diciembre de 2023. **No** es una guía autoexplicada, sino un acompañamiento y soporte para la cursada. 
 

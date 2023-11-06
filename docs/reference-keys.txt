@@ -1,3 +1,5 @@
+fig:unnamed-chunk-5
+fig:unnamed-chunk-6
 introducción
 información-general
 preparándonos
@@ -6,3 +8,14 @@ instalación-de-paquetes
 foro
 por-último
 presentación-inicial
+intro
+el-proyecto-taller
+variables
+actividad
+vectores
+actividad-1
+data.frames
+actividad-2
+listas
+actividad-3
+referencias-y-materiales-adicionales
