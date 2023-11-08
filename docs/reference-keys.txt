@@ -11,11 +11,11 @@ presentación-inicial
 intro
 el-proyecto-taller
 variables
-actividad-individual
-vectores
 actividad
-data.frames
+vectores
 actividad-1
-listas
+data.frames
 actividad-2
+listas
+actividad-3
 referencias-y-materiales-adicionales

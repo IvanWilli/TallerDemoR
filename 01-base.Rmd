@@ -94,7 +94,7 @@ nombre <- "Horacio"
 # Qué clase de objeto es? (esto es un comentario en R)
 class(nombre)
 ```
-* **lógicas** (verdadero/falso)  
+* **logic** (verdadero/falso)  
 ```{r}
 autoRespondente <- TRUE
 autoRespondente == FALSE
@@ -125,9 +125,9 @@ is.na(sexo)
 
 Tu yo del futuro, otros humanos y múltiples computadoras leerán tu código: hablemos de algunas buenas practicas (aquí [algunas](HUmanos y robots)).
 
-### Actividad individual
+### Actividad
 
-El hogar que te fue asignado tambien tiene un jefe/a o persona de referencia. Proponemos lo siguiente:
+El hogar que te fue asignado tambien tiene un jefe/a o persona de referencia. Te proponemos lo siguiente:
 
 a) Crear los atributos `nombre`, `sexo`, `edad`, `f_nacim`.
 
@@ -257,7 +257,7 @@ Se puede pedir ayuda consultando la documentación de las funciones:`?range` o `
 
 ### Actividad
 
-**Individual**. considerando mi hogar:
+Considerando el hogar de Horacio, responder:
 
 a) ¿Qué valores únicos tiene la variable `autoRespondente`?
 ```{r, include=F}
@@ -274,10 +274,10 @@ a) ¿En qué fecha nació Florencia?
 fecha_nacim[nombre=="Florencia"]
 ```
 
-**Grupal**. si no logramos hacerlo en grupo, toma 4 personas que conozcas e incorpóralos como miembros de tu hogar. 
 
-a) Crear los vectores de atributos `nombre`, `sexo` , `edad` y `fecha de nacimiento` de los miembros del hogar del grupo. Tener en cuenta el **orden** `r fa("exclamation")`. 
-```{r}
+a) Toma 4 personas que conozcas e incorpóralos como miembros de tu hogar: crear los vectores de atributos `nombre`, `sexo` , `edad` y `fecha de nacimiento` de los miembros del hogar del grupo. Tener en cuenta el **orden** `r fa("exclamation")`. 
+
+```{r, include=F}
 
 ```
 
@@ -291,19 +291,19 @@ a) Obtener el rango de la edad de los miembros del hogar y su promedio. Para lo 
 range(edad)
 ```
 
-a) Mediante `Sys.Date()` se puede ontener la fecha de hoy (guardarla en una variable si es preferible). Calcular la edad exacta de los miembros de la siguiente manera: `(fecha_hoy - fecha_nacim)/365` (restamos fechas y las convertimos en años de manera aproximada). 
+a) Mediante `Sys.Date()` se puede ontener la fecha de hoy (guardarla en una variable si es preferible). Calcular la edad exacta de los miembros, al día de la fecha, de la siguiente manera: `(fecha_hoy - fecha_nacim)/365` (restamos fechas y las convertimos en años de manera aproximada). 
 ```{r, include=F}
 fecha_hoy <- Sys.Date()
 edad_exacta <- (fecha_hoy - fecha_nacim)/365
 ```
 
-a) ¿Y la edad cumplida de los miembros cual es? ¿El respondente informó correctamente la edad de los miembros?
+a) ¿Y la edad *cumplida* de los miembros cuál es? ¿El respondente informó correctamente la edad de todos los miembros?
 ```{r, include=F}
 edad_cumplida <- trunc(edad_exacta)
 edad_cumplida == edad
 ```
 
-a) Con la función `nchar()` podes obtener el largo de un texto. ¿Cuál es el nombre más largo?
+a) Con la función `nchar()` podés obtener el largo de un texto. ¿Cuál es el nombre más largo?
 ```{r, include=F}
 nombre[nchar(nombre)==max(nchar(nombre))]
 ```
@@ -369,9 +369,7 @@ hogar$autoRespondente[hogar$rp == "cónyuge"] <- TRUE
 
 ### Actividad
 
-**Grupal**:
-
-a) Crear un *data.frame* con los miembros del hogar del grupo, a partir de los vectores creados en la actividad previa. 
+a) A partir de los vectores creados en la actividad previa, generar un *data.frame* con los miembros del hogar. 
 
 ```{r, include=F, eval=F}
 hogar <- data.frame(nombre, sexo, edad, fecha_nacim, autoRespondente, stringsAsFactors = F) 
@@ -391,10 +389,10 @@ hogar[2,]
 a) Luego de una revisita al hogar encontramos que el tercer miembro listado prefiere que no conste su sexo, y que el cuarto miembro pefiere ser listado con su apodo "Pepe". Hacer los cambios correspondientes.
 ```{r, include=F, eval=F}
 hogar$sexo[3] <- NA
-hogar$nombre[hogar$nombre=="Florencia"] <- "Flor"
+hogar$nombre[hogar$nombre=="Florencia"] <- "Pepe"
 ```
 
-a) Agregar una variable con el número de caracteres de cada nombre. Obtener el promedio.
+a) Agregar una variable con el número de caracteres de cada nombre. Informar el promedio.
 ```{r, include=F, eval=F}
 hogar$n_caracteres <- nchar(hogar$nombre)
 mean(hogar$n_caracteres)
@@ -402,7 +400,7 @@ mean(hogar$n_caracteres)
 
 ***
 
-## Listas (*)
+## Listas
 
 ¿Te preguntarás si hay vida más allá del **data.frame**? Por supuesto, las **listas**. Una lista es una colección de objetos de cualquier tipo (incluidos los data.frame). Por ejemplo si el tercer miembro soy yo, Iván, y formo mi propio hogar dentro de la vivienda, el **listado de hogares** censado tendría dos data.frame:
 
@@ -451,9 +449,9 @@ Y debo tener el mismo hogar que antes, pero ahora como elemento de un listado:
 str(lista_de_hogares)
 ```
 
-### Actividad (*)
+### Actividad
 
-L1. Antes que cierres la puerta, el respondente te avisa que se alquila una pieza al fondo del terreno, donde vive Luis: varón, nacido el 3 de junio del 2000, en su hogar unipersonal. Incorporalo a la lista de hogares de al vivienda.
+a) Antes que cierres la puerta, el respondente te avisa que se alquila una pieza al fondo del terreno, donde vive Luis: varón, nacido el 3 de junio del 2000, en su hogar unipersonal. Incorporalo a la lista de hogares de al vivienda.
 
 ```{r}
 hogar_luis <- data.frame(nombre = "Luis", sexo = "v", edad = 23, fecha_nacim = "2000-06-03", autoRespondente = TRUE, rp = "jefe")
@@ -467,7 +465,7 @@ lista_de_hogares <- list(hogar_1 = hogar,
 str(lista_de_hogares)
 ```
 
-L2. Al querer irte Luis te avisa que en verdad el colabora monetariamente con la comida diaria, y hasta cenan juntos por las noches. Probablemente sea mejor unificar todo en un solo hogar. Hazlo recordando eliminar el hogar unipersonal de Luis asignando *NULL* a ese elemento de la lista, o en todo caso creando un nuevo objeto `lista_de_hogares` sin un segundo elemento (*pisarlo*).
+a) Al querer irte Luis te avisa que en verdad el colabora monetariamente con la comida diaria, y hasta cenan juntos por las noches. Probablemente sea mejor unificar todo en un solo hogar. Hazlo recordando eliminar el hogar unipersonal de Luis asignando *NULL* a ese elemento de la lista, o en todo caso creando un nuevo objeto `lista_de_hogares` sin un segundo elemento (*pisarlo*).
 
 ```{r}
 lista_de_hogares <- list(hogar_1 = rbind(hogar, hogar_luis))
