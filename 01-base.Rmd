@@ -402,7 +402,7 @@ mean(hogar$n_caracteres)
 
 ## Listas
 
-¿Te preguntarás si hay vida más allá del **data.frame**? Por supuesto, las **listas**. Una lista es una colección de objetos de cualquier tipo (incluidos los data.frame). Por ejemplo si el tercer miembro soy yo, Iván, y formo mi propio hogar dentro de la vivienda, el **listado de hogares** censado tendría dos data.frame:
+¿Te preguntarás si hay vida más allá del **data.frame**? Por supuesto, las **listas**. Una lista es una colección de objetos de cualquier tipo (incluidos los data.frame). Por ejemplo si el tercer miembro es Iván y se construye en el terreno de los padres y forma su propio hogar dentro de la vivienda, el **listado de hogares** censado tendría dos data.frame:
 
 ```{r}
 hogar_1 <- hogar[-3,] 
