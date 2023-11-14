@@ -2,7 +2,7 @@ book_filename: "talleR"
 rmd_files:
 - index.Rmd
 - 01-base.Rmd
-# - 02-dplyr.Rmd
+- 02-dplyr.Rmd
 # - 03-ggplot.Rmd
 # - 04-funciones.Rmd
 # - 05-reportes.Rmd

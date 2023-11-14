@@ -10,7 +10,7 @@ caba2010_br <- read.csv("Data/C2010_CABA_muestra.csv", header = T, sep=",")
 
 ## Lectura de datos
 
-En la unidad previa caracterizamos **un** hogar censal. En esta unidad trabajaremos la **base** de datos censal, con todas sus viviendas, hogares y personas. Para esto recorreremos distintos paquetes del entorno [tidyverse](https://www.tidyverse.org/), cuyo fin es generar un entorno de herramientas especializada en el análisis de datos.
+En la unidad previa caracterizamos **un** hogar censal. En esta unidad trabajaremos la **base** de datos censal, con todas sus viviendas, hogares y personas. Para esto recorreremos distintos paquetes de la familia [tidyverse](https://www.tidyverse.org/), cuyo fin es generar un entorno de herramientas especializada en el análisis de datos.
 
 ```{r, message=F, warning=F}
 # install.packages("tidyverse")
@@ -19,64 +19,68 @@ library(fontawesome)
 library(knitr)
 ```
 
-Pero primero haremos un repaso por las distintas opciones de *lectura* de datos que nos ofrece R. Creemos una carpeta que se llame se llame "Data", donde dejemos las bases de datos disponibles en el [drive](https://drive.google.com/drive/folders/1wRmATJa1ZcCVk5gDodjtD1SYJLabjlvD?usp=sharing). Verifiquemos que tengamos todas las bases de datos correspondientes en la carpeta "Data" mediante `list.files()`.
+Pero primero haremos un repaso por las distintas opciones de *lectura* de datos que nos ofrece R. Creemos una carpeta que se llame "Data", donde dejemos las bases de datos disponibles en el [drive](https://drive.google.com/drive/folders/1wRmATJa1ZcCVk5gDodjtD1SYJLabjlvD?usp=sharing). Verifiquemos que tengamos todas las bases de datos correspondientes en la carpeta "Data" mediante `list.files()`.
 
 ```{r, eval=F}
 list.files("Data")
 ```
 
-Para mostrar las diversas formas de lectura de datos que ofrece R nos valdremos de la Encuesta Permanente de Hogares ([EPH](https://www.indec.gob.ar/ftp/cuadros/sociedad/metodologia_eph_continua.pdf)), un operativo estadístico llevado adelante por INDEC con motivo de caracterizar la evolución de los mercados de trabajo de 31 aglomerados urbanos del país. Por ejemplo, si quisiéramos leer la base de datos del primer trimestre de 2019, ¿qué opciones tenemos? Es muy importante aquí que la *ruta* del archivo a leer sea a partir de la posición de trabajo actual (recuerda `getwd()`) y hacia donde apuntar (puedes utilizar el predictor con `tab` luego de generar comillas).
+Para mostrar las diversas formas de lectura de datos que ofrece R nos valdremos de la Encuesta Permanente de Hogares ([EPH](https://www.indec.gob.ar/ftp/cuadros/sociedad/metodologia_eph_continua.pdf)), un operativo estadístico llevado adelante por INDEC con motivo de caracterizar la evolución de los mercados de trabajo de 31 aglomerados urbanos del país. Por ejemplo, si quisiéramos leer la base de datos del segundo trimestre de 2023, ¿qué opciones tenemos? ¿Qué opciones [nos dan](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos)? Es muy importante aquí que la *ruta* del archivo a leer sea a partir de la posición de trabajo actual (recuerda `getwd()`) y hacia donde apuntar (puedes utilizar el predictor con `tab` luego de generar comillas).
 
 - Texto plano con separador `;`
 ```{r}
 # R base trae funciones para la lectura de datos, las más comunes son "read.table" y "read.csv"
-EPH_1t19_txt <- read.table(file = "Data/usu_individual_t119.txt", header = T, sep = ";")
-head(EPH_1t19_txt[,1:5])
+EPH_2t23_txt <- read.table(file = "Data/usu_individual_T223.txt", header = T, sep = ";")
+head(EPH_2t23_txt[,1:5])
 ```
 
 - Una planilla excel con extensión `xls` o `xlsx`, seleccionando la pestaña (y el rango de celdas si queremos). Aprovechemos a leer la documentación de esta función: `?read_xls` o desde el tab de paquetes en RStudio.
 
-```{r}
+```{r, warning=F}
 library(readxl) # pertenece a tidyverse
-EPH_1t19_xls <- read_xls(path = "Data/usu_individual_t119.xls", sheet = 1)
-
-# quiero el rango B3:C5
-read_xls(path = "Data/usu_individual_t119.xls", sheet = 1, range = "B3:C5", col_names = FALSE)
+EPH_2t23_xls <- read_xlsx(path = "Data/usu_individual_T223.xlsx", sheet = 1)
+head(EPH_2t23_xls)
 ```
 
-- También podemos leer extensiones *.dbf*, *SAS*, *SPSS*, *Stata*, etcéteras... gracias a la librería [foreign](https://cran.r-project.org/package=foreign). Por ejemplo, una base de datos del entorno SPSS:
+Nos interesa el rango "B3:C5":
+```{r}
+read_xlsx(path = "Data/usu_individual_T223.xlsx", sheet = 1, range = "B3:C5", col_names = FALSE)
+```
+
+- También podemos leer extensiones *.dbf*, *SAS*, *SPSS*, *Stata*, etcéteras... gracias a la librería [foreign](https://cran.r-project.org/package=foreign). Por ejemplo, una base de datos del entorno SPSS de la EPH del primer trimestre de 2019:
 
 ```{r, eval = FALSE}
 library(foreign)
-EPH_1t19_spss <- read.spss("Data/usu_individual_t119.sav", to.data.frame=TRUE) 
+EPH_2t23_spss <- read.spss("Data/usu_individual_T223.sav", to.data.frame=TRUE) 
 ```
 
-- En la primer unidad dijimos que un paquete es *compartir* `r fa("share")`, y es lo que hace a una comunidad dinámica. Ya existe un paquete llamado [eph](https://cran.r-project.org/web/packages/eph/eph.pdf). Permite no solo leer las bases de datos trimestre a trimestre, sino funciones para obtener muchos resultados y *panelear* olas.
+- En la primer unidad dijimos que un paquete es *compartir* `r fa("share")`, y es lo que hace a una comunidad dinámica. Ya existe un paquete llamado [eph](https://cran.r-project.org/web/packages/eph/eph.pdf). Permite no solo leer las bases de datos trimestre a trimestre, sino funciones para obtener muchos resultados y *panelear* olas. ¿Qué *warning* nos da?
 
-```{r, eval = FALSE}
+```{r, message=TRUE}
 library(eph)
-EPH_1t19_eph = get_microdata(year = 2019, trimester = 1, type = 'individual')
+EPH_2t23_eph = get_microdata(year = 2023, trimester = 2, type = 'individual')
 ```
 
 ### Acceso a archivos no locales
 
-También podemos leer un archivo **online**, por ejemplo la base de microdatos de DEIS (Dirección de Estadísticas e Información en Salud). Vayamos a la [web](http://www.deis.msal.gov.ar/) primero y veamos como obtener el *link*. Tiene extensión [*csv*](https://es.wikipedia.org/wiki/Valores_separados_por_comas). Utilicemos la función `read.csv` comentada anteriormente, pero en vez de apuntar al archivo local hagámoslo al *url*:
+También podemos leer un archivo **online**, por ejemplo la base de microdatos de DEIS (Dirección de Estadísticas e Información en Salud) de defunciones para los años 2005-2021. Vayamos a la web de Datos Argentina del Ministerio de Salud de la Nación, específicamente para [Estadísticas Vitales]((http://datos.salud.gob.ar/dataset?groups=estadisticas-vitales) ), y veamos cómo obtener la dirección en la web con click derecho sobre el enlace. Tiene extensión [*.csv*](https://es.wikipedia.org/wiki/Valores_separados_por_comas). Utilicemos la función `read.csv` comentada anteriormente, pero en vez de apuntar a un archivo local hagámoslo al *url*:
 ```{r}
-url <- "https://www.argentina.gob.ar/sites/default/files/2021/03/defweb17.csv"
-DEf17 <- read.csv(url, header = T)
-head(DEf17)
+url <- "http://datos.salud.gob.ar/dataset/27c588e8-43d0-411a-a40c-7ecc563c2c9f/resource/fab9e990-865c-43c4-a643-3dbc3b70a934/download/defunciones-ocurridas-y-registradas-en-la-republica-argentina-anos-2005-2021.csv"
+DEf05_21 <- read.csv(url, header = T)
+head(DEf05_21)
 ```
 
 Otras opciones posibles:
 
 - Paquete con datos: por ejemplo 
-  - [wpp19](https://cran.r-project.org/web/packages/wpp2019/index.html): estimaciones y proyecciones de Naciones Unidas, revisión 2019.
+  - [wpp19](https://cran.r-project.org/web/packages/wpp2019/index.html) o [wpp2022](https://github.com/PPgp/wpp2022): estimaciones y proyecciones de Naciones Unidas, revisiones 2019 y 2022. ¿Qué diferencia encuentran entre la forma de acceder a los dos paquetes?
+  - Miles de datasets dispersos en muchos paquetes, aglutinados por [CRAN](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html#W), o por [usuarios](https://vincentarelbundock.github.io/Rdatasets/articles/data.html).
 
-- Con conexión a un [servidor](https://rpubs.com/FvD/acceder-bases-de-datos-en-r): podemos acceder a una base de datos SQL Server, Oracle, etc. desde R, leyendo (y deitando) sus tablas a partir de las credenciales que tengamos asignadas.
+- Con conexión a un [servidor](https://rpubs.com/FvD/acceder-bases-de-datos-en-r): podemos acceder a una base de datos SQL Server, Oracle, etc. desde R, leyendo (y editando) sus tablas a partir de las credenciales que tengamos asignadas.
 
 - Planillas de [google](https://googlesheets4.tidyverse.org/): tenemos la posibilidad de leer y escribir planillas de cálculo en la nube.
 
-- API: pedidos online de información a un tercero. Por ejemplo [twitter](https://docs.ropensci.org/rtweet/) (o *X* ahora).
+- API: pedidos online de información a un tercero. Por ejemplo [twitter](https://docs.ropensci.org/rtweet/) (o *X* ahora), o servicios específicos como el de la [OMS](https://github.com/aphp/rgho).
 
 ### Actividad
 
@@ -89,19 +93,28 @@ Terminemos de afianzar lo visto hasta aquí. Te proponemos resolver/responder:
 a) Chequear que todas las versiones de la base de datos de la eph que leímos tengan la misma cantidad de observaciones (filas).
 
 ```{r, eval = F, include = F}
-nrow(EPH_1t19_txt)
-nrow(EPH_1t19_xlsx)
-nrow(EPH_1t19_spss)
-nrow(EPH_1t19_eph)
+nrow(EPH_2t23_txt)
+nrow(EPH_2t23_xlsx)
+nrow(EPH_2t23_spss)
+nrow(EPH_2t23_eph)
 ```
 
-a) ¿Cuántas muertes fueron registradas en el año 2017? ¿Cuantas de mujeres? ¿Cuántas en la provincia de Santa Fe? Si, necesitas un diccionario de datos, incluido en la [web](https://www.argentina.gob.ar/salud/deis/datos/defunciones).
+a) ¿Cuántas muertes fueron registradas en el año 2021? ¿Cuantas de mujeres? ¿Cuántas en la provincia de Santa Fe? Si, necesitas un diccionario de datos, incluido en la [web](https://www.argentina.gob.ar/salud/deis/datos/defunciones).
 
 ```{r, eval = F, include = F}
-sum(DEf17$CUENTA)
-sum(DEf17$CUENTA[DEf17$SEXO == 1])
-sum(DEf17$CUENTA[DEf17$PROVRES == 82])
+sum(DEf05_21$cantidad)
+sum(DEf05_21$cantidad[DEf05_21$anio == 2021])
+sum(DEf05_21$cantidad[DEf05_21$anio == 2021 & DEf05_21$sexo_id == 1])
+sum(DEf05_21$cantidad[DEf05_21$anio == 2021 & DEf05_21$jurisdiccion_de_residencia_id == 82])
 ```
+
+a) Siguiendo con la base de defunciones, estimemos el impacto del exceso de mortalidad del año 2020 y el año 2021 (un número para cada año). Lo definiremos acá como el ratio entre las defunciones de 2020 (o 2021) respecto al promedio de los años 2017-2019.
+
+```{r, eval = F, include = F}
+sum(DEf05_21$cantidad[DEf05_21$anio == 2020])/(sum(DEf05_21$cantidad[DEf05_21$anio %in% 2017:2019])/3)
+sum(DEf05_21$cantidad[DEf05_21$anio == 2021])/(sum(DEf05_21$cantidad[DEf05_21$anio %in% 2017:2019])/3)
+```
+
 
 a) Leer *"C2010_CABA_muestra.csv"* (por deafult con separador ",") y guardarlo en un objeto llamado _caba2010_br_ (*br* por bruta, aún sin cambios).  
 
@@ -227,7 +240,7 @@ n_personas / n_viviendas
 
 ::: {.take_note_box  .take_note data-latex="{take_note}"}
 <strong>Cóctel propio</strong><br>
-¿De qué forma podríamos hacer lo anterior en R *base* (`nrow`, `ncol`, `unique`)? La experiencia de usuario de cada uno define el **mix** de herramientas que le es más cómodo/útil según la complejidad de cada tarea.
+¿De qué forma podríamos hacer lo anterior en R *base* (`nrow`,`ncol`,`unique`)? La experiencia de usuario de cada uno define el **mix** de herramientas que le es más cómodo/útil según la complejidad de cada tarea.
 :::
 
 Con `summarise` podemos aplicar cualquier función resumen sobre los datos. Por ejemplo: ¿Cuál es la edad promedio de las personas? ¿Cual es la edad máxima reportada?
@@ -397,7 +410,7 @@ Otras opciones de recodificación son [ifelse](https://www.rdocumentation.org/pa
 
 a) Crea un nuevo objeto con el nombre que desees a partir de *CABA2010_br* renombrando las variables a tu gusto para que los nombres guarden relación con su contenido.
 
-```{r,include=F, hide = T}
+```{r, include=F}
 caba <- caba2010_br %>% 
                 rename(Tipo_Viv = V01, Rel_Par = P01, Sexo = P02, Edad = P03, nativo = P05) %>% 
                 select(IDDPTO, VIVIENDA_ID, HOGAR_ID, PERSONA_ID, 
@@ -406,19 +419,19 @@ caba <- caba2010_br %>%
 
 a) Ordénala de la siguiente manera: ascendente ID de departamento, ascendente en ID de hogar, y decreciente en la edad. 
 
-```{r}
+```{r, include=F}
 caba <- caba %>% arrange(IDDPTO, desc(Edad))
 ```
 
 a) El hogar identificado como 613 no debería ser incluido en la base. Removerlo utilizando `filter`.
 
-```{r}
+```{r, include=F}
 caba <- caba %>% filter(HOGAR_ID!=613)
 ```
 
 a) Podrías encontrar las viviendas (sus ID) que poseen más de un hogar? ¿Cuántas son y qué porcentaje representa del total de viviendas?
 
-```{r}
+```{r, include=F}
 vivs_mas_1hogar <- caba %>% group_by(VIVIENDA_ID) %>% summarise(hogares = n_distinct(HOGAR_ID)) %>% filter(hogares>1)
 nrow(vivs_mas_1hogar)
 nrow(vivs_mas_1hogar)/nrow(caba)
@@ -426,26 +439,26 @@ nrow(vivs_mas_1hogar)/nrow(caba)
 
 a) La variable nativo debería ser 0 (nativo) y 1 (no nativo). Sabiendo que en CABA había mas nativos que no nativos en 2010, inferir a que corresponde cada código y recodificar la variable manteniendo el tipo numerico/entero.
 
-```{r}
+```{r, include=F}
 caba %>% count(nativo)
 caba <- caba %>% mutate(nativo = nativo - 1)
 ```
 
 a) Filtra por aquellas comunas costeras.  
 
-```{r}
+```{r, include=F}
 caba <- caba %>% filter(IDDPTO %in% c(1,2,4,13,14))
 ```
 
 a) Mediante la función *mean* obtén el promedio de edad de las comunas del punto anterior, mostrando el resultado según las más envejecidas primero. 
 
-```{r}
+```{r, include=F}
 caba %>% group_by(IDDPTO) %>% summarise(EM = mean(Edad)) %>% arrange(desc(EM))
 ```
 
 a) Realiza todo lo anterior en una sola sentencia.
 
-```{r}
+```{r, include=F}
 caba2010 %>% 
   arrange(IDDPTO, desc(Edad)) %>% 
   filter(HOGAR_ID!=705) %>% 
@@ -456,15 +469,15 @@ caba2010 %>%
 
 a) En una sola sentencia obtén la edad mediana por tipo de vivienda. ¿qué ves de interesante?
 
-```{r}
+```{r, include=F}
 caba %>% 
   group_by(Tipo_Viv) %>% 
   summarise(edad_meadiana = median(Edad))
 ```
 
-a) Obten el promedio de edad de las personas mayores a 64 años cumplidos, según departamento y sexo. Puedes utilizar algo muuuy útil: filtros dentro del argumento de summarise --> *summarise(edad_media_65mas = mean(Edad[Edad>64]))*.
+a) Obten el promedio de edad de las personas mayores a 64 años cumplidos, según departamento y sexo. Puedes utilizar algo muuuy útil: filtros dentro del argumento de `summarise`: `summarise(edad_media_65mas = mean(Edad[Edad>64]))`.
 
-```{r}
+```{r, include=F}
 caba %>% 
   group_by(IDDPTO, Sexo) %>% 
   summarise(EM = mean(Edad[Edad>64])) %>% 
@@ -473,7 +486,7 @@ caba %>%
 
 a) Identifica (toma el ID de) un hogar cualquiera con 5 miembros.
 
-```{r}
+```{r, include=F}
 # primero identifico el id
 caba2010 %>% 
   group_by(HOGAR_ID) %>% 
@@ -485,7 +498,7 @@ caba2010 %>%
 
 ### Recursos adicionales  
 
-- - [De Grande, Pablo (2016). El formato Redatam. Estudios demográficos y urbanos, 31, 3 (93) 811-832.](https://www.aacademica.org/pablo.de.grande/46.pdf)
+- [De Grande, Pablo (2016). El formato Redatam. Estudios demográficos y urbanos, 31, 3 (93) 811-832.](https://www.aacademica.org/pablo.de.grande/46.pdf)
 
 - [r4ds](https://es.r4ds.hadley.nz/). Una biblia que debés llevar bajo el brazo.
 

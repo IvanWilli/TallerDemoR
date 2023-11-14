@@ -23,7 +23,7 @@
 <meta name="author" content="Ayelén Martinez, Florencia Bathory e Iván Williams" />
 
 
-<meta name="date" content="2023-11-06" />
+<meta name="date" content="2023-11-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-
+<link rel="next" href="dplyr.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -172,6 +172,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#actividad-3"><i class="fa fa-check"></i><b>2.4.1</b> Actividad</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#referencias-y-materiales-adicionales"><i class="fa fa-check"></i><b>2.5</b> Referencias y materiales adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dplyr.html"><a href="dplyr.html#lectura-de-datos"><i class="fa fa-check"></i><b>3.1</b> Lectura de datos</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dplyr.html"><a href="dplyr.html#acceso-a-archivos-no-locales"><i class="fa fa-check"></i><b>3.1.1</b> Acceso a archivos no locales</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dplyr.html"><a href="dplyr.html#actividad-4"><i class="fa fa-check"></i><b>3.1.2</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dplyr.html"><a href="dplyr.html#dplyr-1"><i class="fa fa-check"></i><b>3.2</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="dplyr.html"><a href="dplyr.html#seleccionar-select-renombrar-rename"><i class="fa fa-check"></i><b>3.2.1</b> seleccionar (<strong>select</strong>), renombrar (<strong>rename</strong>)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dplyr.html"><a href="dplyr.html#actividad-5"><i class="fa fa-check"></i><b>3.2.2</b> Actividad</a></li>
+<li class="chapter" data-level="3.2.3" data-path="dplyr.html"><a href="dplyr.html#resumir-summarise-por-grupos-group_by"><i class="fa fa-check"></i><b>3.2.3</b> resumir (<strong>summarise</strong>) por grupos (<strong>group_by</strong>)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="dplyr.html"><a href="dplyr.html#transformar-mutate-filtrar-filter-ordenar-arrange"><i class="fa fa-check"></i><b>3.2.4</b> transformar (<strong>mutate</strong>), filtrar (<strong>filter</strong>), ordenar (<strong>arrange</strong>)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="dplyr.html"><a href="dplyr.html#actividad-6"><i class="fa fa-check"></i><b>3.2.5</b> Actividad</a></li>
+<li class="chapter" data-level="3.2.6" data-path="dplyr.html"><a href="dplyr.html#recursos-adicionales"><i class="fa fa-check"></i><b>3.2.6</b> Recursos adicionales</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -396,26 +413,18 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 ##  $ nombre         : chr  &quot;Horacio&quot; &quot;José&quot; &quot;Iván&quot; &quot;Facundo&quot; ...
 ##  $ sexo           : chr  &quot;v&quot; &quot;m&quot; &quot;v&quot; NA ...
 ##  $ edad           : num  63 60 35 32 27 27
-##  $ fecha_nacim    : Date, format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; ...
+##  $ fecha_nacim    : Date, format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; &quot;1985-11-08&quot; ...
 ##  $ autoRespondente: logi  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="intro.html#cb63-1" tabindex="-1"></a><span class="fu">summary</span>(hogar)   <span class="co"># resumen</span></span></code></pre></div>
-<pre><code>##     nombre              sexo                edad        fecha_nacim        
-##  Length:6           Length:6           Min.   :27.00   Min.   :1960-01-01  
-##  Class :character   Class :character   1st Qu.:28.25   1st Qu.:1967-11-06  
-##  Mode  :character   Mode  :character   Median :33.50   Median :1986-06-15  
-##                                        Mean   :40.67   Mean   :1980-05-24  
-##                                        3rd Qu.:53.75   3rd Qu.:1992-02-14  
-##                                        Max.   :63.00   Max.   :1993-10-24  
-##  autoRespondente
-##  Mode :logical  
-##  FALSE:5        
-##  TRUE :1        
-##                 
-##                 
-## </code></pre>
+<pre><code>##     nombre              sexo                edad        fecha_nacim         autoRespondente
+##  Length:6           Length:6           Min.   :27.00   Min.   :1960-01-01   Mode :logical  
+##  Class :character   Class :character   1st Qu.:28.25   1st Qu.:1967-11-06   FALSE:5        
+##  Mode  :character   Mode  :character   Median :33.50   Median :1986-06-15   TRUE :1        
+##                                        Mean   :40.67   Mean   :1980-05-24                  
+##                                        3rd Qu.:53.75   3rd Qu.:1992-02-14                  
+##                                        Max.   :63.00   Max.   :1993-10-24</code></pre>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="intro.html#cb65-1" tabindex="-1"></a><span class="fu">colnames</span>(hogar)  <span class="co"># nombres de columnas</span></span></code></pre></div>
-<pre><code>## [1] &quot;nombre&quot;          &quot;sexo&quot;            &quot;edad&quot;            &quot;fecha_nacim&quot;    
-## [5] &quot;autoRespondente&quot;</code></pre>
+<pre><code>## [1] &quot;nombre&quot;          &quot;sexo&quot;            &quot;edad&quot;            &quot;fecha_nacim&quot;     &quot;autoRespondente&quot;</code></pre>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="intro.html#cb67-1" tabindex="-1"></a><span class="fu">ncol</span>(hogar)      <span class="co"># número de columnas</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="intro.html#cb69-1" tabindex="-1"></a><span class="fu">nrow</span>(hogar)      <span class="co"># número de filas</span></span></code></pre></div>
@@ -466,7 +475,7 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 </div>
 <div id="listas" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Listas<a href="intro.html#listas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>¿Te preguntarás si hay vida más allá del <strong>data.frame</strong>? Por supuesto, las <strong>listas</strong>. Una lista es una colección de objetos de cualquier tipo (incluidos los data.frame). Por ejemplo si el tercer miembro soy yo, Iván, y formo mi propio hogar dentro de la vivienda, el <strong>listado de hogares</strong> censado tendría dos data.frame:</p>
+<p>¿Te preguntarás si hay vida más allá del <strong>data.frame</strong>? Por supuesto, las <strong>listas</strong>. Una lista es una colección de objetos de cualquier tipo (incluidos los data.frame). Por ejemplo si el tercer miembro es Iván y se construye en el terreno de los padres y forma su propio hogar dentro de la vivienda, el <strong>listado de hogares</strong> censado tendría dos data.frame:</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="intro.html#cb92-1" tabindex="-1"></a>hogar_1 <span class="ot">&lt;-</span> hogar[<span class="sc">-</span><span class="dv">3</span>,] </span>
 <span id="cb92-2"><a href="intro.html#cb92-2" tabindex="-1"></a>hogar_2 <span class="ot">&lt;-</span> hogar[<span class="dv">3</span>,]</span>
 <span id="cb92-3"><a href="intro.html#cb92-3" tabindex="-1"></a>lista_de_hogares <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">hogar_1 =</span> hogar_1, </span>
@@ -546,19 +555,13 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 
 </div>
 </div>
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

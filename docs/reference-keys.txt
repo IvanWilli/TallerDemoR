@@ -19,3 +19,14 @@ actividad-2
 listas
 actividad-3
 referencias-y-materiales-adicionales
+dplyr
+lectura-de-datos
+acceso-a-archivos-no-locales
+actividad-4
+dplyr-1
+seleccionar-select-renombrar-rename
+actividad-5
+resumir-summarise-por-grupos-group_by
+transformar-mutate-filtrar-filter-ordenar-arrange
+actividad-6
+recursos-adicionales
