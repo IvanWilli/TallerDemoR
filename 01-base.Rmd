@@ -1,5 +1,13 @@
 # R Base{#intro}
 
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
+library(knitr)
+library(fontawesome)
+library(tidyverse)
+Sys.setlocale("LC_ALL", "Spanish_Spain.UTF-8")
+```
+
 \usepackage{color}
 \usepackage{framed}
 \setlength{\fboxsep}{.8em}
