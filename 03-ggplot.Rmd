@@ -1,5 +1,14 @@
 # ggplot
 
+```{r setupggplot, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
+library(knitr)
+library(fontawesome)
+library(tidyverse)
+Sys.setlocale("LC_ALL", "Spanish_Spain.UTF-8")
+```
+
+
 ## Introducción
 
 En esta sección vamos a explorar la utilidad de R para la visualización de contenido demográfico. En [Riffe y otros (2021)](https://www.demographic-research.org/volumes/vol44/36/default.htm) se publicó una colección de artículos sobre ejemplos de "buena" visualización en este tema. Allí reseña un poco de la historia (ver los gráficos de Perozzo `r fa("face-surprise")`) y se concluye con algunas recomendaciones a la hora de pensar cómo mostrar lo que queremos comunicar. Es interesante la distinción entre gráfico **exploratorio** y gráfico **explicativo**.
@@ -477,7 +486,6 @@ a) Crear un diagrama de Lexis e incluir en rojo las líneas de vida de las 3 per
 mylexis <- lexis_grid(year_start = 2021, year_end = 2023, age_start = 0, age_end = 5)
 lexis_lifeline(lg = mylexis, birth = c("2021-10-23", "2022-01-15", "2022-09-19"), lwd = 1, colour = "red")
 ```
-
 
 a) Considerando el ejercicio de permanencia escolar:
     - Calcula la probabilidad de "salir" luego de los 30 años?
