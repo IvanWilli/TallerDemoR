@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = F)
 options(htmltools.dir.version = FALSE)
 library(knitr)
 library(fontawesome)
+Sys.setlocale("LC_ALL", "Spanish_Spain.UTF-8")
 ```
 
 # Introducción
