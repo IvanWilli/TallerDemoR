@@ -1,5 +1,7 @@
-fig:unnamed-chunk-5
 fig:unnamed-chunk-6
+fig:unnamed-chunk-7
+fig:unnamed-chunk-112
+fig:unnamed-chunk-120
 introducción
 información-general
 preparándonos
@@ -30,3 +32,13 @@ resumir-summarise-por-grupos-group_by
 transformar-mutate-filtrar-filter-ordenar-arrange
 actividad-6
 recursos-adicionales
+ggplot
+introducción-1
+ggplot-1
+actividad-7
+lexis
+estudio-de-cohorte-un-ejemplo
+actividad-8
+reproduciendo
+otras-visualizaciones
+material-adicional-y-no-tanto
