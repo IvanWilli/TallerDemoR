@@ -1,5 +1,13 @@
 # Funciones
 
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
+library(knitr)
+library(fontawesome)
+library(tidyverse)
+Sys.setlocale("LC_ALL", "Spanish_Spain.UTF-8")
+```
+
 ## DemogRafía
 
 ¿Qué es la demografía? Algunas definiciones (tomado de [Carmichael, 2016](https://www.springer.com/gp/book/9783319232546)):
@@ -96,7 +104,7 @@ tibble(Año = c(2010,  2020,  2025),
   geom_point() 
 ```
 
-¿Si quisiera tener opciones al momento de calcular el crecimiento? lineal o exponencial. Inlcuyamos el argumento `tipo` y utilicemos el condicional **if** para posicionarnos en el modelo que se quiera.
+¿Si quisiera tener opciones al momento de calcular el crecimiento? lineal o exponencial. Incluyamos el argumento `tipo` y utilicemos el condicional **if** para posicionarnos en el modelo que se quiera.
  
 ```{r}
 crecim <- function(N0, Nt, t, h, tipo = "lineal"){
@@ -165,13 +173,47 @@ crecim_lineal_check(50000, 60000, 10, "hola")
 
 a) Siguiendo el ejemplo previo: ¿cuál sería la población al 2017 bajo el supuesto de crecimiento exponencial? ¿Es equivalente interpolar cada edad y luego sumar?
 
+```{r, eval = F, include = F}
+crecim(50000, 60000, 10, 7, tipo = "exponencial")
+sum(
+  crecim(c(20000, 20000, 10000), 
+         c(25000, 30000, 5000), 10, 7, tipo = "exponencial")
+  )
+```
+
+
 a) Crear una función que informe la edad modal de una distribución de conteo, por ejemplo para `data.frame(Edad = c(0,4,7,10), Casos = c(2, 6, 9, 0))` debería devolver la edad 7. 
+
+```{r, eval = F, include = F}
+Edad = c(0,4,7,10)
+Casos = c(2, 6, 9, 0)
+get_edad_modal <- function(Edad, Casos){
+  Edad[which(Casos==max(Casos))[1]]
+}
+get_edad_modal(Edad, Casos)
+```
 
 a) Obtener una función que permita conocer en cuantos años (h) se duplicará la población respecto al primer valor observado, bajo el supuesto de crecimiento lineal y exponencial. (Ayuda: obtén $r$ y luego despeja $h$ para que $N_h=N_0*2$).
 
+```{r, eval = F, include = F}
+h_doblar <- function(N0, Nt, t, tipo = "lineal"){
+  if(tipo == "exponencial"){
+    r <- log(Nt/N0)/t
+    h <- log(2)/r
+  }
+  if(tipo == "lineal"){
+    r  <- (Nt/N0-1)/t
+    h <- (2 - 1)/r
+  }
+  return(h)
+}
+h_doblar(50000, 60000, 10)
+```
+
+
 ## Estandarizando
 
-Entre los intentos por discriminar el efecto de la estructura por edad en el indicador de Tasa Bruta de Mortalidad $TBM(t)=\frac{D(t)}{N(t)}$ (defunciones sobre población expuesta^[Para se mpas rigurosos en la notación $N(t)$ debería ser expresado como $\overline{N}(t,t+1)$, pero simplificaremos un poco para enfocarnos en lo que haremos en R. Para más detalles ver Preston y otros (2001)]) se encuentra el clásico método de *estandarización* (Swanson & Siegel, 2004). 
+Entre los intentos por discriminar el efecto de la estructura por edad en el indicador de Tasa Bruta de Mortalidad $TBM(t)=\frac{D(t)}{N(t)}$ (defunciones sobre población expuesta^[Para ser más rigurosos en la notación $N(t)$ debería ser expresado como $\overline{N}(t,t+1)$, pero simplificaremos un poco para enfocarnos en lo que haremos en R. Para más detalles ver Preston y otros (2001)]) se encuentra el clásico método de *estandarización* (Swanson & Siegel, 2004). 
 
 En principio, la $TBM(t)$ de una población puede ser expresada como el promedio ponderado de las tasas específicas de mortalidad $M_x(t)=\frac{D_x(t)}{N_x(t)}$ por el peso poblacional de cada edad $C_x(t)=\frac{N_x(t)}{N(t)}$:
 
@@ -188,9 +230,9 @@ $$
 
 Lo que permite comparar $TSM^A(t)$ con $TSM^B(t)$: $TSM^A(t) \lessgtr TSM^A(t)$. Pero vayamos al ejemplo!!!
 
-Obtengamos la población y defunciones de Chile, Japón y Polonia del año 2000 y 2010 leyendo la tabla "Chile_Japon_Polonia.csv" en la carpeta "Data". ¿Cómo obtuve esta información? Directamente desde R hacia el repositorio de la [Human Mortality Database](https://www.mortality.org/), utilizando el paquete `HMDHFDplus`. Por ejemplo en este caso las defunciones de Chile por grupos quinquenales de edad (en realidad se muestra la edad inicial de cada intervalo) cada 5 años calendario se pueden obtener como:
+Obtengamos la población y defunciones de Chile, Japón y Polonia del año 2000 y 2010 leyendo la tabla "Chile_Japon_Polonia.csv" en la carpeta "Data". ¿Cómo obtuve esta información? Directamente desde R hacia el repositorio de la [Human Mortality Database](https://www.mortality.org/), utilizando el paquete `HMDHFDplus`. Por ejemplo en este caso las defunciones de Chile por grupos quinquenales de edad (en realidad se muestra la edad inicial de cada intervalo) cada 5 años calendario, "Deaths_5x5", se pueden obtener con la función `readHMDweb`.
 
-```{r, eval=F}
+```{r, eval=F, include = F}
 D_CHL <- HMDHFDplus::readHMDweb(CNTRY = "CHL",item = "Deaths_5x5", 
                                 username = "ivanwilliams1985@gmail.com", # create el tuyo!
                                 password = "AD2")

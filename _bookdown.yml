@@ -4,7 +4,7 @@ rmd_files:
 - 01-base.Rmd
 - 02-dplyr.Rmd
 - 03-ggplot.Rmd
-# - 04-funciones.Rmd
+- 04-funciones.Rmd
 # - 05-reportes.Rmd
 # - 06-tp.Rmd
 language:

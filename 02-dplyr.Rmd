@@ -432,7 +432,10 @@ caba <- caba %>% filter(HOGAR_ID!=613)
 a) Podrías encontrar las viviendas (sus ID) que poseen más de un hogar? ¿Cuántas son y qué porcentaje representa del total de viviendas?
 
 ```{r, include=F}
-vivs_mas_1hogar <- caba %>% group_by(VIVIENDA_ID) %>% summarise(hogares = n_distinct(HOGAR_ID)) %>% filter(hogares>1)
+vivs_mas_1hogar <- caba %>% 
+  group_by(VIVIENDA_ID) %>% 
+  summarise(hogares = n_distinct(HOGAR_ID)) %>% 
+  filter(hogares>1)
 nrow(vivs_mas_1hogar)
 nrow(vivs_mas_1hogar)/nrow(caba)
 ```
@@ -441,19 +444,24 @@ a) La variable nativo debería ser 0 (nativo) y 1 (no nativo). Sabiendo que en C
 
 ```{r, include=F}
 caba %>% count(nativo)
-caba <- caba %>% mutate(nativo = nativo - 1)
+caba <- caba %>% 
+  mutate(nativo = nativo - 1)
 ```
 
 a) Filtra por aquellas comunas costeras.  
 
 ```{r, include=F}
-caba <- caba %>% filter(IDDPTO %in% c(1,2,4,13,14))
+caba <- caba %>% 
+  filter(IDDPTO %in% c(1,2,4,13,14))
 ```
 
 a) Mediante la función *mean* obtén el promedio de edad de las comunas del punto anterior, mostrando el resultado según las más envejecidas primero. 
 
 ```{r, include=F}
-caba %>% group_by(IDDPTO) %>% summarise(EM = mean(Edad)) %>% arrange(desc(EM))
+caba %>% 
+  group_by(IDDPTO) %>% 
+  summarise(EM = mean(Edad)) %>% 
+  arrange(desc(EM))
 ```
 
 a) Realiza todo lo anterior en una sola sentencia.
