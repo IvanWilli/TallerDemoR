@@ -36,7 +36,7 @@ Una función consiste en **encapsular** un proceso, que recibe argumentos y devu
 
 ```{r, eval = F}
   # se enuncia entre llaves
-  nombre <- function(argumentos) { 
+  nombre<- function(argumentos) { 
     código
   return(resultado)
   }
