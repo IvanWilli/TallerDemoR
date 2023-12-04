@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 dplyr | Taller de R aplicado a la Demografía</title>
   <meta name="description" content="3 dplyr | Taller de R aplicado a la Demografía" />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 dplyr | Taller de R aplicado a la Demografía" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ayelén Martinez, Florencia Bathory e Iván Williams" />
 
 
-<meta name="date" content="2023-11-28" />
+<meta name="date" content="2023-12-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,15 +32,15 @@
   
 <link rel="prev" href="intro.html"/>
 <link rel="next" href="ggplot.html"/>
-<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -49,9 +49,9 @@
 
 
 
-<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -205,6 +205,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="ggplot.html"><a href="ggplot.html#reproduciendo"><i class="fa fa-check"></i><b>4.5</b> Reproduciendo</a></li>
 <li class="chapter" data-level="4.6" data-path="ggplot.html"><a href="ggplot.html#otras-visualizaciones"><i class="fa fa-check"></i><b>4.6</b> Otras visualizaciones</a></li>
 <li class="chapter" data-level="4.7" data-path="ggplot.html"><a href="ggplot.html#material-adicional-y-no-tanto"><i class="fa fa-check"></i><b>4.7</b> Material adicional (y no tanto)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>5</b> Funciones</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="funciones.html"><a href="funciones.html#demografía"><i class="fa fa-check"></i><b>5.1</b> DemogRafía</a></li>
+<li class="chapter" data-level="5.2" data-path="funciones.html"><a href="funciones.html#funciones-1"><i class="fa fa-check"></i><b>5.2</b> Funciones</a></li>
+<li class="chapter" data-level="5.3" data-path="funciones.html"><a href="funciones.html#crecimiento"><i class="fa fa-check"></i><b>5.3</b> Crecimiento</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="funciones.html"><a href="funciones.html#actividad-9"><i class="fa fa-check"></i><b>5.3.1</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="funciones.html"><a href="funciones.html#estandarizando"><i class="fa fa-check"></i><b>5.4</b> Estandarizando</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="funciones.html"><a href="funciones.html#actividades"><i class="fa fa-check"></i><b>5.4.1</b> Actividades</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="funciones.html"><a href="funciones.html#funciones-demográficas-en-paquetes-demográficos"><i class="fa fa-check"></i><b>5.5</b> Funciones demográficas en paquetes demográficos</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="funciones.html"><a href="funciones.html#tablas-de-mortalidad"><i class="fa fa-check"></i><b>5.5.1</b> Tablas de mortalidad</a></li>
+<li class="chapter" data-level="5.5.2" data-path="funciones.html"><a href="funciones.html#evaluación-de-declaración-de-edad"><i class="fa fa-check"></i><b>5.5.2</b> Evaluación de declaración de edad</a></li>
+<li class="chapter" data-level="5.5.3" data-path="funciones.html"><a href="funciones.html#graduación-de-población-por-edad-simple"><i class="fa fa-check"></i><b>5.5.3</b> Graduación de población por edad simple</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -498,14 +517,14 @@ Nótese que estamos <em>pisando</em> el mismo objeto. Luego podemos renombrar al
 <a href="ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/clipboard.min.js"></script>
-<script src="libs/gitbook/js/plugin-search.js"></script>
-<script src="libs/gitbook/js/plugin-sharing.js"></script>
-<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook/js/jquery.highlight.js"></script>
-<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
