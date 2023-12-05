@@ -216,13 +216,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="funciones.html"><a href="funciones.html#estandarizando"><i class="fa fa-check"></i><b>5.4</b> Estandarizando</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="funciones.html"><a href="funciones.html#actividades"><i class="fa fa-check"></i><b>5.4.1</b> Actividades</a></li>
+<li class="chapter" data-level="5.4.1" data-path="funciones.html"><a href="funciones.html#actividad-10"><i class="fa fa-check"></i><b>5.4.1</b> Actividad</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="funciones.html"><a href="funciones.html#funciones-demográficas-en-paquetes-demográficos"><i class="fa fa-check"></i><b>5.5</b> Funciones demográficas en paquetes demográficos</a>
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="funciones.html"><a href="funciones.html#tablas-de-mortalidad"><i class="fa fa-check"></i><b>5.5.1</b> Tablas de mortalidad</a></li>
 <li class="chapter" data-level="5.5.2" data-path="funciones.html"><a href="funciones.html#evaluación-de-declaración-de-edad"><i class="fa fa-check"></i><b>5.5.2</b> Evaluación de declaración de edad</a></li>
 <li class="chapter" data-level="5.5.3" data-path="funciones.html"><a href="funciones.html#graduación-de-población-por-edad-simple"><i class="fa fa-check"></i><b>5.5.3</b> Graduación de población por edad simple</a></li>
+<li class="chapter" data-level="5.5.4" data-path="funciones.html"><a href="funciones.html#actividad-11"><i class="fa fa-check"></i><b>5.5.4</b> Actividad</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -289,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb162-8"><a href="funciones.html#cb162-8" tabindex="-1"></a><span class="fu">edad_en_t_anios</span>(<span class="dv">35</span>, <span class="dv">10</span>) <span class="co"># no nombré los argumentos porque respeté el orden</span></span>
 <span id="cb162-9"><a href="funciones.html#cb162-9" tabindex="-1"></a></span>
 <span id="cb162-10"><a href="funciones.html#cb162-10" tabindex="-1"></a><span class="co"># Edades de un hogar en 5 años</span></span>
-<span id="cb162-11"><a href="funciones.html#cb162-11" tabindex="-1"></a>edades <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">58</span>, <span class="dv">32</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">25</span>)</span>
+<span id="cb162-11"><a href="funciones.html#cb162-11" tabindex="-1"></a>edades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">58</span>, <span class="dv">32</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">25</span>)</span>
 <span id="cb162-12"><a href="funciones.html#cb162-12" tabindex="-1"></a><span class="fu">edad_en_t_anios</span>(edades, <span class="dv">5</span>)</span></code></pre></div>
 <p>Las funciones pueden tener valores por defecto. Por ejemplo:</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="funciones.html#cb163-1" tabindex="-1"></a>edad_en_t_anios <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">t =</span> <span class="dv">5</span>){</span>
@@ -301,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="crecimiento" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Crecimiento<a href="funciones.html#crecimiento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Tenemos una población que en el año 2010 era de 50.000 personas y en 2020 era de 60.000. Nos preguntan cual sería la población a 2025. Existen distintas formas en que podemos modelar su crecimiento total a partir de dos puntos observados en el tiempo. En términos generales para un momento 0 y un momento t, debemos obtener primero el ritmo al que crece, es decir su tasa anual promedio:</p>
+<p>Tenemos una población que en el año 2010 era de 50.000 personas y en 2020 era de 60.000. Nos preguntan cual sería la población a 2025. Existen distintas formas en que podemos modelar su crecimiento total a partir de dos puntos observados en el tiempo. En términos generales para un momento 0 y un momento t, debemos obtener primero el ritmo al que crece, es decir su tasa anual promedio <span class="math inline">\(\overline{r}(0,t)\)</span>:</p>
 <table>
 <thead>
 <tr class="header">
@@ -331,18 +332,18 @@ Llamaremos <code>h</code> a la distancia desde la primera observación para la q
 <span id="cb164-3"><a href="funciones.html#cb164-3" tabindex="-1"></a>  Nh <span class="ot">&lt;-</span> N0 <span class="sc">*</span> (<span class="dv">1</span><span class="sc">+</span>r<span class="sc">*</span>h)</span>
 <span id="cb164-4"><a href="funciones.html#cb164-4" tabindex="-1"></a>  <span class="fu">return</span>(Nh)</span>
 <span id="cb164-5"><a href="funciones.html#cb164-5" tabindex="-1"></a>}</span></code></pre></div>
-<p>Nuestra respuesta a la pregunta inicial podría ser:</p>
+<p>Nuestra respuesta a la pregunta inicial podría ser, siendo <code>h = 15</code>:</p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="funciones.html#cb165-1" tabindex="-1"></a><span class="co"># ¿qué población habrá en 2025?</span></span>
 <span id="cb165-2"><a href="funciones.html#cb165-2" tabindex="-1"></a>N2025 <span class="ot">&lt;-</span> <span class="fu">crecim_lineal</span>(<span class="at">N0 =</span> <span class="dv">50000</span>, <span class="at">Nt =</span> <span class="dv">60000</span>, <span class="at">t =</span> <span class="dv">10</span>, <span class="at">h =</span> <span class="dv">15</span>)</span>
 <span id="cb165-3"><a href="funciones.html#cb165-3" tabindex="-1"></a></span>
 <span id="cb165-4"><a href="funciones.html#cb165-4" tabindex="-1"></a><span class="co"># miremos un gráfico</span></span>
-<span id="cb165-5"><a href="funciones.html#cb165-5" tabindex="-1"></a><span class="fu">tibble</span>(Año <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2010</span>,  <span class="dv">2020</span>,  <span class="dv">2025</span>),</span>
+<span id="cb165-5"><a href="funciones.html#cb165-5" tabindex="-1"></a><span class="fu">data.frame</span>(Año <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2010</span>,  <span class="dv">2020</span>,  <span class="dv">2025</span>),</span>
 <span id="cb165-6"><a href="funciones.html#cb165-6" tabindex="-1"></a>       <span class="at">N   =</span> <span class="fu">c</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, N2025)) <span class="sc">%&gt;%</span> </span>
 <span id="cb165-7"><a href="funciones.html#cb165-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Año, N)) <span class="sc">+</span> </span>
 <span id="cb165-8"><a href="funciones.html#cb165-8" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb165-9"><a href="funciones.html#cb165-9" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
-<p><img src="talleR_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
-<p>¿Si quisiera tener opciones al momento de calcular el crecimiento? lineal o exponencial. Incluyamos el argumento <code>tipo</code> y utilicemos el condicional <strong>if</strong> para posicionarnos en el modelo que se quiera.</p>
+<p><img src="talleR_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
+<p>¿Si quisiera tener opciones al momento de calcular el crecimiento? Por ejemplo, que sea de tipo lineal o exponencial. Incluyamos el argumento <code>tipo</code> y utilicemos el condicional <code>if</code> para posicionarnos en el modelo que se quiera.</p>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="funciones.html#cb166-1" tabindex="-1"></a>crecim <span class="ot">&lt;-</span> <span class="cf">function</span>(N0, Nt, t, h, <span class="at">tipo =</span> <span class="st">&quot;lineal&quot;</span>){</span>
 <span id="cb166-2"><a href="funciones.html#cb166-2" tabindex="-1"></a>  <span class="co"># si se quiere el modelo exponencial</span></span>
 <span id="cb166-3"><a href="funciones.html#cb166-3" tabindex="-1"></a>  <span class="cf">if</span>(tipo <span class="sc">==</span> <span class="st">&quot;exponencial&quot;</span>){</span>
@@ -364,22 +365,24 @@ Llamaremos <code>h</code> a la distancia desde la primera observación para la q
 <span id="cb167-6"><a href="funciones.html#cb167-6" tabindex="-1"></a>           <span class="at">Tipo =</span> <span class="fu">c</span>(<span class="st">&quot;Observado&quot;</span>, <span class="st">&quot;Observado&quot;</span>, <span class="st">&quot;lineal&quot;</span>, <span class="st">&quot;exponencial&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb167-7"><a href="funciones.html#cb167-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Año, N)) <span class="sc">+</span> </span>
 <span id="cb167-8"><a href="funciones.html#cb167-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> Tipo, <span class="at">color=</span>Tipo)) </span></code></pre></div>
-<p><img src="talleR_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<p><img src="talleR_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
+<p>El condicional puede pensarse como <code>if</code> y <code>else</code> también, ¿cómo sería?</p>
 <p>¿Y si tuviéramos un vector de población por edad? Podemos tener una tasa <span class="math inline">\(\overline{r}(0,t)\)</span> por cada edad.</p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="funciones.html#cb168-1" tabindex="-1"></a><span class="co"># crecimiento por edad</span></span>
 <span id="cb168-2"><a href="funciones.html#cb168-2" tabindex="-1"></a>N2025_edad <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Edad =</span> <span class="fu">c</span>(<span class="st">&quot;0-14&quot;</span>, <span class="st">&quot;15-64&quot;</span>, <span class="st">&quot;65+&quot;</span>), </span>
 <span id="cb168-3"><a href="funciones.html#cb168-3" tabindex="-1"></a>                         <span class="at">N2010   =</span> <span class="fu">c</span>(<span class="dv">20000</span>, <span class="dv">20000</span>, <span class="dv">10000</span>),</span>
 <span id="cb168-4"><a href="funciones.html#cb168-4" tabindex="-1"></a>                         <span class="at">N2020   =</span> <span class="fu">c</span>(<span class="dv">25000</span>, <span class="dv">30000</span>, <span class="dv">5000</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb168-5"><a href="funciones.html#cb168-5" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">N2025_lineal =</span> <span class="fu">crecim</span>(N2010, N2020, <span class="dv">10</span>, <span class="dv">15</span>, <span class="at">tipo =</span> <span class="st">&quot;lineal&quot;</span>),</span>
-<span id="cb168-6"><a href="funciones.html#cb168-6" tabindex="-1"></a>                        <span class="at">N2025_exp =</span> <span class="fu">crecim</span>(N2010, N2020, <span class="dv">10</span>, <span class="dv">15</span>, <span class="at">tipo =</span> <span class="st">&quot;exponencial&quot;</span>))</span>
+<span id="cb168-6"><a href="funciones.html#cb168-6" tabindex="-1"></a>                     <span class="at">N2025_exp =</span> <span class="fu">crecim</span>(N2010, N2020, <span class="dv">10</span>, <span class="dv">15</span>, <span class="at">tipo =</span> <span class="st">&quot;exponencial&quot;</span>))</span>
 <span id="cb168-7"><a href="funciones.html#cb168-7" tabindex="-1"></a></span>
-<span id="cb168-8"><a href="funciones.html#cb168-8" tabindex="-1"></a>N2025_edad <span class="sc">%&gt;%</span> </span>
-<span id="cb168-9"><a href="funciones.html#cb168-9" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">!</span>Edad, <span class="at">names_to =</span> <span class="st">&quot;Tipo&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;N&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb168-10"><a href="funciones.html#cb168-10" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Edad, N, <span class="at">fill =</span> Tipo)) <span class="sc">+</span> </span>
-<span id="cb168-11"><a href="funciones.html#cb168-11" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="co"># no trates de ser un histograma</span></span>
-<span id="cb168-12"><a href="funciones.html#cb168-12" tabindex="-1"></a>           <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="co"># posición lado a lado</span></span></code></pre></div>
-<p><img src="talleR_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
-<p>El poner a disposición de otros usuarios tus funciones requiere controlar los errores posibles, entre otras cosas por ingresar como argumentos objetos no esperados (por ejemplo, un objeto <em>character</em> en algunos de los primeros argumentos). Ejemplo: especifico que no acepto un objeto <code>character</code> como argumento en <code>N0</code>, <code>Nt</code>, <code>t</code> ni <code>h</code>:</p>
+<span id="cb168-8"><a href="funciones.html#cb168-8" tabindex="-1"></a><span class="co"># hagamos tidy el data.frame primero</span></span>
+<span id="cb168-9"><a href="funciones.html#cb168-9" tabindex="-1"></a>N2025_edad <span class="sc">%&gt;%</span> </span>
+<span id="cb168-10"><a href="funciones.html#cb168-10" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">!</span>Edad, <span class="at">names_to =</span> <span class="st">&quot;Tipo&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;N&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb168-11"><a href="funciones.html#cb168-11" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Edad, N, <span class="at">fill =</span> Tipo)) <span class="sc">+</span> </span>
+<span id="cb168-12"><a href="funciones.html#cb168-12" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="co"># no trates de ser un histograma</span></span>
+<span id="cb168-13"><a href="funciones.html#cb168-13" tabindex="-1"></a>           <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="co"># posición lado a lado</span></span></code></pre></div>
+<p><img src="talleR_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<p>El poner a disposición de otros usuarios tus funciones requiere controlar los errores posibles, entre otras cosas por ingresar como argumentos objetos no esperados (por ejemplo, un objeto <em>character</em> en algunos de los primeros argumentos). Ejemplo: hagamos no aceptable el ingreso de un objeto <code>character</code> como argumento en <code>N0</code>, <code>Nt</code>, <code>t</code> ni <code>h</code>:</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="funciones.html#cb169-1" tabindex="-1"></a>crecim_lineal_check <span class="ot">&lt;-</span> <span class="cf">function</span>(N0, Nt, t, h){</span>
 <span id="cb169-2"><a href="funciones.html#cb169-2" tabindex="-1"></a>  <span class="co"># check argumentos</span></span>
 <span id="cb169-3"><a href="funciones.html#cb169-3" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.character</span>(N0) <span class="sc">|</span> <span class="fu">is.character</span>(Nt) <span class="sc">|</span> <span class="fu">is.character</span>(t) <span class="sc">|</span> <span class="fu">is.character</span>(h)){</span>
@@ -391,19 +394,27 @@ Llamaremos <code>h</code> a la distancia desde la primera observación para la q
 <span id="cb169-9"><a href="funciones.html#cb169-9" tabindex="-1"></a>  <span class="fu">return</span>(Nh)</span>
 <span id="cb169-10"><a href="funciones.html#cb169-10" tabindex="-1"></a>}</span>
 <span id="cb169-11"><a href="funciones.html#cb169-11" tabindex="-1"></a></span>
-<span id="cb169-12"><a href="funciones.html#cb169-12" tabindex="-1"></a><span class="fu">crecim_lineal_check</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">10</span>, <span class="st">&quot;hola&quot;</span>)</span></code></pre></div>
+<span id="cb169-12"><a href="funciones.html#cb169-12" tabindex="-1"></a><span class="co"># probemos</span></span>
+<span id="cb169-13"><a href="funciones.html#cb169-13" tabindex="-1"></a><span class="fu">crecim_lineal_check</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">10</span>, <span class="st">&quot;hola&quot;</span>)</span></code></pre></div>
 <div id="actividad-9" class="section level3 hasAnchor" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Actividad<a href="funciones.html#actividad-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: lower-alpha">
-<li><p>Siguiendo el ejemplo previo: ¿cuál sería la población al 2017 bajo el supuesto de crecimiento exponencial? ¿Es equivalente interpolar cada edad y luego sumar?</p></li>
-<li><p>Crear una función que informe la edad modal de una distribución de conteo, por ejemplo para <code>data.frame(Edad = c(0,4,7,10), Casos = c(2, 6, 9, 0))</code> debería devolver la edad 7.</p></li>
+<li>Crear una función que sume un vector de población y devuelva el resultado en miles.</li>
+</ol>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="funciones.html#cb170-1" tabindex="-1"></a>sumar_en_miles <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb170-2"><a href="funciones.html#cb170-2" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">sum</span>(x)<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb170-3"><a href="funciones.html#cb170-3" tabindex="-1"></a>}</span>
+<span id="cb170-4"><a href="funciones.html#cb170-4" tabindex="-1"></a><span class="fu">sumar_en_miles</span>(N2025_edad<span class="sc">$</span>N2010)</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Siguiendo el ejemplo trabajado: ¿cuál sería la población al 2017 bajo el supuesto de crecimiento exponencial? ¿Es equivalente interpolar cada edad y luego sumar? ¿Y para el tipo lineal?</p></li>
+<li><p>Crear una función que informe la edad modal, por ejemplo para <code>data.frame(Edad = c(0,4,7,10), Casos = c(2, 6, 9, 0))</code> debería devolver la edad 7.</p></li>
 <li><p>Obtener una función que permita conocer en cuantos años (h) se duplicará la población respecto al primer valor observado, bajo el supuesto de crecimiento lineal y exponencial. (Ayuda: obtén <span class="math inline">\(r\)</span> y luego despeja <span class="math inline">\(h\)</span> para que <span class="math inline">\(N_h=N_0*2\)</span>).</p></li>
 </ol>
 </div>
 </div>
 <div id="estandarizando" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Estandarizando<a href="funciones.html#estandarizando" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Entre los intentos por discriminar el efecto de la estructura por edad en el indicador de Tasa Bruta de Mortalidad <span class="math inline">\(TBM(t)=\frac{D(t)}{N(t)}\)</span> (defunciones sobre población expuesta<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>) se encuentra el clásico método de <em>estandarización</em> (Swanson &amp; Siegel, 2004).</p>
+<p>Entre los intentos por discriminar el efecto de la estructura por edad en el indicador de Tasa Bruta de Mortalidad <span class="math inline">\(TBM(t)=\frac{D(t)}{N(t)}\)</span> (defunciones sobre población expuesta<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>) se encuentra el clásico método de <em>estandarización</em> directa (Swanson &amp; Siegel, 2004).</p>
 <p>En principio, la <span class="math inline">\(TBM(t)\)</span> de una población puede ser expresada como el promedio ponderado de las tasas específicas de mortalidad <span class="math inline">\(M_x(t)=\frac{D_x(t)}{N_x(t)}\)</span> por el peso poblacional de cada edad <span class="math inline">\(C_x(t)=\frac{N_x(t)}{N(t)}\)</span>:</p>
 <p><span class="math display">\[
 TBM(t) = \frac{D(t)}{N(t)}= \sum_{x&gt;=0}{M_x(t)\,C_x(t)}
@@ -415,117 +426,124 @@ TSM^B(t) = \sum_{x&gt;=0}{M^B_x(t)\,C^S_x(t)}\\
 \]</span></p>
 <p>Lo que permite comparar <span class="math inline">\(TSM^A(t)\)</span> con <span class="math inline">\(TSM^B(t)\)</span>: <span class="math inline">\(TSM^A(t) \lessgtr TSM^A(t)\)</span>. Pero vayamos al ejemplo!!!</p>
 <p>Obtengamos la población y defunciones de Chile, Japón y Polonia del año 2000 y 2010 leyendo la tabla “Chile_Japon_Polonia.csv” en la carpeta “Data”. ¿Cómo obtuve esta información? Directamente desde R hacia el repositorio de la <a href="https://www.mortality.org/">Human Mortality Database</a>, utilizando el paquete <code>HMDHFDplus</code>. Por ejemplo en este caso las defunciones de Chile por grupos quinquenales de edad (en realidad se muestra la edad inicial de cada intervalo) cada 5 años calendario, “Deaths_5x5”, se pueden obtener con la función <code>readHMDweb</code>.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="funciones.html#cb170-1" tabindex="-1"></a>db <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;Data/Chile_Japon_Polonia.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="funciones.html#cb171-1" tabindex="-1"></a>db <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;Data/Chile_Japon_Polonia.xlsx&quot;</span>)</span></code></pre></div>
 <p>Enfoquémonos en el 2010 para comparar los tres países. Japón presenta una <span class="math inline">\(TBM\)</span> mayor pero atribuible a otro estadío en su envejecimiento según la porción de población de 65 años y más.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="funciones.html#cb171-1" tabindex="-1"></a>db <span class="ot">&lt;-</span> db <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2010</span>)</span>
-<span id="cb171-2"><a href="funciones.html#cb171-2" tabindex="-1"></a></span>
-<span id="cb171-3"><a href="funciones.html#cb171-3" tabindex="-1"></a>db <span class="sc">%&gt;%</span> </span>
-<span id="cb171-4"><a href="funciones.html#cb171-4" tabindex="-1"></a>  <span class="fu">group_by</span>(Country) <span class="sc">%&gt;%</span> </span>
-<span id="cb171-5"><a href="funciones.html#cb171-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TBM =</span> <span class="fu">sum</span>(D)<span class="sc">/</span><span class="fu">sum</span>(N)<span class="sc">*</span><span class="dv">1000</span>,</span>
-<span id="cb171-6"><a href="funciones.html#cb171-6" tabindex="-1"></a>            <span class="at">porc_65_mas =</span> <span class="fu">sum</span>(N[Age<span class="sc">&gt;=</span><span class="dv">65</span>])<span class="sc">/</span><span class="fu">sum</span>(N)) </span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="funciones.html#cb172-1" tabindex="-1"></a>db <span class="ot">&lt;-</span> db <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2010</span>)</span>
+<span id="cb172-2"><a href="funciones.html#cb172-2" tabindex="-1"></a></span>
+<span id="cb172-3"><a href="funciones.html#cb172-3" tabindex="-1"></a>db <span class="sc">%&gt;%</span> </span>
+<span id="cb172-4"><a href="funciones.html#cb172-4" tabindex="-1"></a>  <span class="fu">group_by</span>(Country) <span class="sc">%&gt;%</span> </span>
+<span id="cb172-5"><a href="funciones.html#cb172-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TBM =</span> <span class="fu">sum</span>(D)<span class="sc">/</span><span class="fu">sum</span>(N)<span class="sc">*</span><span class="dv">1000</span>,</span>
+<span id="cb172-6"><a href="funciones.html#cb172-6" tabindex="-1"></a>            <span class="at">porc_65_mas =</span> <span class="fu">sum</span>(N[Age<span class="sc">&gt;=</span><span class="dv">65</span>])<span class="sc">/</span><span class="fu">sum</span>(N)) </span></code></pre></div>
 <p>Y esto es visible en la jerarquía de las tasas de mortalidad por edad:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="funciones.html#cb172-1" tabindex="-1"></a><span class="co"># creamos la varibale con las tasas de mortalidad específicas</span></span>
-<span id="cb172-2"><a href="funciones.html#cb172-2" tabindex="-1"></a>db <span class="ot">&lt;-</span> db <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">M =</span> D<span class="sc">/</span>N)</span>
-<span id="cb172-3"><a href="funciones.html#cb172-3" tabindex="-1"></a></span>
-<span id="cb172-4"><a href="funciones.html#cb172-4" tabindex="-1"></a><span class="fu">ggplot</span>(db)  <span class="sc">+</span></span>
-<span id="cb172-5"><a href="funciones.html#cb172-5" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="fu">aes</span>(<span class="at">x=</span>Age,<span class="at">y=</span>M,<span class="at">color=</span>Country))<span class="sc">+</span></span>
-<span id="cb172-6"><a href="funciones.html#cb172-6" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()<span class="sc">+</span></span>
-<span id="cb172-7"><a href="funciones.html#cb172-7" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">110</span>,<span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">110</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb172-8"><a href="funciones.html#cb172-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">&quot;Human Mortality Database&quot;</span>)<span class="sc">+</span></span>
-<span id="cb172-9"><a href="funciones.html#cb172-9" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="talleR_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="funciones.html#cb173-1" tabindex="-1"></a><span class="co"># creamos la varibale con las tasas de mortalidad específicas</span></span>
+<span id="cb173-2"><a href="funciones.html#cb173-2" tabindex="-1"></a>db <span class="ot">&lt;-</span> db <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">M =</span> D<span class="sc">/</span>N)</span>
+<span id="cb173-3"><a href="funciones.html#cb173-3" tabindex="-1"></a></span>
+<span id="cb173-4"><a href="funciones.html#cb173-4" tabindex="-1"></a><span class="fu">ggplot</span>(db)  <span class="sc">+</span></span>
+<span id="cb173-5"><a href="funciones.html#cb173-5" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="fu">aes</span>(<span class="at">x=</span>Age,<span class="at">y=</span>M,<span class="at">color=</span>Country))<span class="sc">+</span></span>
+<span id="cb173-6"><a href="funciones.html#cb173-6" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()<span class="sc">+</span></span>
+<span id="cb173-7"><a href="funciones.html#cb173-7" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">110</span>,<span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">110</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb173-8"><a href="funciones.html#cb173-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">&quot;Human Mortality Database&quot;</span>)<span class="sc">+</span></span>
+<span id="cb173-9"><a href="funciones.html#cb173-9" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="talleR_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
 <p>Estandaricemos utilizando el promedio de la estructura por edad de los tres:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="funciones.html#cb173-1" tabindex="-1"></a>C_x_promedio <span class="ot">&lt;-</span> db <span class="sc">%&gt;%</span> </span>
-<span id="cb173-2"><a href="funciones.html#cb173-2" tabindex="-1"></a>              <span class="fu">group_by</span>(Age) <span class="sc">%&gt;%</span> </span>
-<span id="cb173-3"><a href="funciones.html#cb173-3" tabindex="-1"></a>              <span class="fu">summarise</span>(<span class="at">c_x =</span> <span class="fu">sum</span>(N)<span class="sc">/</span><span class="fu">sum</span>(db<span class="sc">$</span>N))</span>
-<span id="cb173-4"><a href="funciones.html#cb173-4" tabindex="-1"></a></span>
-<span id="cb173-5"><a href="funciones.html#cb173-5" tabindex="-1"></a>db <span class="sc">%&gt;%</span></span>
-<span id="cb173-6"><a href="funciones.html#cb173-6" tabindex="-1"></a>  <span class="fu">left_join</span>(C_x_promedio) <span class="sc">%&gt;%</span> </span>
-<span id="cb173-7"><a href="funciones.html#cb173-7" tabindex="-1"></a>  <span class="fu">group_by</span>(Country) <span class="sc">%&gt;%</span> </span>
-<span id="cb173-8"><a href="funciones.html#cb173-8" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TSM =</span> <span class="fu">sum</span>(M <span class="sc">*</span> c_x)<span class="sc">*</span><span class="dv">1000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="funciones.html#cb174-1" tabindex="-1"></a>C_x_promedio <span class="ot">&lt;-</span> db <span class="sc">%&gt;%</span> </span>
+<span id="cb174-2"><a href="funciones.html#cb174-2" tabindex="-1"></a>              <span class="fu">group_by</span>(Age) <span class="sc">%&gt;%</span> </span>
+<span id="cb174-3"><a href="funciones.html#cb174-3" tabindex="-1"></a>              <span class="fu">summarise</span>(<span class="at">c_x =</span> <span class="fu">sum</span>(N)<span class="sc">/</span><span class="fu">sum</span>(db<span class="sc">$</span>N))</span>
+<span id="cb174-4"><a href="funciones.html#cb174-4" tabindex="-1"></a></span>
+<span id="cb174-5"><a href="funciones.html#cb174-5" tabindex="-1"></a>db <span class="sc">%&gt;%</span></span>
+<span id="cb174-6"><a href="funciones.html#cb174-6" tabindex="-1"></a>  <span class="fu">left_join</span>(C_x_promedio) <span class="sc">%&gt;%</span> </span>
+<span id="cb174-7"><a href="funciones.html#cb174-7" tabindex="-1"></a>  <span class="fu">group_by</span>(Country) <span class="sc">%&gt;%</span> </span>
+<span id="cb174-8"><a href="funciones.html#cb174-8" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TSM =</span> <span class="fu">sum</span>(M <span class="sc">*</span> c_x)<span class="sc">*</span><span class="dv">1000</span>)</span></code></pre></div>
 <p>!Ahora sí! El indicador nos muestra un nivel de mortalidad para 2010 mayor en Polonia, seguido de Chile y Japón. Cabe aclarar que en este sentido el mejor indicador resumen es la esperanzada de vida (<span class="math inline">\(e_x\)</span>), que se estima a partir de la construcción de una tabla de vida (Preston y otros, 2001).</p>
 <p>¿Cómo sería una función que reciba una tabla con las variables <code>País</code>, <code>N</code> y <code>D</code> y devuelva las <span class="math inline">\(TBM\)</span> y las <span class="math inline">\(TSM\)</span>?</p>
-<div id="actividades" class="section level3 hasAnchor" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> Actividades<a href="funciones.html#actividades" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
+<div id="actividad-10" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Actividad<a href="funciones.html#actividad-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: lower-alpha">
 <li><p>Responder la pregunta previa con los mismos datos utilizados arriba.</p></li>
-<li><p>Con los datos de la tabla “Chile_Japon_Polonia.csv”: ¿qué se puede decir sobre la mortalidad de Polonia en los años 1990, 2000 y 2010?</p></li>
+<li><p>Con los datos de la tabla “Chile_Japon_Polonia.csv”: ¿qué se puede decir sobre la evolución de la mortalidad de Polonia en los años 1990, 2000 y 2010? ¿Bajó o creció?</p></li>
 <li><p>Graficar la distribución de las defunciones por edad (colocando cada punto en la edad media del intervalo, por ejemplo para el grupo 5-10, en 7.5).</p></li>
-</ul>
+</ol>
 </div>
 </div>
 <div id="funciones-demográficas-en-paquetes-demográficos" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Funciones demográficas en paquetes demográficos<a href="funciones.html#funciones-demográficas-en-paquetes-demográficos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
-<p>Estamos entrando en zona de utilización de funciones demográficas de paquetes. Se sugiere que…</p>
+<p>Estamos entrando en zona de utilización de funciones demográficas de paquetes.</p>
 </blockquote>
 <p>Proyecto <a href="https://timriffe.github.io/DemoTools/">DemoTools</a>. Su instalación demora un poco:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="funciones.html#cb174-1" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb174-2"><a href="funciones.html#cb174-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rstan&quot;</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">&quot;https://mc-stan.org/r-packages/&quot;</span>, <span class="fu">getOption</span>(<span class="st">&quot;repos&quot;</span>)))</span>
-<span id="cb174-3"><a href="funciones.html#cb174-3" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;timriffe/DemoTools&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="funciones.html#cb175-1" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb175-2"><a href="funciones.html#cb175-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rstan&quot;</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">&quot;https://mc-stan.org/r-packages/&quot;</span>, <span class="fu">getOption</span>(<span class="st">&quot;repos&quot;</span>)))</span>
+<span id="cb175-3"><a href="funciones.html#cb175-3" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;timriffe/DemoTools&quot;</span>)</span></code></pre></div>
 <div id="tablas-de-mortalidad" class="section level3 hasAnchor" number="5.5.1">
 <h3><span class="header-section-number">5.5.1</span> Tablas de mortalidad<a href="funciones.html#tablas-de-mortalidad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Construir una función que produzca una <strong>tabla de mortalidad</strong> a partir de un set de tasas por edad es un lindo ejercicio de programación demográfica en R. Podés hacer la tuya y luego checkear con <code>DemoTools</code>. Acá para Japón 2010:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="funciones.html#cb175-1" tabindex="-1"></a>jpn_2010 <span class="ot">&lt;-</span> db <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">&quot;Japon&quot;</span>, Year <span class="sc">==</span> <span class="dv">2010</span>)</span>
-<span id="cb175-2"><a href="funciones.html#cb175-2" tabindex="-1"></a></span>
-<span id="cb175-3"><a href="funciones.html#cb175-3" tabindex="-1"></a><span class="co"># obtengo la tabla</span></span>
-<span id="cb175-4"><a href="funciones.html#cb175-4" tabindex="-1"></a><span class="fu">library</span>(DemoTools)</span>
-<span id="cb175-5"><a href="funciones.html#cb175-5" tabindex="-1"></a>tm_jpn_2010 <span class="ot">&lt;-</span> <span class="fu">lt_abridged</span>(<span class="at">nMx =</span> jpn_2010<span class="sc">$</span>M, <span class="at">Age =</span> jpn_2010<span class="sc">$</span>Age)</span>
-<span id="cb175-6"><a href="funciones.html#cb175-6" tabindex="-1"></a></span>
-<span id="cb175-7"><a href="funciones.html#cb175-7" tabindex="-1"></a><span class="co"># veamos la función de sobrevivencia:</span></span>
-<span id="cb175-8"><a href="funciones.html#cb175-8" tabindex="-1"></a>tm_jpn_2010 <span class="sc">%&gt;%</span> </span>
-<span id="cb175-9"><a href="funciones.html#cb175-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, lx)) <span class="sc">+</span> </span>
-<span id="cb175-10"><a href="funciones.html#cb175-10" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb175-11"><a href="funciones.html#cb175-11" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb175-12"><a href="funciones.html#cb175-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p>Construir una función que produzca una <strong>tabla de mortalidad</strong> a partir de un set de tasas por edad de mortalidad es un lindo ejercicio de programación en R. Pero por suerte <code>DemoTools</code> tiene una muy buena implementación. Acá para Japón 2010:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="funciones.html#cb176-1" tabindex="-1"></a>jpn_2010 <span class="ot">&lt;-</span> db <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">&quot;Japon&quot;</span>, Year <span class="sc">==</span> <span class="dv">2010</span>)</span>
+<span id="cb176-2"><a href="funciones.html#cb176-2" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="funciones.html#cb176-3" tabindex="-1"></a><span class="co"># obtengo la tabla</span></span>
+<span id="cb176-4"><a href="funciones.html#cb176-4" tabindex="-1"></a><span class="fu">library</span>(DemoTools)</span>
+<span id="cb176-5"><a href="funciones.html#cb176-5" tabindex="-1"></a>tm_jpn_2010 <span class="ot">&lt;-</span> <span class="fu">lt_abridged</span>(<span class="at">nMx =</span> jpn_2010<span class="sc">$</span>M, <span class="at">Age =</span> jpn_2010<span class="sc">$</span>Age)</span>
+<span id="cb176-6"><a href="funciones.html#cb176-6" tabindex="-1"></a></span>
+<span id="cb176-7"><a href="funciones.html#cb176-7" tabindex="-1"></a><span class="co"># veamos la función de sobrevivencia:</span></span>
+<span id="cb176-8"><a href="funciones.html#cb176-8" tabindex="-1"></a>tm_jpn_2010 <span class="sc">%&gt;%</span> </span>
+<span id="cb176-9"><a href="funciones.html#cb176-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, lx)) <span class="sc">+</span> </span>
+<span id="cb176-10"><a href="funciones.html#cb176-10" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb176-11"><a href="funciones.html#cb176-11" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb176-12"><a href="funciones.html#cb176-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="talleR_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
+<p>Repasemos sus argumentos, como <code>OAGNew</code>, <code>extrapLaw</code> y <code>a0rule</code>. También puede <code>graduar</code>, es decir pasar a edades simples.</p>
 </div>
 <div id="evaluación-de-declaración-de-edad" class="section level3 hasAnchor" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> Evaluación de declaración de edad<a href="funciones.html#evaluación-de-declaración-de-edad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Con el índice de <strong>Myers</strong> veamos si en Chaco mejoró la declaración por edad de varones entre los censos 2001 y 2010. Un indicador que tienda a 0 indica una mejor declaración (bajo los supuesto del método).</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="funciones.html#cb176-1" tabindex="-1"></a>pob_chaco <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;Data/PoblCensal01y10.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb176-2"><a href="funciones.html#cb176-2" tabindex="-1"></a>                <span class="fu">filter</span>(PROV_NOMBRE <span class="sc">==</span> <span class="st">&quot;CHACO&quot;</span>)</span>
-<span id="cb176-3"><a href="funciones.html#cb176-3" tabindex="-1"></a></span>
-<span id="cb176-4"><a href="funciones.html#cb176-4" tabindex="-1"></a>pob_chaco <span class="sc">%&gt;%</span> </span>
-<span id="cb176-5"><a href="funciones.html#cb176-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(EDAD, VARON, <span class="at">color=</span><span class="fu">factor</span>(CENSO))) <span class="sc">+</span> </span>
-<span id="cb176-6"><a href="funciones.html#cb176-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb176-7"><a href="funciones.html#cb176-7" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb176-8"><a href="funciones.html#cb176-8" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">5</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb176-9"><a href="funciones.html#cb176-9" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p>Con el índice de <strong>Myers</strong> veamos si en Chaco mejoró la declaración por edad de varones entre los censos 2001 y 2010. Un valor del indicador que tienda a 0 indica una mejor declaración (bajo los supuesto del método).</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="funciones.html#cb177-1" tabindex="-1"></a>pob_chaco <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;Data/PoblCensal01y10.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb177-2"><a href="funciones.html#cb177-2" tabindex="-1"></a>                <span class="fu">filter</span>(PROV_NOMBRE <span class="sc">==</span> <span class="st">&quot;CHACO&quot;</span>)</span>
+<span id="cb177-3"><a href="funciones.html#cb177-3" tabindex="-1"></a></span>
+<span id="cb177-4"><a href="funciones.html#cb177-4" tabindex="-1"></a>pob_chaco <span class="sc">%&gt;%</span> </span>
+<span id="cb177-5"><a href="funciones.html#cb177-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(EDAD, VARON, <span class="at">color=</span><span class="fu">factor</span>(CENSO))) <span class="sc">+</span> </span>
+<span id="cb177-6"><a href="funciones.html#cb177-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb177-7"><a href="funciones.html#cb177-7" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb177-8"><a href="funciones.html#cb177-8" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">5</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb177-9"><a href="funciones.html#cb177-9" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="talleR_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="funciones.html#cb177-1" tabindex="-1"></a><span class="co"># obtengo Myers</span></span>
-<span id="cb177-2"><a href="funciones.html#cb177-2" tabindex="-1"></a>pob_chaco <span class="sc">%&gt;%</span></span>
-<span id="cb177-3"><a href="funciones.html#cb177-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Myers_2001 =</span> <span class="fu">check_heaping_myers</span>(VARON[CENSO<span class="sc">==</span><span class="dv">2001</span>], EDAD[CENSO<span class="sc">==</span><span class="dv">2001</span>], <span class="at">ageMin =</span> <span class="dv">20</span>, <span class="at">ageMax =</span> <span class="dv">64</span>),</span>
-<span id="cb177-4"><a href="funciones.html#cb177-4" tabindex="-1"></a>            <span class="at">Myers_2010 =</span> <span class="fu">check_heaping_myers</span>(VARON[CENSO<span class="sc">==</span><span class="dv">2010</span>], EDAD[CENSO<span class="sc">==</span><span class="dv">2010</span>], <span class="at">ageMin =</span> <span class="dv">20</span>, <span class="at">ageMax =</span> <span class="dv">64</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="funciones.html#cb178-1" tabindex="-1"></a><span class="co"># obtengo Myers</span></span>
+<span id="cb178-2"><a href="funciones.html#cb178-2" tabindex="-1"></a>pob_chaco <span class="sc">%&gt;%</span></span>
+<span id="cb178-3"><a href="funciones.html#cb178-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Myers_2001 =</span> <span class="fu">check_heaping_myers</span>(VARON[CENSO<span class="sc">==</span><span class="dv">2001</span>], EDAD[CENSO<span class="sc">==</span><span class="dv">2001</span>], <span class="at">ageMin =</span> <span class="dv">20</span>, <span class="at">ageMax =</span> <span class="dv">64</span>),</span>
+<span id="cb178-4"><a href="funciones.html#cb178-4" tabindex="-1"></a>            <span class="at">Myers_2010 =</span> <span class="fu">check_heaping_myers</span>(VARON[CENSO<span class="sc">==</span><span class="dv">2010</span>], EDAD[CENSO<span class="sc">==</span><span class="dv">2010</span>], <span class="at">ageMin =</span> <span class="dv">20</span>, <span class="at">ageMax =</span> <span class="dv">64</span>))</span></code></pre></div>
 </div>
 <div id="graduación-de-población-por-edad-simple" class="section level3 hasAnchor" number="5.5.3">
 <h3><span class="header-section-number">5.5.3</span> Graduación de población por edad simple<a href="funciones.html#graduación-de-población-por-edad-simple" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El método de <strong>Sprague</strong> desagrega por edad simple conteos agrupados por edad quinquenal. Veamos como funciona para los varones de Chaco en el año 2010. Primero agregando, y luego aplicando el método.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="funciones.html#cb178-1" tabindex="-1"></a><span class="co"># me quedo con 2010</span></span>
-<span id="cb178-2"><a href="funciones.html#cb178-2" tabindex="-1"></a>pob_chaco_2010 <span class="ot">&lt;-</span> pob_chaco <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CENSO <span class="sc">==</span> <span class="dv">2010</span>)</span>
-<span id="cb178-3"><a href="funciones.html#cb178-3" tabindex="-1"></a></span>
-<span id="cb178-4"><a href="funciones.html#cb178-4" tabindex="-1"></a><span class="co"># agrupo la población por grupos quinquenales</span></span>
-<span id="cb178-5"><a href="funciones.html#cb178-5" tabindex="-1"></a>pob_chaco_2010_quinquenal <span class="ot">&lt;-</span> pob_chaco <span class="sc">%&gt;%</span></span>
-<span id="cb178-6"><a href="funciones.html#cb178-6" tabindex="-1"></a>  <span class="fu">filter</span>(CENSO <span class="sc">==</span> <span class="dv">2010</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb178-7"><a href="funciones.html#cb178-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">EDAD_q =</span> <span class="fu">trunc</span>(EDAD<span class="sc">/</span><span class="dv">5</span>) <span class="sc">*</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb178-8"><a href="funciones.html#cb178-8" tabindex="-1"></a>  <span class="fu">group_by</span>(EDAD_q) <span class="sc">%&gt;%</span> </span>
-<span id="cb178-9"><a href="funciones.html#cb178-9" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">VARON =</span> <span class="fu">sum</span>(VARON))</span>
-<span id="cb178-10"><a href="funciones.html#cb178-10" tabindex="-1"></a></span>
-<span id="cb178-11"><a href="funciones.html#cb178-11" tabindex="-1"></a><span class="co"># aplico sprague</span></span>
-<span id="cb178-12"><a href="funciones.html#cb178-12" tabindex="-1"></a>pob_chaco_2010_sprague <span class="ot">&lt;-</span> <span class="fu">graduate</span>(pob_chaco_2010_quinquenal<span class="sc">$</span>VARON, pob_chaco_2010_quinquenal<span class="sc">$</span>EDAD_q, <span class="at">method =</span> <span class="st">&quot;sprague&quot;</span>)</span>
-<span id="cb178-13"><a href="funciones.html#cb178-13" tabindex="-1"></a></span>
-<span id="cb178-14"><a href="funciones.html#cb178-14" tabindex="-1"></a><span class="co"># junto</span></span>
-<span id="cb178-15"><a href="funciones.html#cb178-15" tabindex="-1"></a>pob_chaco_2010_simple <span class="ot">&lt;-</span> pob_chaco_2010 <span class="sc">%&gt;%</span> </span>
-<span id="cb178-16"><a href="funciones.html#cb178-16" tabindex="-1"></a>  <span class="fu">full_join</span>(<span class="fu">tibble</span>(<span class="at">EDAD =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">110</span>, <span class="at">VARON_sprague =</span> pob_chaco_2010_sprague)) <span class="sc">%&gt;%</span> </span>
-<span id="cb178-17"><a href="funciones.html#cb178-17" tabindex="-1"></a>  <span class="fu">select</span>(EDAD, VARON, VARON_sprague) <span class="sc">%&gt;%</span> </span>
-<span id="cb178-18"><a href="funciones.html#cb178-18" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>EDAD, <span class="at">names_to=</span><span class="st">&quot;Tipo&quot;</span>, <span class="at">values_to=</span><span class="st">&quot;Población&quot;</span>)</span>
-<span id="cb178-19"><a href="funciones.html#cb178-19" tabindex="-1"></a></span>
-<span id="cb178-20"><a href="funciones.html#cb178-20" tabindex="-1"></a><span class="co"># visualizo</span></span>
-<span id="cb178-21"><a href="funciones.html#cb178-21" tabindex="-1"></a>pob_chaco_2010_simple <span class="sc">%&gt;%</span> </span>
-<span id="cb178-22"><a href="funciones.html#cb178-22" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(EDAD, Población, <span class="at">color=</span>Tipo)) <span class="sc">+</span></span>
-<span id="cb178-23"><a href="funciones.html#cb178-23" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb178-24"><a href="funciones.html#cb178-24" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="funciones.html#cb179-1" tabindex="-1"></a><span class="co"># me quedo con 2010</span></span>
+<span id="cb179-2"><a href="funciones.html#cb179-2" tabindex="-1"></a>pob_chaco_2010 <span class="ot">&lt;-</span> pob_chaco <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CENSO <span class="sc">==</span> <span class="dv">2010</span>)</span>
+<span id="cb179-3"><a href="funciones.html#cb179-3" tabindex="-1"></a></span>
+<span id="cb179-4"><a href="funciones.html#cb179-4" tabindex="-1"></a><span class="co"># agrupo la población por grupos quinquenales</span></span>
+<span id="cb179-5"><a href="funciones.html#cb179-5" tabindex="-1"></a>pob_chaco_2010_quinquenal <span class="ot">&lt;-</span> pob_chaco <span class="sc">%&gt;%</span></span>
+<span id="cb179-6"><a href="funciones.html#cb179-6" tabindex="-1"></a>  <span class="fu">filter</span>(CENSO <span class="sc">==</span> <span class="dv">2010</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb179-7"><a href="funciones.html#cb179-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">EDAD_q =</span> <span class="fu">trunc</span>(EDAD<span class="sc">/</span><span class="dv">5</span>) <span class="sc">*</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb179-8"><a href="funciones.html#cb179-8" tabindex="-1"></a>  <span class="fu">group_by</span>(EDAD_q) <span class="sc">%&gt;%</span> </span>
+<span id="cb179-9"><a href="funciones.html#cb179-9" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">VARON =</span> <span class="fu">sum</span>(VARON))</span>
+<span id="cb179-10"><a href="funciones.html#cb179-10" tabindex="-1"></a></span>
+<span id="cb179-11"><a href="funciones.html#cb179-11" tabindex="-1"></a><span class="co"># aplico sprague</span></span>
+<span id="cb179-12"><a href="funciones.html#cb179-12" tabindex="-1"></a>pob_chaco_2010_sprague <span class="ot">&lt;-</span> <span class="fu">graduate</span>(pob_chaco_2010_quinquenal<span class="sc">$</span>VARON, pob_chaco_2010_quinquenal<span class="sc">$</span>EDAD_q, <span class="at">method =</span> <span class="st">&quot;sprague&quot;</span>)</span>
+<span id="cb179-13"><a href="funciones.html#cb179-13" tabindex="-1"></a></span>
+<span id="cb179-14"><a href="funciones.html#cb179-14" tabindex="-1"></a><span class="co"># junto</span></span>
+<span id="cb179-15"><a href="funciones.html#cb179-15" tabindex="-1"></a>pob_chaco_2010_simple <span class="ot">&lt;-</span> pob_chaco_2010 <span class="sc">%&gt;%</span> </span>
+<span id="cb179-16"><a href="funciones.html#cb179-16" tabindex="-1"></a>  <span class="fu">full_join</span>(<span class="fu">tibble</span>(<span class="at">EDAD =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">110</span>, <span class="at">VARON_sprague =</span> pob_chaco_2010_sprague)) <span class="sc">%&gt;%</span> </span>
+<span id="cb179-17"><a href="funciones.html#cb179-17" tabindex="-1"></a>  <span class="fu">select</span>(EDAD, VARON, VARON_sprague) <span class="sc">%&gt;%</span> </span>
+<span id="cb179-18"><a href="funciones.html#cb179-18" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>EDAD, <span class="at">names_to=</span><span class="st">&quot;Tipo&quot;</span>, <span class="at">values_to=</span><span class="st">&quot;Población&quot;</span>)</span>
+<span id="cb179-19"><a href="funciones.html#cb179-19" tabindex="-1"></a></span>
+<span id="cb179-20"><a href="funciones.html#cb179-20" tabindex="-1"></a><span class="co"># visualizo</span></span>
+<span id="cb179-21"><a href="funciones.html#cb179-21" tabindex="-1"></a>pob_chaco_2010_simple <span class="sc">%&gt;%</span> </span>
+<span id="cb179-22"><a href="funciones.html#cb179-22" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(EDAD, Población, <span class="at">color=</span>Tipo)) <span class="sc">+</span></span>
+<span id="cb179-23"><a href="funciones.html#cb179-23" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb179-24"><a href="funciones.html#cb179-24" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="talleR_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
+</div>
+<div id="actividad-11" class="section level3 hasAnchor" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> Actividad<a href="funciones.html#actividad-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: lower-alpha">
+<li>Evaluar la declaración en edades terminadas en 0 y 5 con el indicador <em>Whipple</em>, para la provincia que prefiera. ¿qué conclusión puede obtener?</li>
+</ol>
 
 </div>
 </div>

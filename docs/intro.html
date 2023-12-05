@@ -216,13 +216,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="funciones.html"><a href="funciones.html#estandarizando"><i class="fa fa-check"></i><b>5.4</b> Estandarizando</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="funciones.html"><a href="funciones.html#actividades"><i class="fa fa-check"></i><b>5.4.1</b> Actividades</a></li>
+<li class="chapter" data-level="5.4.1" data-path="funciones.html"><a href="funciones.html#actividad-10"><i class="fa fa-check"></i><b>5.4.1</b> Actividad</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="funciones.html"><a href="funciones.html#funciones-demográficas-en-paquetes-demográficos"><i class="fa fa-check"></i><b>5.5</b> Funciones demográficas en paquetes demográficos</a>
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="funciones.html"><a href="funciones.html#tablas-de-mortalidad"><i class="fa fa-check"></i><b>5.5.1</b> Tablas de mortalidad</a></li>
 <li class="chapter" data-level="5.5.2" data-path="funciones.html"><a href="funciones.html#evaluación-de-declaración-de-edad"><i class="fa fa-check"></i><b>5.5.2</b> Evaluación de declaración de edad</a></li>
 <li class="chapter" data-level="5.5.3" data-path="funciones.html"><a href="funciones.html#graduación-de-población-por-edad-simple"><i class="fa fa-check"></i><b>5.5.3</b> Graduación de población por edad simple</a></li>
+<li class="chapter" data-level="5.5.4" data-path="funciones.html"><a href="funciones.html#actividad-11"><i class="fa fa-check"></i><b>5.5.4</b> Actividad</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -256,14 +257,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.1.1</span> Variables<a href="intro.html#variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para adentrarnos en las características de <strong>R</strong>, censaremos un <strong>hogar</strong>. Pero… ¿qué es un hogar? Es una unidad de análisis demográfica, definida en un marco operativo censal: <em>“se entiende por hogar una persona que vive sola o un grupo de personas que pueden o no estar emparentadas pero que comparten el presupuesto para los gastos de alimentación” (ONU, 2011)</em> (ojo, no confundir con <em>vivienda</em> y/o <em>familia</em>).</p>
 <p>Resulta que nos fue asignada determinada vivienda, con un solo hogar. Al llegar a la cuadra vemos lo siguiente…</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="figs/censista.jpg" alt="Fuente: https://www.economist.com/books-and-arts/2020/04/16/a-lively-and-enlightening-history-of-the-census" width="640" />
 <p class="caption">
 Figure 2.1: Fuente: <a href="https://www.economist.com/books-and-arts/2020/04/16/a-lively-and-enlightening-history-of-the-census" class="uri">https://www.economist.com/books-and-arts/2020/04/16/a-lively-and-enlightening-history-of-the-census</a>
 </p>
 </div>
 <p>Por suerte nos fue asignada la siguiente vivienda. Son 6 miembros. ¿Cómo se listan los miembros de un hogar en un formulario censal?</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
 <img src="figs/censoListaMiembros.png" alt="fuente: en base a https://www.indec.gob.ar/indec/web/Nivel3-Tema-2-41" width="552" />
 <p class="caption">
 Figure 2.2: fuente: en base a <a href="https://www.indec.gob.ar/indec/web/Nivel3-Tema-2-41" class="uri">https://www.indec.gob.ar/indec/web/Nivel3-Tema-2-41</a>
@@ -448,18 +449,26 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 ##  $ nombre         : chr  &quot;Horacio&quot; &quot;José&quot; &quot;Iván&quot; &quot;Facundo&quot; ...
 ##  $ sexo           : chr  &quot;v&quot; &quot;m&quot; &quot;v&quot; NA ...
 ##  $ edad           : num  63 60 35 32 27 27
-##  $ fecha_nacim    : Date, format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; &quot;1985-11-08&quot; ...
+##  $ fecha_nacim    : Date, format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; ...
 ##  $ autoRespondente: logi  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="intro.html#cb63-1" tabindex="-1"></a><span class="fu">summary</span>(hogar)   <span class="co"># resumen</span></span></code></pre></div>
-<pre><code>##     nombre              sexo                edad        fecha_nacim         autoRespondente
-##  Length:6           Length:6           Min.   :27.00   Min.   :1960-01-01   Mode :logical  
-##  Class :character   Class :character   1st Qu.:28.25   1st Qu.:1967-11-06   FALSE:5        
-##  Mode  :character   Mode  :character   Median :33.50   Median :1986-06-15   TRUE :1        
-##                                        Mean   :40.67   Mean   :1980-05-24                  
-##                                        3rd Qu.:53.75   3rd Qu.:1992-02-14                  
-##                                        Max.   :63.00   Max.   :1993-10-24</code></pre>
+<pre><code>##     nombre              sexo                edad        fecha_nacim        
+##  Length:6           Length:6           Min.   :27.00   Min.   :1960-01-01  
+##  Class :character   Class :character   1st Qu.:28.25   1st Qu.:1967-11-06  
+##  Mode  :character   Mode  :character   Median :33.50   Median :1986-06-15  
+##                                        Mean   :40.67   Mean   :1980-05-24  
+##                                        3rd Qu.:53.75   3rd Qu.:1992-02-14  
+##                                        Max.   :63.00   Max.   :1993-10-24  
+##  autoRespondente
+##  Mode :logical  
+##  FALSE:5        
+##  TRUE :1        
+##                 
+##                 
+## </code></pre>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="intro.html#cb65-1" tabindex="-1"></a><span class="fu">colnames</span>(hogar)  <span class="co"># nombres de columnas</span></span></code></pre></div>
-<pre><code>## [1] &quot;nombre&quot;          &quot;sexo&quot;            &quot;edad&quot;            &quot;fecha_nacim&quot;     &quot;autoRespondente&quot;</code></pre>
+<pre><code>## [1] &quot;nombre&quot;          &quot;sexo&quot;            &quot;edad&quot;            &quot;fecha_nacim&quot;    
+## [5] &quot;autoRespondente&quot;</code></pre>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="intro.html#cb67-1" tabindex="-1"></a><span class="fu">ncol</span>(hogar)      <span class="co"># número de columnas</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="intro.html#cb69-1" tabindex="-1"></a><span class="fu">nrow</span>(hogar)      <span class="co"># número de filas</span></span></code></pre></div>
@@ -523,7 +532,7 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 ##   ..$ nombre         : chr [1:5] &quot;Horacio&quot; &quot;José&quot; &quot;Facundo&quot; &quot;Cristian&quot; ...
 ##   ..$ sexo           : chr [1:5] &quot;v&quot; &quot;m&quot; NA &quot;v&quot; ...
 ##   ..$ edad           : num [1:5] 63 60 32 27 27
-##   ..$ fecha_nacim    : Date[1:5], format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; &quot;1987-01-21&quot; ...
+##   ..$ fecha_nacim    : Date[1:5], format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; ...
 ##   ..$ autoRespondente: logi [1:5] FALSE TRUE FALSE FALSE FALSE
 ##   ..$ rp             : Factor w/ 3 levels &quot;cónyuge&quot;,&quot;hije&quot;,..: 3 1 2 2 2
 ##  $ hogar_2:&#39;data.frame&#39;: 1 obs. of  6 variables:
@@ -565,7 +574,7 @@ Se puede pedir ayuda consultando la documentación de las funciones:<code>?range
 ##   ..$ nombre         : chr [1:6] &quot;Horacio&quot; &quot;José&quot; &quot;Facundo&quot; &quot;Cristian&quot; ...
 ##   ..$ sexo           : chr [1:6] &quot;v&quot; &quot;m&quot; NA &quot;v&quot; ...
 ##   ..$ edad           : num [1:6] 63 60 32 27 27 35
-##   ..$ fecha_nacim    : Date[1:6], format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; &quot;1987-01-21&quot; ...
+##   ..$ fecha_nacim    : Date[1:6], format: &quot;1960-01-01&quot; &quot;1961-11-05&quot; ...
 ##   ..$ autoRespondente: logi [1:6] FALSE TRUE FALSE FALSE FALSE FALSE
 ##   ..$ rp             : Factor w/ 3 levels &quot;cónyuge&quot;,&quot;hije&quot;,..: 3 1 2 2 2 2</code></pre>
 <div id="actividad-3" class="section level3 hasAnchor" number="2.4.1">

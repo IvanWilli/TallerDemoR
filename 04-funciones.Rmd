@@ -55,7 +55,7 @@ edad_en_t_anios <- function(x, t){
 edad_en_t_anios(35, 10) # no nombré los argumentos porque respeté el orden
 
 # Edades de un hogar en 5 años
-edades = c(59, 58, 32, 30, 25, 25)
+edades <- c(59, 58, 32, 30, 25, 25)
 edad_en_t_anios(edades, 5)
 ```
 
@@ -72,7 +72,7 @@ edad_en_t_anios(x = 35)
 
 ## Crecimiento
 
-Tenemos una población que en el año 2010 era de 50.000 personas y en 2020 era de 60.000. Nos preguntan cual sería la población a 2025. Existen distintas formas en que podemos modelar su crecimiento total a partir de dos puntos observados en el tiempo. En términos generales para un momento 0 y un momento t, debemos obtener primero el ritmo al que crece, es decir su tasa anual promedio: 
+Tenemos una población que en el año 2010 era de 50.000 personas y en 2020 era de 60.000. Nos preguntan cual sería la población a 2025. Existen distintas formas en que podemos modelar su crecimiento total a partir de dos puntos observados en el tiempo. En términos generales para un momento 0 y un momento t, debemos obtener primero el ritmo al que crece, es decir su tasa anual promedio $\overline{r}(0,t)$: 
 
 |Supuesto | $N(t)$ | $\overline{r}(0,t)$|
 |---------|--------|-------|
@@ -90,21 +90,21 @@ crecim_lineal <- function(N0, Nt, t, h){
 }
 ```
 
-Nuestra respuesta a la pregunta inicial podría ser:
+Nuestra respuesta a la pregunta inicial podría ser, siendo `h = 15`:
 
 ```{r}
 # ¿qué población habrá en 2025?
 N2025 <- crecim_lineal(N0 = 50000, Nt = 60000, t = 10, h = 15)
 
 # miremos un gráfico
-tibble(Año = c(2010,  2020,  2025),
+data.frame(Año = c(2010,  2020,  2025),
        N   = c(50000, 60000, N2025)) %>% 
   ggplot(aes(Año, N)) + 
   geom_line() + 
   geom_point() 
 ```
 
-¿Si quisiera tener opciones al momento de calcular el crecimiento? lineal o exponencial. Incluyamos el argumento `tipo` y utilicemos el condicional **if** para posicionarnos en el modelo que se quiera.
+¿Si quisiera tener opciones al momento de calcular el crecimiento? Por ejemplo, que sea de tipo lineal o exponencial. Incluyamos el argumento `tipo` y utilicemos el condicional `if` para posicionarnos en el modelo que se quiera.
  
 ```{r}
 crecim <- function(N0, Nt, t, h, tipo = "lineal"){
@@ -134,6 +134,8 @@ data.frame(Año = c(2010,  2020,  2025, 2025),
   geom_point(aes(shape = Tipo, color=Tipo)) 
 ```
 
+El condicional puede pensarse como `if` y `else` también, ¿cómo sería? 
+
 ¿Y si tuviéramos un vector de población por edad? Podemos tener una tasa $\overline{r}(0,t)$ por cada edad.
 
 ```{r}
@@ -142,8 +144,9 @@ N2025_edad <- data.frame(Edad = c("0-14", "15-64", "65+"),
                          N2010   = c(20000, 20000, 10000),
                          N2020   = c(25000, 30000, 5000)) %>% 
               mutate(N2025_lineal = crecim(N2010, N2020, 10, 15, tipo = "lineal"),
-                        N2025_exp = crecim(N2010, N2020, 10, 15, tipo = "exponencial"))
+                     N2025_exp = crecim(N2010, N2020, 10, 15, tipo = "exponencial"))
 
+# hagamos tidy el data.frame primero
 N2025_edad %>% 
   pivot_longer(cols = !Edad, names_to = "Tipo", values_to = "N") %>% 
   ggplot(aes(Edad, N, fill = Tipo)) + 
@@ -151,7 +154,7 @@ N2025_edad %>%
            position = "dodge") # posición lado a lado
 ```
 
-El poner a disposición de otros usuarios tus funciones requiere controlar los errores posibles, entre otras cosas por ingresar como argumentos objetos no esperados (por ejemplo, un objeto *character* en algunos de los primeros argumentos). Ejemplo: especifico que no acepto un objeto `character` como argumento en `N0`, `Nt`, `t` ni `h`:
+El poner a disposición de otros usuarios tus funciones requiere controlar los errores posibles, entre otras cosas por ingresar como argumentos objetos no esperados (por ejemplo, un objeto *character* en algunos de los primeros argumentos). Ejemplo: hagamos no aceptable el ingreso de un objeto `character` como argumento en `N0`, `Nt`, `t` ni `h`:
 
 ```{r,eval=F}
 crecim_lineal_check <- function(N0, Nt, t, h){
@@ -165,13 +168,24 @@ crecim_lineal_check <- function(N0, Nt, t, h){
   return(Nh)
 }
 
+# probemos
 crecim_lineal_check(50000, 60000, 10, "hola")
 
 ```
 
 ### Actividad
 
-a) Siguiendo el ejemplo previo: ¿cuál sería la población al 2017 bajo el supuesto de crecimiento exponencial? ¿Es equivalente interpolar cada edad y luego sumar?
+a) Crear una función que sume un vector de población y devuelva el resultado en miles.
+
+```{r}
+sumar_en_miles <- function(x){
+  round(sum(x)/1000)
+}
+sumar_en_miles(N2025_edad$N2010)
+```
+
+
+a) Siguiendo el ejemplo trabajado: ¿cuál sería la población al 2017 bajo el supuesto de crecimiento exponencial? ¿Es equivalente interpolar cada edad y luego sumar? ¿Y para el tipo lineal?
 
 ```{r, eval = F, include = F}
 crecim(50000, 60000, 10, 7, tipo = "exponencial")
@@ -181,12 +195,11 @@ sum(
   )
 ```
 
-
-a) Crear una función que informe la edad modal de una distribución de conteo, por ejemplo para `data.frame(Edad = c(0,4,7,10), Casos = c(2, 6, 9, 0))` debería devolver la edad 7. 
+a) Crear una función que informe la edad modal, por ejemplo para `data.frame(Edad = c(0,4,7,10), Casos = c(2, 6, 9, 0))` debería devolver la edad 7. 
 
 ```{r, eval = F, include = F}
 Edad = c(0,4,7,10)
-Casos = c(2, 6, 9, 0)
+Casos = c(2, 6, 9, 125)
 get_edad_modal <- function(Edad, Casos){
   Edad[which(Casos==max(Casos))[1]]
 }
@@ -210,10 +223,9 @@ h_doblar <- function(N0, Nt, t, tipo = "lineal"){
 h_doblar(50000, 60000, 10)
 ```
 
-
 ## Estandarizando
 
-Entre los intentos por discriminar el efecto de la estructura por edad en el indicador de Tasa Bruta de Mortalidad $TBM(t)=\frac{D(t)}{N(t)}$ (defunciones sobre población expuesta^[Para ser más rigurosos en la notación $N(t)$ debería ser expresado como $\overline{N}(t,t+1)$, pero simplificaremos un poco para enfocarnos en lo que haremos en R. Para más detalles ver Preston y otros (2001)]) se encuentra el clásico método de *estandarización* (Swanson & Siegel, 2004). 
+Entre los intentos por discriminar el efecto de la estructura por edad en el indicador de Tasa Bruta de Mortalidad $TBM(t)=\frac{D(t)}{N(t)}$ (defunciones sobre población expuesta^[Para ser más rigurosos en la notación $N(t)$ debería ser expresado como $\overline{N}(t,t+1)$, pero simplificaremos un poco para enfocarnos en lo que haremos en R. Para más detalles ver Preston y otros (2001)]) se encuentra el clásico método de *estandarización* directa (Swanson & Siegel, 2004). 
 
 En principio, la $TBM(t)$ de una población puede ser expresada como el promedio ponderado de las tasas específicas de mortalidad $M_x(t)=\frac{D_x(t)}{N_x(t)}$ por el peso poblacional de cada edad $C_x(t)=\frac{N_x(t)}{N(t)}$:
 
@@ -283,9 +295,9 @@ db %>%
 
 ¿Cómo sería una función que reciba una tabla con las variables `País`, `N` y `D` y devuelva las $TBM$ y las $TSM$?
 
-### Actividades
+### Actividad
 
-- Responder la pregunta previa con los mismos datos utilizados arriba.
+a) Responder la pregunta previa con los mismos datos utilizados arriba.
 
 ```{r, include=F}
 standarizarrr <- function(db){
@@ -303,17 +315,32 @@ standarizarrr <- function(db){
 standarizarrr(readxl::read_xlsx("Data/Chile_Japon_Polonia.xlsx") %>% filter(Year==2010))
 ```
 
-- Con los datos de la tabla "Chile_Japon_Polonia.csv": ¿qué se puede decir sobre la mortalidad de Polonia en los años 1990, 2000 y 2010?
+a) Con los datos de la tabla "Chile_Japon_Polonia.csv": ¿qué se puede decir sobre la evolución de la mortalidad de Polonia en los años 1990, 2000 y 2010? ¿Bajó o creció?
 
-- Graficar la distribución de las defunciones por edad (colocando cada punto en la edad media del intervalo, por ejemplo para el grupo 5-10, en 7.5).
+```{r, include=F}
+db_act <- readxl::read_xlsx("Data/Chile_Japon_Polonia.xlsx") %>% 
+  filter(Country == "Polonia", Year %in% c(1990, 2000, 2010))
+C_x_promedio <- db_act %>% 
+              group_by(Age) %>% 
+              summarise(c_x = sum(N)/sum(db$N))
+db_act %>%
+              mutate(M = D/N) %>% 
+              left_join(C_x_promedio) %>% 
+              group_by(Year) %>% 
+              summarise(TBM = sum(D)/sum(N)*1000,
+                        TSM = sum(M * c_x)*1000)
+```
+
+
+a) Graficar la distribución de las defunciones por edad (colocando cada punto en la edad media del intervalo, por ejemplo para el grupo 5-10, en 7.5).
 
 ## Funciones demográficas en paquetes demográficos
+
+> Estamos entrando en zona de utilización de funciones demográficas de paquetes.
 
 ```{r, echo=F}
 include_graphics("figs/atencion.jpg")
 ```
-
-> Estamos entrando en zona de utilización de funciones demográficas de paquetes. Se sugiere que...
 
 Proyecto [DemoTools](https://timriffe.github.io/DemoTools/). Su instalación demora un poco:
 
@@ -329,7 +356,7 @@ install_github("timriffe/DemoTools")
 
 ### Tablas de mortalidad
 
-Construir una función que produzca una **tabla de mortalidad** a partir de un set de tasas por edad es un lindo ejercicio de programación demográfica en R. Podés hacer la tuya y luego checkear con `DemoTools`. Acá para Japón 2010:
+Construir una función que produzca una **tabla de mortalidad** a partir de un set de tasas por edad de mortalidad es un lindo ejercicio de programación en R. Pero por suerte `DemoTools` tiene una muy buena implementación. Acá para Japón 2010:
 
 ```{r}
 jpn_2010 <- db %>% filter(Country == "Japon", Year == 2010)
@@ -346,9 +373,11 @@ tm_jpn_2010 %>%
   theme_bw()
 ```
 
+Repasemos sus argumentos, como `OAGNew`, `extrapLaw` y `a0rule`. También puede `graduar`, es decir pasar a edades simples.
+
 ### Evaluación de declaración de edad
 
-Con el índice de **Myers** veamos si en Chaco mejoró la declaración por edad de varones entre los censos 2001 y 2010. Un indicador que tienda a 0 indica una mejor declaración (bajo los supuesto del método).
+Con el índice de **Myers** veamos si en Chaco mejoró la declaración por edad de varones entre los censos 2001 y 2010. Un valor del indicador que tienda a 0 indica una mejor declaración (bajo los supuesto del método).
 
 ```{r}
 pob_chaco <- readxl::read_xlsx("Data/PoblCensal01y10.xlsx", sheet=1) %>% 
@@ -398,5 +427,7 @@ pob_chaco_2010_simple %>%
   geom_point()
 ```
 
+### Actividad
 
+a) Evaluar la declaración en edades terminadas en 0 y 5 con el indicador *Whipple*, para la provincia que prefiera. ¿qué conclusión puede obtener?
 

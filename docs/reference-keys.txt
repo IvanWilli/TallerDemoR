@@ -1,7 +1,7 @@
-fig:unnamed-chunk-8
-fig:unnamed-chunk-9
-fig:unnamed-chunk-114
-fig:unnamed-chunk-122
+fig:unnamed-chunk-6
+fig:unnamed-chunk-7
+fig:unnamed-chunk-112
+fig:unnamed-chunk-120
 introducción
 información-general
 preparándonos
@@ -48,8 +48,9 @@ funciones-1
 crecimiento
 actividad-9
 estandarizando
-actividades
+actividad-10
 funciones-demográficas-en-paquetes-demográficos
 tablas-de-mortalidad
 evaluación-de-declaración-de-edad
 graduación-de-población-por-edad-simple
+actividad-11
