@@ -1,10 +1,11 @@
 # Reportes
 
-```{r, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=FALSE)
-library(fontawesome)
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
 library(knitr)
-library(googledrive)
+library(fontawesome)
+library(tidyverse)
+Sys.setlocale("LC_ALL", "Spanish_Spain.UTF-8")
 ```
 
 ## Comunicación y Reproducibilidad
