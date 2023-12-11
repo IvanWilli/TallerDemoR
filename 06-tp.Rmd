@@ -1,5 +1,13 @@
 # TP
 
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
+library(knitr)
+library(fontawesome)
+library(tidyverse)
+Sys.setlocale("LC_ALL", "Spanish_Spain.UTF-8")
+```
+
 ## Hemos llegado:
   
 ![](figs/aplausos.gif)
@@ -7,31 +15,38 @@
 
 ## Consigna
 
-Realizar un reporte sobre las caracteristicas de una provincia argentina seleccionada por el autor. Los datos los podés encontrar en "Data/PoblCensal01y10". El objetivo es caracterizar el proceso de envejecimiento en el período, el cual, siguiendo a [CELADE](https://www.cepal.org/es/temas/envejecimiento) lo podemos definir como el aumento progresivo de la proporción de las personas de 60 años y más con respecto a la población total. Si bien en el ejercicio solo contaremos con dos observaciones de cada población (censos 2001 y 2010), permite ver la dirección y magnitud del cambio entre esos años. Específicamente, se solicita:
+Realizar un reporte sobre las características demográficas de una provincia argentina seleccionada por el autor, según los resultados del Censo 2022. Los datos los podés encontrar en [la web](https://censo.gob.ar/index.php/datos_definitivos/). Específicamente, se solicita:
 
-* Crear un reporte RMarkdwon que produzca el informe en *html*.
+* Crear un reporte *RMarkdwon* que produzca el informe en *html*.
 
 * Asignar un título al reporte que incluya la provincia seleccionada, tu nombre como autor/a, y el mes y año del reporte.
 
 * Contenidos **mínimos** del cuerpo del informe:
-    - Un párrafo inicial donde se explicite el objetivo del reporte y se mencione la cantidad de población total observada en cada punto del tiempo, mediante *chunks inline*.
-    - Mostrar las pirámides de población de ambos períodos en un mismo gráfico, mediante el paquete *ggplot2*, y su función *facet*. Acordate que si en el chunk guardas el gráfico como objeto, debes "llamarlo" para que lo imprima.
-    - Calcular el índice de masculinidad por edad de la población de 60 a 100 años y realizar un gráfico de línea diferenciando cada censo con un color distinto.
-    - En un párrafo final describir brevemente qué te llama la atención de lo observado.
+
+En un primer chunk debes leer los datos censales directo desde R. En todos los casos es el archivo xlsx referido al Cuadro 4, que contiene población por sexo y edad. Va una ayuda para el caso de Total País, donde previamente ingresamos a la sección de [total país](https://censo.gob.ar/index.php/datos_definitivos_total_pais/), descargamos el archivo (en el caso de las provincias, cambia el nombre del archivo xlsx) y lo colocamos en la carpeta Data:
+```{r, message=F, warning=F}
+library(readxl)
+total_país_c2022 <- read_xlsx("Data/c2022_tp_est_c4.xlsx", sheet = 3, range = "A4:E127")
+total_país_c2022 <- total_país_c2022 %>% 
+  # selecciono las variables que quiero y las renombro ahí mismo con select
+  select(Edad = 1, Mujer = 3, Hombre = 4) %>% 
+  # me quedo con las edades simples
+  filter(Edad %in% c(0:99, "100 y más")) 
+```
     
-**¡IMPORTANTE!** Solo es relevante a efectos del taller:  
+Luego agregar:
+    - Un párrafo inicial donde se explicite el objetivo del reporte y se mencione la cantidad de población total y su peso en el total país, mediante *chunks inline*.
+    - Mostrar la pirámide de población mediante el uso del paquete `ggplot2`. 
+    - Calcular el índice de masculinidad por edad de la población de 0 a 80 años y realizar un gráfico de línea.
+    - En un párrafo final describir brevemente qué te llamó la atención de lo observado.
+    
+**¡IMPORTANTE!** 
 
-  * Crear el reporte y enviar el html resultante  
+Si bien puede haber una devolución conceptual, no serán evaluadas las conclusiones. El resultado de la evaluación será tarde o temprano "Aprobado", excepto que no haya entrega `r fa("face-smile-wink")``.
 
-  * Incluir dos tipos de gráfico creados dentro de un *chunk*, con sus respectivos títulos, fuentes y nombres de los ejes.
+**Fecha de entrega (maaas o meno): 29/02/2024**
 
-  * Incluir código R en un párrafo
-  
-No serán evaluadas conceptualmente las conclusiones. El resultado de la evaluación será tarde o temprano "Aprobado", excepto que no haya entrega.
+¡Buen Viaje!
 
-**Fecha de entrega final: 31/12/2021**
-
-Manos a la obra...
-
-![¡Hasta pRonto!](figs/r_rollercoaster.png)
+![](figs/r_rollercoaster.png)
 

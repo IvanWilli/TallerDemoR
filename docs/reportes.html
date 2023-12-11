@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Taller de R aplicado a la Demografía</title>
-  <meta name="description" content="Taller de R aplicado a la Demografía" />
+  <title>6 Reportes | Taller de R aplicado a la Demografía</title>
+  <meta name="description" content="6 Reportes | Taller de R aplicado a la Demografía" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Taller de R aplicado a la Demografía" />
+  <meta property="og:title" content="6 Reportes | Taller de R aplicado a la Demografía" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="IvanWilli/TallerDemoR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Taller de R aplicado a la Demografía" />
+  <meta name="twitter:title" content="6 Reportes | Taller de R aplicado a la Demografía" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="funciones.html"/>
+<link rel="next" href="tp.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -257,86 +257,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title"><p>Taller de R aplicado a la Demografía</p></h1>
-<p class="author"><em>Ayelén Martinez, Florencia Bathory e Iván Williams</em></p>
-<p class="date"><em>2023-12-11</em></p>
-</div>
-<div id="introducción" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="información-general" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Información general<a href="index.html#información-general" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>¡Bienvenid@s! <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg></p>
-<p>Este sitio web contiene los materiales para el taller ofrecido en la Universidad Nacional de Luján, bajo el programa de maestría y especialización en Demografía Social, durante noviembre y diciembre de 2023. <strong>No</strong> es una guía autoexplicada, sino un acompañamiento y soporte para la cursada.</p>
-<p>Algunas cosas útiles:</p>
+<div id="reportes" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Reportes<a href="reportes.html#reportes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="comunicación-y-reproducibilidad" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Comunicación y Reproducibilidad<a href="reportes.html#comunicación-y-reproducibilidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hasta acá fuimos realizando el siguiente flujo:</p>
+<p>Lo que resta: <strong>¿cómo comunicarlo?</strong>.</p>
+<p>Para esto aprenderemos las nociones básicas de <a href="https://rmarkdown.rstudio.com/">RMarkdown</a>, que integra <strong>texto + código</strong>, permitiendo la reproducibilidad que comentamos al inicio del taller.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="reportes.html#cb180-1" tabindex="-1"></a><span class="co"># install.packages(&quot;rmarkdown&quot;)</span></span>
+<span id="cb180-2"><a href="reportes.html#cb180-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;rmarkdown&quot;</span>)</span>
+<span id="cb180-3"><a href="reportes.html#cb180-3" tabindex="-1"></a><span class="co"># install.packages(&quot;knitr&quot;)</span></span>
+<span id="cb180-4"><a href="reportes.html#cb180-4" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
+<p>Aquí veremos la opción para generar documentos/reportes pensando en diseñar tu próximo paper o informe de resultados.</p>
+<p>Empecemos por crear un documento <strong>R Markdown</strong> mediante el template (muestra) por defecto de RStudio en <em>HTML</em> (yendo a <em>File &gt; New File &gt; R Markdown</em>), y démosle un nombre. Ten a mano la <a href="https://www.rstudio.com/blog/the-r-markdown-cheat-sheet/">Hoja de Ayuda</a>.</p>
+<p>¡Antes que nada! Veamos qué genera sin modificarlo. Debemos ejecutar <em>Knit</em>, mediante el botón en el menú o <em>Ctrl + Shift + K</em> (internamente RStudio, mediante el paquete <a href="https://en.wikipedia.org/wiki/Knitr">knitr</a>, integra el documento <a href="https://en.wikipedia.org/wiki/Markdown">markdown</a> con los resultados del código en R, para que luego el paquete <a href="https://pandoc.org/">pandoc</a> lo convierta al tipo que deseás).</p>
+<p>Lo que acabas de ver es un tipo de salida <em>HTML</em>, pero puedes lograr un pdf o word también (cada uno tiene un template para que exprimentes). Más allá de este formato, la estructura de todo documento tiene tres partes: <strong>YAML</strong> (o cabezal), el <strong>texto</strong> y los <strong>chunks</strong>.</p>
 <ul>
-<li>El programa actualizado se puede encontrar <a href="https://github.com/IvanWilli/TallerDemoR/tree/master/programa">aquí</a>.</li>
-<li>Encuentra el código fuente de este sitio en <a href="https://github.com/IvanWilli/TallerDemoR/tree/master">GitHub</a>.</li>
-<li>Los datos que utilizaremos se pueden encontrar en un <a href="https://drive.google.com/drive/folders/1wRmATJa1ZcCVk5gDodjtD1SYJLabjlvD?usp=sharing">drive</a>.</li>
-<li>Los encuentros virtuales los haremos vía zoom en este <a href="https://us06web.zoom.us/j/88249603426?pwd=sw7NItVGMUB6jm113eCb2Jta34rAoM.1">link</a>.</li>
-</ul>
-<p>Ten en cuenta que esta página puede <em>cambiar</em> durante el curso, así que no te preocupes si notas algunos cambios. Podemos adaptar el contenido en función de la interacción que vayamos teniendo o corregir/agregar código a lo largo del camino.</p>
-<p>Esperamos que disfrutes el taller y te sea útil.</p>
-<p>Ayelén, Florencia e Iván</p>
-<!-- --------------------------------------------------------------------- -->
-</div>
-<div id="preparándonos" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> PrepaRándonos<a href="index.html#preparándonos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Pronto comenzaremos el <strong>Taller de R aplicado a la Demografía</strong>. El objetivo es que puedas dar tus primeros pasos en la herramienta y puedas aplicar allí las principales técnicas de la demografía.</p>
-<p>Esta edición del taller (tercera en su historia) la realizaremos un poco presencial (primer y último encuentro al menos) y un poco virtual. Para nuestro primer día sería bueno llevar lista tu compu en lo que atañe a la instalación del programa, de los paquetes y otras cuestiones mínimas, que si bien vamos a poder ayudarte in situ, nos ahorraría tiempo para comenzar con los materiales.</p>
-<p>Te proponemos tomarte unos minutos para que podamos arrancar sin problemas la primera clase. No te frustres si algo no funciona, podés contactárnos para ir solucionándolo, o en última instancia lo vemos en el primer encuentro.</p>
-<div id="instalación-de-y-rstudio" class="section level3 hasAnchor" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> Instalación de y RStudio<a href="index.html#instalación-de-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Si estuviéramos en un auto, <em>R</em> es el motor, el sistema de dirección y frenos, y <strong>RStudio</strong> es nuestra interfaz: volante, pedales y los botoncitos que tocamos en los paneles (por ejemplo para poner ASPEN en la radio y disfrutar del viaje). Necesitamos instalar ambos y en su última versión disponible.</p>
-<p>Para esto debés ingresar a la página de descarga de <a href="http://mirror.fcaglp.unlp.edu.ar/CRAN/">R</a> <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>, e ir al instalador según el sistema operativo que utilices, la versión escritorio (<em>desktop</em>). Ejecuta el <em>.exe</em> y sigue los pasos. Como chequeo, la última versión es la <strong>4.3.1</strong>. Luego debes ir a la web de <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a> <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM160 152V264v96c0 13.3 10.7 24 24 24s24-10.7 24-24V288h60.9l37.2 81.9c5.5 12.1 19.7 17.4 31.8 11.9s17.4-19.7 11.9-31.8L315.7 275c21.8-14.3 36.3-39 36.3-67c0-44.2-35.8-80-80-80H184c-13.3 0-24 10.7-24 24zm48 88V176h64c17.7 0 32 14.3 32 32s-14.3 32-32 32H208z"/></svg> y repetir el proceso previo. Un video muy ilustrativo del proceso de instalación es <a href="https://www.youtube.com/watch?v=Nmu4WPdJBRo">este</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
-<p>Para aquellos que ya tienen <em>R</em> instalado pero de una versión previa, pueden volver a instalarlo siguiendo los pasos previos, que RStudio tomará de inmediato la más reciente cuando inicie una nueva sesión. O también pueden utilizar el paquete <code>installr</code> para los que ya vienen más habitué (sí, <a href="https://www.asale.org/damer/habitu%C3%A9">existe</a>).</p>
-</div>
-<div id="instalación-de-paquetes" class="section level3 hasAnchor" number="1.2.2">
-<h3><span class="header-section-number">1.2.2</span> Instalación de paquetes<a href="index.html#instalación-de-paquetes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Los paquetes (<strong>packages</strong> en inglés) son repositorios de código que contienen funciones relacionadas. Cada paquete tiene un tema al que se dedica, y dentro de éste, un objetivo o múltiples, siempre interrelacionados. A lo largo del taller utilizaremos muchos, por eso sería deseable que tengas instalados previamente algunos, ya que el éxito en parte depende de que la conexión a internet funcione bien. Abrí RStudio <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM160 152V264v96c0 13.3 10.7 24 24 24s24-10.7 24-24V288h60.9l37.2 81.9c5.5 12.1 19.7 17.4 31.8 11.9s17.4-19.7 11.9-31.8L315.7 275c21.8-14.3 36.3-39 36.3-67c0-44.2-35.8-80-80-80H184c-13.3 0-24 10.7-24 24zm48 88V176h64c17.7 0 32 14.3 32 32s-14.3 32-32 32H208z"/></svg> y en la consola pega el siguiente código, luego ejecutalo. Te arrojará un montón de mensajes sobre el proceso de instalación pero el último deberá darte un ok.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;foreign&quot;</span>, <span class="st">&quot;eph&quot;</span>, <span class="st">&quot;plotly&quot;</span>, <span class="st">&quot;gapminder&quot;</span>, <span class="st">&quot;gridExtra&quot;</span>, <span class="st">&quot;wpp2019&quot;</span>, <span class="st">&quot;HMDHFDplus&quot;</span>,<span class="st">&quot;rgdal&quot;</span>,<span class="st">&quot;spdplyr&quot;</span>,<span class="st">&quot;leaflet&quot;</span>))</span></code></pre></div>
-</div>
-<div id="foro" class="section level3 hasAnchor" number="1.2.3">
-<h3><span class="header-section-number">1.2.3</span> Foro<a href="index.html#foro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Para comunicarnos durante la semana utilizaremos el apartado de <a href="https://github.com/IvanWilli/TallerDemoR/issues">issues</a> del repositorio en github, que permite escribir <a href="https://docs.github.com/es/issues/tracking-your-work-with-issues/creating-an-issue">propuestas/sugerencias</a> incluyendo pedazos de código (el lenguaje es <a href="https://en.wikipedia.org/wiki/Markdown">markdown</a>, que veremos en la última unidad). Para esto debes crearte un usuario. El uso de este espacio es <strong>opcional</strong>: si bien será útil para discutir contenido en la semana, si hay comunicaciones importantes de tipo administrativo se harán por mail.</p>
-</div>
-<div id="por-último" class="section level3 hasAnchor" number="1.2.4">
-<h3><span class="header-section-number">1.2.4</span> Por último<a href="index.html#por-último" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Si estás sin tiempo, lo <strong>prioritario</strong> es la instalación previa de <em>R</em> y <em>RStudio</em>. Cualquier cosa nos podés contactar por mail:</p>
+<li><p><strong>YAML</strong> (cabezal): va al inicio entre giones medio <code>---</code>. Explicita las propiedades generales del documento: título, autor, formato de salida (<em>html</em>,<em>pdf</em>, etc.) y fecha en que se produjo el documento.</p></li>
+<li><p><strong>Texto</strong>: En el segundo escribimos jerárquicamente el documento, señalizando esto mediante sucesivos asteri<code>s</code>cos<code>.</code>. Por ejemplo los títulos, subtítulos tendrán <code>#</code> y <code>##</code> (esto será importante si quieres dejar visible un índice). Imagínate las funcionalidades cuando escribes en Word, esto es similar: cursiva <code>*cursiva*</code>, negrita <code>**negrita**</code>, ecuaciones x^2 <code>$x^2$</code>, hipervínculos <code>[link](www.rstudio.com)</code> etc. El salto de párrafo se realiza mediante dos espacios o doble enter.</p></li>
+<li><p><strong>Chunks</strong>: acá va el <code>¡CÓDIGO!</code>, lo que se va generando en la sesión del documento. Los insertas mediante el botón en el menú o combinando las teclas <em>Ctrl + Alt + I</em>. Se activa comenzando con <code>{r} y se finaliza con</code>.
+Como atributos principales de los chunks se encuentran:</p>
 <ul>
-<li><p>Iván Williams: <a href="mailto:act.ivanwilliams@gmail.com" class="email">act.ivanwilliams@gmail.com</a></p></li>
-<li><p>Ayelén Martinez: <a href="mailto:ayemartinezn@gmail.com" class="email">ayemartinezn@gmail.com</a></p></li>
-<li><p>Florencia Bathory: <a href="mailto:florencia.bathory@gmail.com" class="email">florencia.bathory@gmail.com</a></p></li>
+<li><code>r</code> señalando el lenguaje (se puede nombrar el chunk tambien),</li>
+<li><code>eval</code> (¿corro el chunk cuando hago <code>knit</code>?),</li>
+<li><code>echo</code> (¿Muestro el código?),<br />
+</li>
+<li><code>message</code> (¿muestro los mensajes del proceso?).</li>
+<li><code>warnings</code> (¿muestro las advertencias del proceso?).</li>
+</ul></li>
 </ul>
-<p>Nos vemos pronto!</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a><span class="fu">include_graphics</span>(<span class="st">&quot;figs/programming.gif&quot;</span>)</span></code></pre></div>
-<p><img src="figs/programming.gif" /><!-- --></p>
-<!-- --------------------------------------------------------------------- -->
+<p>También pueden generarse líneas de código <a href="https://rmarkdown.rstudio.com/lesson-4.html">en el medio de una oración</a>.</p>
+<p>Visualicemos sus partes:</p>
+<blockquote>
+<p>Dentro de RMarkdown el directorio de trabajo es aquel donde se encuentra el “.Rmd”.</p>
+</blockquote>
 </div>
+<div id="actividad-guiada" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Actividad guiada<a href="reportes.html#actividad-guiada" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hagamos un documento a partir del template creado, que nos deje <em>un esqueleto</em> para la resolución del TP final.</p>
+<p>Desde la Secretaría de la Vivienda estan preocupados por la situación habitacional de los porteños, y para tener una primer referencia nos solicitan un breve reporte sobre el porcentaje de viviendas particulares no habitadas según Comuna en 2010, en lo posible segmentando tres grupos en un mapa. El reporte deberá mostrar el porcentaje de viviendas deshabitadas en un mapa y en una tabla, comentando en el texto cuantas vivendas particualres hay en total.</p>
+<p>Para la construcción del mapa primero obtengamos el archivo <a href="https://es.wikipedia.org/wiki/Shapefile">shapefile</a>, que contiene los elementos geográficos, su geo-localización y su relación con el plano. Haremos uso de la información disponible en <a href="https://www.indec.gob.ar/indec/web/Institucional-Indec-Codgeo">INDEC</a>, al nivel de departamento, que inlcuye datos demográficos del C2010. El paquete <em>rgdal</em> nos permitirá integrar los archivos que lo componen y manipularlo.
+Luego usaremos el paquete <a href="https://rstudio.github.io/leaflet/">leaflet</a>, que permite realizar mapas interactivos embebibles en documentos o webs. Generaremos una escala de 4 colores, usando una paleta predefinida (más <a href="https://rstudio.github.io/leaflet/colors.html">opciones</a>).</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="reportes.html#cb181-1" tabindex="-1"></a><span class="co"># estos paquetes deberíamos tenerlo instalados previamente</span></span>
+<span id="cb181-2"><a href="reportes.html#cb181-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb181-3"><a href="reportes.html#cb181-3" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb181-4"><a href="reportes.html#cb181-4" tabindex="-1"></a><span class="fu">library</span>(spdplyr)</span>
+<span id="cb181-5"><a href="reportes.html#cb181-5" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb181-6"><a href="reportes.html#cb181-6" tabindex="-1"></a></span>
+<span id="cb181-7"><a href="reportes.html#cb181-7" tabindex="-1"></a><span class="co"># leo Shapefile y convierto a número algunas variables que me servirán</span></span>
+<span id="cb181-8"><a href="reportes.html#cb181-8" tabindex="-1"></a>CABA <span class="ot">&lt;-</span> <span class="fu">readOGR</span>(<span class="st">&quot;Data/pxdptodatosok.shp&quot;</span>, <span class="at">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>, <span class="at">verbose =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb181-9"><a href="reportes.html#cb181-9" tabindex="-1"></a>        <span class="fu">filter</span>(codpcia <span class="sc">%in%</span> <span class="st">&quot;02&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb181-10"><a href="reportes.html#cb181-10" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">viv_part_h =</span> <span class="fu">as.integer</span>(<span class="fu">as.character</span>(viv_part_h)),</span>
+<span id="cb181-11"><a href="reportes.html#cb181-11" tabindex="-1"></a>               <span class="at">viv_part =</span> <span class="fu">as.integer</span>(<span class="fu">as.character</span>(viv_part)),</span>
+<span id="cb181-12"><a href="reportes.html#cb181-12" tabindex="-1"></a>               <span class="at">porc_viv_deshab =</span> <span class="fu">round</span>((<span class="dv">1</span><span class="sc">-</span>viv_part_h<span class="sc">/</span>viv_part)<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>))</span>
+<span id="cb181-13"><a href="reportes.html#cb181-13" tabindex="-1"></a></span>
+<span id="cb181-14"><a href="reportes.html#cb181-14" tabindex="-1"></a><span class="fu">class</span>(CABA)</span></code></pre></div>
+<p>El mapa:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="reportes.html#cb182-1" tabindex="-1"></a><span class="co"># A partir una paleta prediseñada, divido en cuatro grupos de igual tamaño</span></span>
+<span id="cb182-2"><a href="reportes.html#cb182-2" tabindex="-1"></a>mi_paleta_de_4_grupos <span class="ot">&lt;-</span> <span class="fu">colorQuantile</span>(<span class="st">&quot;YlOrRd&quot;</span>, CABA<span class="sc">@</span>data<span class="sc">$</span>porc_viv_deshab, <span class="at">n =</span> <span class="dv">4</span>)  </span>
+<span id="cb182-3"><a href="reportes.html#cb182-3" tabindex="-1"></a></span>
+<span id="cb182-4"><a href="reportes.html#cb182-4" tabindex="-1"></a><span class="co"># genero el mapa</span></span>
+<span id="cb182-5"><a href="reportes.html#cb182-5" tabindex="-1"></a>CABA_map <span class="ot">&lt;-</span> <span class="fu">leaflet</span>(CABA) <span class="sc">%&gt;%</span></span>
+<span id="cb182-6"><a href="reportes.html#cb182-6" tabindex="-1"></a>                <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb182-7"><a href="reportes.html#cb182-7" tabindex="-1"></a>                <span class="fu">addPolygons</span>(<span class="at">fillColor =</span> <span class="sc">~</span><span class="fu">mi_paleta_de_4_grupos</span>(porc_viv_deshab),</span>
+<span id="cb182-8"><a href="reportes.html#cb182-8" tabindex="-1"></a>                            <span class="at">color =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb182-9"><a href="reportes.html#cb182-9" tabindex="-1"></a>                            <span class="at">fillOpacity =</span> .<span class="dv">5</span>,</span>
+<span id="cb182-10"><a href="reportes.html#cb182-10" tabindex="-1"></a>                            <span class="at">popup =</span> <span class="sc">~</span>departamen, </span>
+<span id="cb182-11"><a href="reportes.html#cb182-11" tabindex="-1"></a>                            <span class="at">label =</span> <span class="sc">~</span><span class="fu">paste0</span>(departamen, <span class="st">&quot;: &quot;</span>,porc_viv_deshab, <span class="st">&quot;%&quot;</span>))</span>
+<span id="cb182-12"><a href="reportes.html#cb182-12" tabindex="-1"></a><span class="co"># lo imprimo</span></span>
+<span id="cb182-13"><a href="reportes.html#cb182-13" tabindex="-1"></a>CABA_map</span></code></pre></div>
+<blockquote>
+<p>“Nadie ignora que el Sur empieza del otro lado de Rivadavia” (El Sur, Borges, 1944).</p>
+</blockquote>
+<p>Una tabla muuuy básica con <a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">kable</a>. No lo veremos aquí pero el paquete <code>kable</code> se complementa con <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra</a> para obtener tablas más personalizadas y publicables].</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="reportes.html#cb183-1" tabindex="-1"></a>CABA <span class="sc">%&gt;%</span> </span>
+<span id="cb183-2"><a href="reportes.html#cb183-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb183-3"><a href="reportes.html#cb183-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Departamento =</span> departamen, <span class="at">Porc_Viv_deshabitadas =</span> porc_viv_deshab) <span class="sc">%&gt;%</span> </span>
+<span id="cb183-4"><a href="reportes.html#cb183-4" tabindex="-1"></a>  <span class="fu">select</span>(Departamento, Porc_Viv_deshabitadas) <span class="sc">%&gt;%</span> </span>
+<span id="cb183-5"><a href="reportes.html#cb183-5" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div>
+<p>Si quisiéramos incluir el dato de cuántas personas en viviendas particulares había en CABA, lo que debemos incluir como <strong>chunk inline</strong> sería: `<strong>r sum(CABA$viv_part)</strong>`, es decir 1423973 personas.</p>
+<blockquote>
+<p>Acordate de guardarlo como ejemplo para el TP.</p>
+</blockquote>
 </div>
-<div id="presentación-inicial" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Presentación inicial<a href="index.html#presentación-inicial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Como introducción, charlaremos en base a los slides de <a href="https://github.com/IvanWilli/TallerDemoR/blob/master/ppt/Introduccion.html">aquí</a>.</p>
-<script>
-title=document.getElementById('header');
-title.innerHTML = '<img src="figs/logoUNLU.png" alt="Test Image">' + title.innerHTML
-</script>
+<div id="referencias" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Referencias<a href="reportes.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/translations/spanish/rmarkdown_es.pdf">Hoja de Ayuda</a></p></li>
+<li><p><a href="https://bookdown.org/yihui/rmarkdown/">De su creador</a></p></li>
+</ul>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>A lo largo de este taller nos valdremos de contenido realizado por muuuchas personas. Una práctica que nos gustaría contagiarte: si nos aporta, démosle <em>like</em> y/o compartamos y/o dejémos algún feedback si es posible<a href="index.html#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="funciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tp.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -367,7 +386,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-reportes.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -378,7 +397,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["https://github.com/rstudio/bookdown-demo/raw/master/index.Rmd"],
+"download": ["https://github.com/rstudio/bookdown-demo/raw/master/05-reportes.Rmd"],
 "search": {
 "engine": "fuse",
 "options": null

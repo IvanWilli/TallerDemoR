@@ -5,8 +5,8 @@ rmd_files:
 - 02-dplyr.Rmd
 - 03-ggplot.Rmd
 - 04-funciones.Rmd
-# - 05-reportes.Rmd
-# - 06-tp.Rmd
+- 05-reportes.Rmd
+- 06-tp.Rmd
 language:
   ui:
     chapter_name: ""

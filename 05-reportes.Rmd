@@ -1,5 +1,12 @@
 # Reportes
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+library(fontawesome)
+library(knitr)
+library(googledrive)
+```
+
 ## Comunicación y Reproducibilidad
 
 Hasta acá fuimos realizando el siguiente flujo:

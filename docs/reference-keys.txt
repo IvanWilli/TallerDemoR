@@ -54,3 +54,10 @@ tablas-de-mortalidad
 evaluación-de-declaración-de-edad
 graduación-de-población-por-edad-simple
 actividad-11
+reportes
+comunicación-y-reproducibilidad
+actividad-guiada
+referencias
+tp
+hemos-llegado
+consigna
