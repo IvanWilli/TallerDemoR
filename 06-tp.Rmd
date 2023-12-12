@@ -15,7 +15,7 @@ Sys.setlocale("LC_ALL", "Spanish_Spain.UTF-8")
 
 ## Consigna
 
-Realizar un reporte sobre las características demográficas de una provincia argentina seleccionada por el autor, según los resultados del Censo 2022. Los datos los podés encontrar en [la web](https://censo.gob.ar/index.php/datos_definitivos/). Específicamente, se solicita:
+Realizar un reporte sobre las características demográficas de una provincia argentina que te interese, según los resultados del Censo 2022. Los datos los podés encontrar en [la web](https://censo.gob.ar/index.php/datos_definitivos/). Específicamente, se solicita:
 
 * Crear un reporte *RMarkdwon* que produzca el informe en *html*.
 

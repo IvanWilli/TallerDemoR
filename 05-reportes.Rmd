@@ -65,35 +65,38 @@ Hagamos un documento a partir del template creado, que nos deje *un esqueleto* p
 
 Desde la Secretaría de la Vivienda estan preocupados por la situación habitacional de los porteños, y para tener una primer referencia nos solicitan un breve reporte sobre el porcentaje de viviendas particulares no habitadas según Comuna en 2010, en lo posible segmentando tres grupos en un mapa. El reporte deberá mostrar el porcentaje de viviendas deshabitadas en un mapa y en una tabla, comentando en el texto cuantas vivendas particualres hay en total. 
 
-Para la construcción del mapa primero obtengamos el archivo [shapefile](https://es.wikipedia.org/wiki/Shapefile), que contiene los elementos geográficos, su geo-localización y su relación con el plano. Haremos uso de la información disponible en [INDEC](https://www.indec.gob.ar/indec/web/Institucional-Indec-Codgeo), al nivel de departamento, que inlcuye datos demográficos del C2010. El paquete *rgdal* nos permitirá integrar los archivos que lo componen y manipularlo.
+Para la construcción del mapa primero obtengamos el archivo [shapefile](https://es.wikipedia.org/wiki/Shapefile), que contiene los elementos geográficos, su geo-localización y su relación con el plano. Haremos uso de la información disponible en [INDEC](https://www.indec.gob.ar/indec/web/Institucional-Indec-Codgeo), al nivel de departamento, que inlcuye datos demográficos del C2010. El paquete *sf* nos permitirá integrar los archivos que lo componen y manipularlo.
 Luego usaremos el paquete [leaflet](https://rstudio.github.io/leaflet/), que permite realizar mapas interactivos embebibles en documentos o webs. Generaremos una escala de 4 colores, usando una paleta predefinida (más [opciones](https://rstudio.github.io/leaflet/colors.html)). 
 
 ```{r,eval=F}
 # estos paquetes deberíamos tenerlo instalados previamente
+
+library(sf)
 library(tidyverse)
-library(rgdal)
-library(spdplyr)
 library(leaflet)
 
 # leo Shapefile y convierto a número algunas variables que me servirán
-CABA <- readOGR("Data/pxdptodatosok.shp", encoding = 'UTF-8', verbose = F) %>% 
+
+CABA <- read_sf("Data/pxdptodatosok.shp") %>% 
         filter(codpcia %in% "02") %>% 
         mutate(viv_part_h = as.integer(as.character(viv_part_h)),
                viv_part = as.integer(as.character(viv_part)),
                porc_viv_deshab = round((1-viv_part_h/viv_part)*100,1))
 
 class(CABA)
+
 ```
 
 ```{r,include=F}
 # estos paquetes deberíamos tenerlo instalados previamente
+
+library(sf)
 library(tidyverse)
-library(rgdal)
-library(spdplyr)
 library(leaflet)
 
 # leo Shapefile y convierto a número algunas variables que me servirán
-CABA <- readOGR("Data/pxdptodatosok.shp", encoding = 'UTF-8', verbose = F) %>% 
+
+CABA <- read_sf("Data/pxdptodatosok.shp") %>% 
         filter(codpcia %in% "02") %>% 
         mutate(viv_part_h = as.integer(as.character(viv_part_h)),
                viv_part = as.integer(as.character(viv_part)),
@@ -105,7 +108,7 @@ class(CABA)
 El mapa:
 ```{r}
 # A partir una paleta prediseñada, divido en cuatro grupos de igual tamaño
-mi_paleta_de_4_grupos <- colorQuantile("YlOrRd", CABA@data$porc_viv_deshab, n = 4)  
+mi_paleta_de_4_grupos <- colorQuantile("YlOrRd", CABA$porc_viv_deshab, n = 4)  
 
 # genero el mapa
 CABA_map <- leaflet(CABA) %>%
